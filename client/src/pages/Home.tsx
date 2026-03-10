@@ -289,10 +289,10 @@ function HeroSection() {
             className="mt-8 md:mt-12 grid grid-cols-4 gap-4 md:gap-8 md:flex md:flex-wrap"
           >
             {[
-              { num: "4", label: "天精彩活動" },
-              { num: "10+", label: "業界嘉賓" },
-              { num: "100+", label: "參與學生" },
-              { num: "8+", label: "合作大專" },
+              { num: "6+", label: "精彩活動" },
+              { num: "6+", label: "業界嘉賓" },
+              { num: "150+", label: "參與學生" },
+              { num: "3+", label: "合作大學" },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <div
