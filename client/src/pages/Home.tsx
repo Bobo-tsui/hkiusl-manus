@@ -254,6 +254,16 @@ function HeroSection() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="text-lg md:text-2xl font-semibold text-[#d4c8e8]/90 mb-2 md:mb-4 tracking-wide"
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          >
+            Win the Race Before AI
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-base md:text-xl text-white/80 mb-6 md:mb-8 max-w-2xl leading-relaxed"
           >
