@@ -210,39 +210,38 @@ function Navbar() {
 // ─── Hero Section ───
 function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section className="relative min-h-[100svh] flex items-center overflow-hidden">
       {/* Background image */}
       <div className="absolute inset-0">
         <img
           src={IMAGES.heroBanner}
           alt="活動背景"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1a1a4e]/85 via-[#1a1a4e]/70 to-[#3a2a6e]/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1a1a4e]/90 via-[#1a1a4e]/75 to-[#3a2a6e]/65 md:bg-gradient-to-br md:from-[#1a1a4e]/85 md:via-[#1a1a4e]/70 md:to-[#3a2a6e]/60" />
       </div>
 
-      {/* Floating decorative circles */}
-      <div className="absolute top-20 right-10 w-64 h-64 rounded-full bg-[#b8a9d4]/10 blur-3xl" />
-      <div className="absolute bottom-20 left-10 w-96 h-96 rounded-full bg-[#b8a9d4]/8 blur-3xl" />
-      <div className="absolute top-1/3 left-1/4 w-32 h-32 rounded-full bg-[#faf8f5]/5 blur-2xl" />
+      {/* Floating decorative circles - hidden on small mobile */}
+      <div className="absolute top-20 right-10 w-64 h-64 rounded-full bg-[#b8a9d4]/10 blur-3xl hidden md:block" />
+      <div className="absolute bottom-20 left-10 w-96 h-96 rounded-full bg-[#b8a9d4]/8 blur-3xl hidden md:block" />
 
-      <div className="container relative z-10 pt-24 pb-16">
+      <div className="container relative z-10 pt-20 pb-12 md:pt-24 md:pb-16">
         <div className="max-w-3xl">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <span className="inline-block px-4 py-1.5 rounded-full bg-[#b8a9d4]/20 text-[#d4c8e8] text-sm font-medium mb-6 backdrop-blur-sm border border-[#b8a9d4]/20">
+            <span className="inline-block px-3 py-1 md:px-4 md:py-1.5 rounded-full bg-[#b8a9d4]/20 text-[#d4c8e8] text-xs md:text-sm font-medium mb-4 md:mb-6 backdrop-blur-sm border border-[#b8a9d4]/20">
               2026 年 4 月 11-19 日
             </span>
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-6"
+            className="text-3xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-4 md:mb-6"
           >
             香港跨大專
             <br />
@@ -252,30 +251,30 @@ function HeroSection() {
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-lg md:text-xl text-white/80 mb-8 max-w-2xl leading-relaxed"
+            className="text-base md:text-xl text-white/80 mb-6 md:mb-8 max-w-2xl leading-relaxed"
           >
             匯聚香港各大專院校學生，透過實戰工作坊、創業比賽與業界交流，
             培育下一代技術經理人。不只是理科生的舞台——商科、設計、人文學科同樣大放異彩。
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-wrap gap-4"
+            className="flex flex-col sm:flex-row gap-3 md:gap-4"
           >
             <a href="#signup">
-              <Button className="bg-[#b8a9d4] hover:bg-[#a08ec0] text-[#1a1a4e] font-bold text-lg rounded-full px-8 py-6 shadow-lg shadow-[#b8a9d4]/25 transition-transform hover:scale-105">
+              <Button className="w-full sm:w-auto bg-[#b8a9d4] hover:bg-[#a08ec0] text-[#1a1a4e] font-bold text-base md:text-lg rounded-full px-6 py-5 md:px-8 md:py-6 shadow-lg shadow-[#b8a9d4]/25 transition-transform hover:scale-105">
                 立即報名 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </a>
             <a href="#about">
               <Button
                 variant="outline"
-                className="border-white/30 text-white hover:bg-white/10 font-medium text-lg rounded-full px-8 py-6 backdrop-blur-sm"
+                className="w-full sm:w-auto border-white/30 text-white hover:bg-white/10 font-medium text-base md:text-lg rounded-full px-6 py-5 md:px-8 md:py-6 backdrop-blur-sm"
               >
                 了解更多
               </Button>
@@ -284,10 +283,10 @@ function HeroSection() {
 
           {/* Quick stats */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.0 }}
-            className="mt-12 flex flex-wrap gap-8"
+            className="mt-8 md:mt-12 grid grid-cols-4 gap-4 md:gap-8 md:flex md:flex-wrap"
           >
             {[
               { num: "4", label: "天精彩活動" },
@@ -297,12 +296,12 @@ function HeroSection() {
             ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <div
-                  className="text-3xl md:text-4xl font-bold text-[#d4c8e8]"
+                  className="text-2xl md:text-4xl font-bold text-[#d4c8e8]"
                   style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                 >
                   {stat.num}
                 </div>
-                <div className="text-white/60 text-sm mt-1">{stat.label}</div>
+                <div className="text-white/60 text-xs md:text-sm mt-1">{stat.label}</div>
               </div>
             ))}
           </motion.div>
@@ -472,7 +471,7 @@ function ScheduleSection() {
 
   const days = [
     {
-      date: "4月11日（五）",
+      date: "4月11日（六）",
       venue: "都會大學演講廳",
       label: "開幕禮・演講・授課",
       items: [
@@ -499,7 +498,7 @@ function ScheduleSection() {
       ],
     },
     {
-      date: "4月12日（六）",
+      date: "4月12日（日）",
       venue: "柴灣青年廣場「青立方」",
       label: "工作坊・極創客",
       items: [
@@ -635,7 +634,6 @@ function GallerySection() {
     { src: IMAGES.venuePhoto2, label: "柴灣青年廣場 — 開放空間" },
     { src: IMAGES.venuePhoto3, label: "柴灣青年廣場 — 座位區" },
     { src: IMAGES.venuePhoto4, label: "柴灣青年廣場 — 休憩區" },
-    { src: IMAGES.venuePhoto5, label: "柴灣青年廣場 — 入口" },
   ];
 
   return (
@@ -660,7 +658,7 @@ function GallerySection() {
           </AnimatedSection>
 
           {/* AI Generated Photos */}
-          <AnimatedSection className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-16">
+          <AnimatedSection className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-16">
             {aiPhotos.map((photo, i) => (
               <motion.div
                 key={i}
@@ -688,7 +686,7 @@ function GallerySection() {
             </motion.div>
           </AnimatedSection>
 
-          <AnimatedSection className="grid grid-cols-2 md:grid-cols-5 gap-4">
+          <AnimatedSection className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
             {venuePhotos.map((photo, i) => (
               <motion.div
                 key={i}
@@ -987,7 +985,7 @@ function Footer() {
               Hong Kong Inter-University Startup Launchpad 2026
             </p>
             <p className="text-white/40 text-xs">
-              主辦人：徐佩慈 Bobo Tsui
+              主辦人：Bobo Tsui
             </p>
           </div>
 
@@ -1026,11 +1024,11 @@ function Footer() {
                 98485603
               </a>
               <a
-                href="mailto:info@hkiusl.org"
+                href="mailto:hkiusl.startup@gmail.com"
                 className="flex items-center gap-3 text-white/50 hover:text-[#b8a9d4] text-sm transition-colors"
               >
                 <Mail className="w-4 h-4" />
-                info@hkiusl.org
+                hkiusl.startup@gmail.com
               </a>
             </div>
 
