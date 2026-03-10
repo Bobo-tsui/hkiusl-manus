@@ -28,3 +28,4 @@
 - [x] Add volunteer recruitment section with mailto link
 - [x] Add Bobo Tsui bio: 現就讀香港都會大學商學院二年級
 - [x] Rename "Technology Manager / Tech Broker" to "Technology Transfer Professional" across the site
+- [x] Add context about HK government promoting university technology transfer in About section
