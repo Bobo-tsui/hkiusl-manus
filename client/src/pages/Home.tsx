@@ -51,7 +51,6 @@ const PARTNER_LOGOS = [
   { name: "香港設計文化協會 (MODA)", logo: "https://i.postimg.cc/pLgVQ1bW/moda_logo_2.png" },
   { name: "幼聯 (HKCECES)", logo: "https://i.postimg.cc/LXjgQVVc/icon5.png" },
   { name: "工合空間 (GUNGHO SPACE)", logo: "https://i.postimg.cc/2SY3X6VN/new-logo.png" },
-  { name: "創想教育 (Inspire Education)", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/inspire-education-logo_242cfa13.png" },
 ];
 
 // ─── Animation Variants ───
@@ -492,10 +491,10 @@ interface Speaker {
 
 const SPEAKERS: Record<string, Speaker> = {
   alan: {
-    name: "Alan Cheung",
-    role: "都會大學校董",
+    name: "張益麟 Alan, MH",
+    role: "都會大學校董會成員 | 興迅集團創辦人及董事總經理 | 香港社會創業論壇主席",
     photo: IMAGES.alanPhoto,
-    bio: "資深商界領袖，長期支持香港高等教育與青年創業發展。",
+    bio: "資深商界領袖，興迅集團創辦人及董事總經理，同時擔任香港社會創業論壇主席及都會大學校董會成員，長期支持香港高等教育與青年創業發展。",
   },
   angel: {
     name: "鄺善珩 Angel",
@@ -522,6 +521,7 @@ function ScheduleSection() {
     event: string;
     type: string;
     speaker?: string;
+    trialUrl?: string;
   }
 
   const days: { date: string; venue: string; label: string; items: ScheduleItem[] }[] = [
@@ -542,7 +542,7 @@ function ScheduleSection() {
         { time: "11:55", event: "主辦座談 — MODA", type: "speech" },
         { time: "12:30", event: "Q & A 環節", type: "general" },
         { time: "12:40", event: "自由交流・午餐", type: "break" },
-        { time: "14:15", event: "商業策略遊戲", type: "highlight" },
+        { time: "14:15", event: "商業策略遊戲", type: "highlight", trialUrl: "https://patentpioneer-hkiusl.netlify.app/" },
         { time: "14:30", event: "Startup 分享", type: "speech" },
         { time: "14:50", event: "思維策略遊戲", type: "highlight" },
         { time: "15:00", event: "Startup 分享 — RiceUp", type: "speech" },
@@ -550,7 +550,7 @@ function ScheduleSection() {
         { time: "15:30", event: "專利策略遊戲", type: "highlight" },
         { time: "15:45", event: "小休", type: "break" },
         { time: "16:00", event: "香港設計文化協會 (MODA) 分享", type: "speech" },
-        { time: "16:15", event: "Startup 分享", type: "speech", speaker: "ryan" },
+        { time: "16:15", event: "Startup 分享 — 光合抗菌人工皮", type: "speech", speaker: "ryan" },
         { time: "16:30", event: "Day 2 工作坊講解", type: "general" },
         { time: "17:00", event: "Day 1 完結", type: "general" },
       ],
@@ -649,14 +649,14 @@ function ScheduleSection() {
               </div>
 
               {/* Items */}
-              <div className="p-4 md:p-6 space-y-2">
+              <div className="p-5 md:p-8 space-y-1">
                 {days[activeDay].items.map((item, i) => {
                   const speaker = item.speaker ? SPEAKERS[item.speaker] : null;
                   const isExpanded = expandedSpeaker === `${activeDay}-${i}`;
                   return (
                     <div key={i}>
                       <div
-                        className={`flex items-center gap-3 md:gap-4 p-3 rounded-xl transition-colors ${
+                        className={`flex items-center gap-3 md:gap-4 px-4 py-3.5 md:py-4 rounded-xl transition-colors ${
                           speaker ? "hover:bg-[#f0ecf8] cursor-pointer" : "hover:bg-[#faf8f5]"
                         } ${isExpanded ? "bg-[#f0ecf8]" : ""}`}
                         onClick={() => speaker && setExpandedSpeaker(isExpanded ? null : `${activeDay}-${i}`)}
@@ -667,8 +667,8 @@ function ScheduleSection() {
                         >
                           {item.time}
                         </div>
-                        <div className="w-1 h-8 rounded-full bg-[#e8e0f0] shrink-0" />
-                        <div className="flex-1 flex items-center gap-3">
+                        <div className="w-1 h-10 rounded-full bg-[#e8e0f0] shrink-0" />
+                        <div className="flex-1 flex items-center gap-3 flex-wrap">
                           {speaker && (
                             <img
                               src={speaker.photo}
@@ -676,9 +676,20 @@ function ScheduleSection() {
                               className="w-9 h-9 rounded-full object-cover border-2 border-[#b8a9d4] shrink-0"
                             />
                           )}
-                          <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${typeColors[item.type]}`}>
+                          <span className={`inline-block px-3 py-1.5 rounded-full text-xs md:text-sm font-medium ${typeColors[item.type]}`}>
                             {item.event}
                           </span>
+                          {item.trialUrl && (
+                            <a
+                              href={item.trialUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#1a1a4e] text-white text-xs font-medium hover:bg-[#2a2a6e] transition-colors"
+                            >
+                              <Gamepad2 className="w-3 h-3" /> 試玩
+                            </a>
+                          )}
                         </div>
                         {speaker && (
                           <ChevronRight className={`w-4 h-4 text-[#b8a9d4] transition-transform shrink-0 ${isExpanded ? "rotate-90" : ""}`} />

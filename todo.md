@@ -40,3 +40,10 @@
 - [x] Upload speaker photos (Angel, Alan Cheung, Ryan/張永超) to CDN
 - [x] Add speaker profile pics and bios to schedule timeslots
 - [x] Add 創想教育 logo to partners section
+- [x] Remove Inspire Education from partners section (it's Angel's startup, not a partner)
+- [x] Add Inspire Education mention to Angel's schedule slot instead
+- [x] Rename Ryan's slot to "Startup 分享 - 光合抗菌人工皮"
+- [x] Update Alan's name to "張益麟 Alan, MH" and titles
+- [x] Center Hero page elements (already centered from previous update)
+- [x] Improve schedule section padding for readability
+- [x] Add trial button to 商業策略遊戲 linking to patentpioneer-hkiusl.netlify.app
