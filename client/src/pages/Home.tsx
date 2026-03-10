@@ -86,7 +86,7 @@ function AnimatedSection({ children, className = "" }: { children: React.ReactNo
 // ─── Wave SVG Dividers ───
 function WaveDividerTop({ color = "#faf8f5" }: { color?: string }) {
   return (
-    <div className="w-full overflow-hidden leading-[0] -mb-1">
+    <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] pointer-events-none z-20">
       <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-16 md:h-24">
         <path
           d="M0,60 C200,120 400,0 600,60 C800,120 1000,0 1200,60 L1200,120 L0,120 Z"
@@ -269,7 +269,7 @@ function Navbar() {
 // ─── Hero Section ───
 function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen overflow-hidden">
       {/* Background image */}
       <div className="absolute inset-0">
         <img
@@ -285,100 +285,99 @@ function HeroSection() {
       <div className="absolute bottom-20 left-10 w-96 h-96 rounded-full bg-[#b8a9d4]/8 blur-3xl hidden md:block" />
 
       {/* Content */}
-      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-6xl min-h-screen flex items-center justify-center">
-          <div className="flex flex-col items-center justify-center text-center w-full">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <span className="inline-block px-3 py-1 md:px-4 md:py-1.5 rounded-full bg-[#b8a9d4]/20 text-[#d4c8e8] text-xs md:text-sm font-medium mb-4 md:mb-6 backdrop-blur-sm border border-[#b8a9d4]/20">
-                2026 年 4 月 11-19 日
-              </span>
-            </motion.div>
+      <div className="relative z-10 container min-h-screen flex items-center justify-center">
+        <div className="mx-auto w-full max-w-6xl flex flex-col items-center justify-center text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mx-auto"
+          >
+            <span className="inline-block px-3 py-1 md:px-4 md:py-1.5 rounded-full bg-[#b8a9d4]/20 text-[#d4c8e8] text-xs md:text-sm font-medium mb-4 md:mb-6 backdrop-blur-sm border border-[#b8a9d4]/20">
+              2026 年 4 月 11-19 日
+            </span>
+          </motion.div>
 
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-3xl md:text-5xl lg:text-[4rem] xl:text-[5rem] font-black mb-3 md:mb-5 tracking-wide text-center"
-              style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#ff6b9d" }}
-            >
-              Win the Race Before AI
-            </motion.h2>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="mx-auto text-3xl md:text-5xl lg:text-[4rem] xl:text-[5rem] font-black mb-3 md:mb-5 tracking-wide text-center"
+            style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#ff6b9d" }}
+          >
+            Win the Race Before AI
+          </motion.h2>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-3xl md:text-[2.5rem] lg:text-[2.8rem] xl:text-[3.2rem] font-black text-white leading-tight mb-4 md:mb-6 text-center"
-            >
-              <span className="hidden md:inline whitespace-nowrap">
-                香港跨大專<span className="text-[#d4c8e8]">技術經理人</span>實戰營 2026
-              </span>
-              <span className="md:hidden">
-                香港跨大專<br />
-                <span className="text-[#d4c8e8]">技術經理人</span><br />
-                實戰營 2026
-              </span>
-            </motion.h1>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mx-auto text-3xl md:text-[2.5rem] lg:text-[2.8rem] xl:text-[3.2rem] font-black text-white leading-tight mb-4 md:mb-6 text-center"
+          >
+            <span className="hidden md:inline whitespace-nowrap">
+              香港跨大專<span className="text-[#d4c8e8]">技術經理人</span>實戰營 2026
+            </span>
+            <span className="md:hidden">
+              香港跨大專<br />
+              <span className="text-[#d4c8e8]">技術經理人</span><br />
+              實戰營 2026
+            </span>
+          </motion.h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-base md:text-xl text-white/80 mb-6 md:mb-8 max-w-4xl leading-relaxed text-center"
-            >
-              匯聚香港各大專院校學生，透過實戰工作坊、創業比賽與業界交流，
-              培育下一代技術經理人。不只是理科生的舞台——商科、設計、人文學科同樣大放異彩。
-            </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="mx-auto text-base md:text-xl text-white/80 mb-6 md:mb-8 max-w-4xl leading-relaxed text-center"
+          >
+            匯聚香港各大專院校學生，透過實戰工作坊、創業比賽與業界交流，
+            培育下一代技術經理人。不只是理科生的舞台——商科、設計、人文學科同樣大放異彩。
+          </motion.p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center"
-            >
-              <a href={JOTFORM_URL} target="_blank" rel="noopener noreferrer">
-                <Button className="w-full sm:w-auto bg-[#b8a9d4] hover:bg-[#a08ec0] text-[#1a1a4e] font-bold text-base md:text-lg rounded-full px-6 py-5 md:px-8 md:py-6 shadow-lg shadow-[#b8a9d4]/25 transition-transform hover:scale-105">
-                  立即報名 <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-              </a>
-              <a href="#about">
-                <Button
-                  variant="outline"
-                  className="w-full sm:w-auto border-white/30 text-white hover:bg-white/10 font-medium text-base md:text-lg rounded-full px-6 py-5 md:px-8 md:py-6 backdrop-blur-sm"
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="mx-auto flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center"
+          >
+            <a href={JOTFORM_URL} target="_blank" rel="noopener noreferrer" className="flex justify-center">
+              <Button className="bg-[#b8a9d4] hover:bg-[#a08ec0] text-[#1a1a4e] font-bold text-base md:text-lg rounded-full px-6 py-5 md:px-8 md:py-6 shadow-lg shadow-[#b8a9d4]/25 transition-transform hover:scale-105">
+                立即報名 <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </a>
+            <a href="#about" className="flex justify-center">
+              <Button
+                variant="outline"
+                className="border-white/30 text-white hover:bg-white/10 font-medium text-base md:text-lg rounded-full px-6 py-5 md:px-8 md:py-6 backdrop-blur-sm"
+              >
+                了解更多
+              </Button>
+            </a>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.0 }}
+            className="mx-auto mt-8 md:mt-12 grid grid-cols-3 gap-6 md:gap-8"
+          >
+            {[
+              { num: "2", suffix: "天", label: "精彩活動" },
+              { num: "6+", label: "業界嘉賓" },
+              { num: "150+", label: "參與學生" },
+            ].map((stat: { num: string; suffix?: string; label: string }) => (
+              <div key={stat.label} className="text-center">
+                <div
+                  className="text-2xl md:text-4xl font-bold text-[#d4c8e8]"
+                  style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                 >
-                  了解更多
-                </Button>
-              </a>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.0 }}
-              className="mt-8 md:mt-12 grid grid-cols-3 gap-6 md:gap-8"
-            >
-              {[
-                { num: "2", suffix: "天", label: "精彩活動" },
-                { num: "6+", label: "業界嘉賓" },
-                { num: "150+", label: "參與學生" },
-              ].map((stat: { num: string; suffix?: string; label: string }) => (
-                <div key={stat.label} className="text-center">
-                  <div
-                    className="text-2xl md:text-4xl font-bold text-[#d4c8e8]"
-                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-                  >
-                    {stat.num}
-                    {stat.suffix && <span className="text-xl md:text-3xl">{stat.suffix}</span>}
-                  </div>
-                  <div className="text-white/60 text-xs md:text-sm mt-1">{stat.label}</div>
+                  {stat.num}
+                  {stat.suffix && <span className="text-xl md:text-3xl">{stat.suffix}</span>}
                 </div>
-              ))}
-            </motion.div>
-          </div>
+                <div className="text-white/60 text-xs md:text-sm mt-1">{stat.label}</div>
+              </div>
+            ))}
+          </motion.div>
         </div>
       </div>
 
