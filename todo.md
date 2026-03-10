@@ -33,3 +33,10 @@
 - [x] Add Bobo Tsui LinkedIn link (https://www.linkedin.com/in/bobo-tsuipuichi/)
 - [x] Add social media links in footer (Email, Website, Instagram, LinkedIn)
 - [x] Update schedule/rundown with guest speaker data from JotForm (Angel Kwong - Inspire Education, Zhang Yongchao - 奇智醫學)
+- [x] Replace favicon with new blue rocket icon
+- [x] Add student-led description (HKMU, PolyU, CityU students)
+- [x] Update Day 1 venue to 都會大學中國銀行演講廳
+- [x] Redesign schedule section based on PDF rundown
+- [x] Upload speaker photos (Angel, Alan Cheung, Ryan/張永超) to CDN
+- [x] Add speaker profile pics and bios to schedule timeslots
+- [x] Add 創想教育 logo to partners section

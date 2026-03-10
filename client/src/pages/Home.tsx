@@ -42,12 +42,16 @@ const IMAGES = {
   heroBanner: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/hero-banner_8b36b15d.png",
   logo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/logo_069317ec.png",
   boboPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/bobo-photo_dc91281d.png",
+  angelPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/angel-photo_25fbc91b.jpeg",
+  alanPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/alan-cheung-photo_2c32214a.jpg",
+  ryanPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/ryan-photo_52137c0c.png",
 };
 
 const PARTNER_LOGOS = [
   { name: "香港設計文化協會 (MODA)", logo: "https://i.postimg.cc/pLgVQ1bW/moda_logo_2.png" },
   { name: "幼聯 (HKCECES)", logo: "https://i.postimg.cc/LXjgQVVc/icon5.png" },
   { name: "工合空間 (GUNGHO SPACE)", logo: "https://i.postimg.cc/2SY3X6VN/new-logo.png" },
+  { name: "創想教育 (Inspire Education)", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/inspire-education-logo_242cfa13.png" },
 ];
 
 // ─── Animation Variants ───
@@ -339,6 +343,9 @@ function AboutSection() {
               近年香港政府大力推動大學技術轉移，鼓勵將學術研究成果轉化為商業應用。技術經理人（Technology Transfer Professional）正是這個過程中連結科技與商業的關鍵角色。
               本實戰營旨在讓大專學生在參加創業比賽前掌握基本概念，培養領導才能、商業知識與設計思維。
             </p>
+            <p className="text-[#7a5a9a] max-w-2xl mx-auto text-base mt-4 font-medium bg-[#e8e0f0] rounded-xl px-6 py-3">
+              本活動完全由學生發起，由香港都會大學、香港理工大學及香港城市大學的學生主導籌辦。
+            </p>
           </motion.div>
         </AnimatedSection>
 
@@ -474,35 +481,77 @@ function FeaturesSection() {
   );
 }
 
+// ─── Speaker Data ───
+interface Speaker {
+  name: string;
+  role: string;
+  photo: string;
+  bio: string;
+  linkedin?: string;
+}
+
+const SPEAKERS: Record<string, Speaker> = {
+  alan: {
+    name: "Alan Cheung",
+    role: "都會大學校董",
+    photo: IMAGES.alanPhoto,
+    bio: "資深商界領袖，長期支持香港高等教育與青年創業發展。",
+  },
+  angel: {
+    name: "鄺善珩 Angel",
+    role: "創想教育 Co-founder",
+    photo: IMAGES.angelPhoto,
+    bio: "香港教育大學準畢業生，擁有五年數學教學經驗。將數學與科技結合，創辦「創想教育」，曾獲得60萬創業基金及受邀海外參展。",
+    linkedin: "https://hk.linkedin.com/in/sin-hang-angel-kwong",
+  },
+  ryan: {
+    name: "張永超 Ryan",
+    role: "香港奇智醫學 CEO",
+    photo: IMAGES.ryanPhoto,
+    bio: "多次在權威創業大賽中獲獎，包括HKMU Hackathon冠軍、挑戰杯全國二等獎，擁有多年企業管理與創業經驗。",
+  },
+};
+
 // ─── Schedule Section ───
 function ScheduleSection() {
   const [activeDay, setActiveDay] = useState(0);
+  const [expandedSpeaker, setExpandedSpeaker] = useState<string | null>(null);
 
-  const days = [
+  interface ScheduleItem {
+    time: string;
+    event: string;
+    type: string;
+    speaker?: string;
+  }
+
+  const days: { date: string; venue: string; label: string; items: ScheduleItem[] }[] = [
     {
       date: "4月11日（六）",
-      venue: "都會大學演講廳",
+      venue: "都會大學中國銀行演講廳",
       label: "開幕禮・演講・授課",
       items: [
         { time: "10:00", event: "簽到（QR Code）", type: "general" },
-        { time: "10:30", event: "開幕典禮・大合照", type: "highlight" },
+        { time: "10:20", event: "入座", type: "general" },
+        { time: "10:30", event: "開始／合照", type: "highlight" },
         { time: "10:35", event: "開場白", type: "general" },
-        { time: "10:40", event: "都會大學校董致辭", type: "speech" },
-        { time: "10:50", event: "副校長致辭", type: "speech" },
+        { time: "10:40", event: "致辭一", type: "speech", speaker: "alan" },
+        { time: "10:50", event: "致辭二 — HKMU 副校長", type: "speech" },
         { time: "11:00", event: "嘉賓 A 分享（理工大學）", type: "speech" },
         { time: "11:20", event: "嘉賓 B 分享（立法會議員）", type: "speech" },
-        { time: "11:40", event: "創業政策分享", type: "speech" },
-        { time: "11:55", event: "主辦座談（MODA）", type: "speech" },
+        { time: "11:40", event: "創業政策分享 — 香港設計文化協會 (MODA)", type: "speech" },
+        { time: "11:55", event: "主辦座談 — MODA", type: "speech" },
         { time: "12:30", event: "Q & A 環節", type: "general" },
         { time: "12:40", event: "自由交流・午餐", type: "break" },
         { time: "14:15", event: "商業策略遊戲", type: "highlight" },
-        { time: "14:30", event: "鄺善珩（Inspire Education Co-founder）— 我的創業故事", type: "speech" },
+        { time: "14:30", event: "Startup 分享", type: "speech" },
         { time: "14:50", event: "思維策略遊戲", type: "highlight" },
-        { time: "15:00", event: "Rice Up 環節", type: "highlight" },
-        { time: "15:15", event: "張永超（香港奇智醫學 CEO）— 創業要點與賽事經驗分享", type: "speech" },
+        { time: "15:00", event: "Startup 分享 — RiceUp", type: "speech" },
+        { time: "15:15", event: "Startup 分享 — Inspire Education", type: "speech", speaker: "angel" },
         { time: "15:30", event: "專利策略遊戲", type: "highlight" },
-        { time: "16:00", event: "MODA 分享", type: "speech" },
-        { time: "16:30", event: "工作坊講解", type: "general" },
+        { time: "15:45", event: "小休", type: "break" },
+        { time: "16:00", event: "香港設計文化協會 (MODA) 分享", type: "speech" },
+        { time: "16:15", event: "Startup 分享", type: "speech", speaker: "ryan" },
+        { time: "16:30", event: "Day 2 工作坊講解", type: "general" },
         { time: "17:00", event: "Day 1 完結", type: "general" },
       ],
     },
@@ -512,11 +561,12 @@ function ScheduleSection() {
       label: "工作坊・極創客",
       items: [
         { time: "10:00", event: "簽到（QR Code）", type: "general" },
-        { time: "10:30", event: "開始・大合照", type: "highlight" },
+        { time: "10:20", event: "入座", type: "general" },
+        { time: "10:30", event: "開始／合照", type: "highlight" },
         { time: "10:35", event: "開場白", type: "general" },
         { time: "10:40", event: "選隊長", type: "highlight" },
         { time: "11:00", event: "組隊 + 破冰活動", type: "highlight" },
-        { time: "12:00", event: "大隊長駕到", type: "speech" },
+        { time: "12:00", event: "大隊長駕到 — 陳家豪 Emil", type: "speech" },
         { time: "12:45", event: "午餐", type: "break" },
         { time: "14:00", event: "極創客工作坊", type: "highlight" },
         { time: "17:30", event: "Pitching 路演", type: "highlight" },
@@ -589,7 +639,7 @@ function ScheduleSection() {
             <div className="bg-white rounded-2xl shadow-lg border border-[#e8e0f0] overflow-hidden">
               {/* Header */}
               <div className="bg-gradient-to-r from-[#1a1a4e] to-[#3a2a6e] p-6">
-                <div className="flex items-center gap-3 text-white">
+                <div className="flex items-center gap-3 text-white flex-wrap">
                   <Calendar className="w-5 h-5" />
                   <span className="font-bold">{days[activeDay].date}</span>
                   <span className="text-white/60">|</span>
@@ -599,26 +649,79 @@ function ScheduleSection() {
               </div>
 
               {/* Items */}
-              <div className="p-6 space-y-3">
-                {days[activeDay].items.map((item, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center gap-4 p-3 rounded-xl hover:bg-[#faf8f5] transition-colors"
-                  >
-                    <div
-                      className="w-16 text-center font-bold text-[#1a1a4e] shrink-0"
-                      style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-                    >
-                      {item.time}
+              <div className="p-4 md:p-6 space-y-2">
+                {days[activeDay].items.map((item, i) => {
+                  const speaker = item.speaker ? SPEAKERS[item.speaker] : null;
+                  const isExpanded = expandedSpeaker === `${activeDay}-${i}`;
+                  return (
+                    <div key={i}>
+                      <div
+                        className={`flex items-center gap-3 md:gap-4 p-3 rounded-xl transition-colors ${
+                          speaker ? "hover:bg-[#f0ecf8] cursor-pointer" : "hover:bg-[#faf8f5]"
+                        } ${isExpanded ? "bg-[#f0ecf8]" : ""}`}
+                        onClick={() => speaker && setExpandedSpeaker(isExpanded ? null : `${activeDay}-${i}`)}
+                      >
+                        <div
+                          className="w-14 md:w-16 text-center font-bold text-[#1a1a4e] shrink-0 text-sm md:text-base"
+                          style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                        >
+                          {item.time}
+                        </div>
+                        <div className="w-1 h-8 rounded-full bg-[#e8e0f0] shrink-0" />
+                        <div className="flex-1 flex items-center gap-3">
+                          {speaker && (
+                            <img
+                              src={speaker.photo}
+                              alt={speaker.name}
+                              className="w-9 h-9 rounded-full object-cover border-2 border-[#b8a9d4] shrink-0"
+                            />
+                          )}
+                          <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${typeColors[item.type]}`}>
+                            {item.event}
+                          </span>
+                        </div>
+                        {speaker && (
+                          <ChevronRight className={`w-4 h-4 text-[#b8a9d4] transition-transform shrink-0 ${isExpanded ? "rotate-90" : ""}`} />
+                        )}
+                      </div>
+                      {/* Speaker bio card */}
+                      {speaker && isExpanded && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          className="ml-[4.5rem] md:ml-[5rem] mr-4 mb-2"
+                        >
+                          <div className="bg-gradient-to-r from-[#f8f5ff] to-[#f0ecf8] rounded-xl p-4 border border-[#e8e0f0]">
+                            <div className="flex items-start gap-4">
+                              <img
+                                src={speaker.photo}
+                                alt={speaker.name}
+                                className="w-16 h-16 rounded-xl object-cover border-2 border-[#b8a9d4] shrink-0"
+                              />
+                              <div className="flex-1">
+                                <h4 className="font-bold text-[#1a1a4e] text-sm">{speaker.name}</h4>
+                                <p className="text-[#7a5a9a] text-xs mb-2">{speaker.role}</p>
+                                <p className="text-[#5a5a7a] text-xs leading-relaxed">{speaker.bio}</p>
+                                {speaker.linkedin && (
+                                  <a
+                                    href={speaker.linkedin}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-1 text-xs text-[#0077b5] hover:underline mt-2"
+                                    onClick={(e) => e.stopPropagation()}
+                                  >
+                                    <ExternalLink className="w-3 h-3" /> LinkedIn
+                                  </a>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
                     </div>
-                    <div className="w-1 h-8 rounded-full bg-[#e8e0f0]" />
-                    <div className="flex-1">
-                      <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${typeColors[item.type]}`}>
-                        {item.event}
-                      </span>
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </motion.div>
