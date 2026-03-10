@@ -41,6 +41,7 @@ const IMAGES = {
   venuePhoto5: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/venue-photo-5_1dfa06e8.jpg",
   heroBanner: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/hero-banner_8b36b15d.png",
   logo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/logo_069317ec.png",
+  boboPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/bobo-photo_dc91281d.png",
 };
 
 const PARTNER_LOGOS = [
@@ -286,13 +287,12 @@ function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.0 }}
-            className="mt-8 md:mt-12 grid grid-cols-4 gap-4 md:gap-8 md:flex md:flex-wrap"
+            className="mt-8 md:mt-12 grid grid-cols-3 gap-6 md:gap-8 md:flex md:flex-wrap"
           >
             {[
-              { num: "6+", label: "精彩活動" },
+              { num: "2天", label: "精彩活動" },
               { num: "6+", label: "業界嘉賓" },
               { num: "150+", label: "參與學生" },
-              { num: "3+", label: "合作大學" },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <div
@@ -983,9 +983,16 @@ function Footer() {
               <br />
               Hong Kong Inter-University Startup Launchpad 2026
             </p>
-            <p className="text-white/40 text-xs">
-              主辦人：Bobo Tsui
-            </p>
+            <div className="flex items-center gap-3 mt-2">
+              <img
+                src={IMAGES.boboPhoto}
+                alt="Bobo Tsui"
+                className="w-10 h-10 rounded-full object-cover border-2 border-[#b8a9d4]/30"
+              />
+              <p className="text-white/40 text-xs">
+                主辦人：Bobo Tsui
+              </p>
+            </div>
           </div>
 
           {/* Quick Links */}
