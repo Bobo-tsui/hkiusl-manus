@@ -224,7 +224,7 @@ function HeroSection() {
       <div className="absolute bottom-20 left-10 w-96 h-96 rounded-full bg-[#b8a9d4]/8 blur-3xl hidden md:block" />
 
       <div className="container relative z-10 pt-20 pb-12 md:pt-24 md:pb-16">
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="w-full mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -239,7 +239,7 @@ function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-3xl md:text-5xl lg:text-7xl font-black mb-3 md:mb-5 tracking-wide"
+            className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-3 md:mb-5 tracking-wide whitespace-nowrap"
             style={{ fontFamily: "'Space Grotesk', sans-serif", color: '#ff6b9d' }}
           >
             Win the Race Before AI
@@ -249,20 +249,17 @@ function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-3xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-4 md:mb-6"
+            className="text-3xl md:text-[2.5rem] lg:text-[2.8rem] xl:text-[3.2rem] font-black text-white leading-tight mb-4 md:mb-6"
           >
-            香港跨大專
-            <br />
-            <span className="text-[#d4c8e8]">技術經理人</span>
-            <br />
-            實戰營 2026
+            <span className="hidden md:inline whitespace-nowrap">香港跨大專<span className="text-[#d4c8e8]">技術經理人</span>實戰營 2026</span>
+            <span className="md:hidden">香港跨大專<br /><span className="text-[#d4c8e8]">技術經理人</span><br />實戰營 2026</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-base md:text-xl text-white/80 mb-6 md:mb-8 max-w-2xl mx-auto leading-relaxed"
+            className="text-base md:text-xl text-white/80 mb-6 md:mb-8 max-w-4xl mx-auto leading-relaxed"
           >
             匯聚香港各大專院校學生，透過實戰工作坊、創業比賽與業界交流，
             培育下一代技術經理人。不只是理科生的舞台——商科、設計、人文學科同樣大放異彩。

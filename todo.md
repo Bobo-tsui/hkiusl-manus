@@ -19,3 +19,6 @@
 - [x] Update tests: removed old signup tests, auth test passes
 - [x] Center Hero content (not left-aligned)
 - [x] Enlarge slogan "Win the Race Before AI" font size
+- [x] Set rocket logo as favicon
+- [x] Simplify Open Graph description
+- [x] Hero full-page-width centered (remove max-w-3xl constraint)
