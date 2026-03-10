@@ -32,3 +32,4 @@
 - [x] Change volunteer signup from mailto to JotForm link (https://form.jotform.com/260610919201044)
 - [x] Add Bobo Tsui LinkedIn link (https://www.linkedin.com/in/bobo-tsuipuichi/)
 - [x] Add social media links in footer (Email, Website, Instagram, LinkedIn)
+- [x] Update schedule/rundown with guest speaker data from JotForm (Angel Kwong - Inspire Education, Zhang Yongchao - 奇智醫學)
