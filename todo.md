@@ -47,3 +47,9 @@
 - [x] Center Hero page elements (already centered from previous update)
 - [x] Improve schedule section padding for readability
 - [x] Add trial button to 商業策略遊戲 linking to patentpioneer-hkiusl.netlify.app
+- [x] Add countdown timer at top of page showing days until Apr 1 registration deadline
+- [x] Add Inspire Education logo in Angel's speaker bio card
+- [x] Redesign schedule layout - remove excessive padding, improve readability
+- [x] Move trial button from schedule to Features section (商業策略遊戲 card) with eye-catching animation
+- [x] Remove trial button from schedule items
+- [x] Ensure Hero text is centered on ALL devices (flex column items-center)

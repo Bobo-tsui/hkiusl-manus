@@ -45,6 +45,7 @@ const IMAGES = {
   angelPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/angel-photo_25fbc91b.jpeg",
   alanPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/alan-cheung-photo_2c32214a.jpg",
   ryanPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/ryan-photo_52137c0c.png",
+  inspireEduLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/inspire-education-logo_7e0d8b46.png",
 };
 
 const PARTNER_LOGOS = [
@@ -109,6 +110,58 @@ function WaveDividerBottom({ color = "#1a1a4e" }: { color?: string }) {
   );
 }
 
+// ─── Countdown Timer ───
+function CountdownBanner() {
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const deadline = new Date('2026-04-01T23:59:59+08:00').getTime();
+
+  useEffect(() => {
+    const tick = () => {
+      const now = Date.now();
+      const diff = deadline - now;
+      if (diff <= 0) {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
+      setTimeLeft({
+        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((diff / (1000 * 60)) % 60),
+        seconds: Math.floor((diff / 1000) % 60),
+      });
+    };
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  const expired = timeLeft.days === 0 && timeLeft.hours === 0 && timeLeft.minutes === 0 && timeLeft.seconds === 0;
+  if (expired) return null;
+
+  return (
+    <div className="fixed top-0 left-0 right-0 z-[60] bg-gradient-to-r from-[#ff6b9d] via-[#ff5588] to-[#ff6b9d] text-white py-2 text-center shadow-md">
+      <div className="container flex items-center justify-center gap-2 text-sm font-medium">
+        <Clock className="w-4 h-4 animate-pulse" />
+        <span>報名截止倒數：</span>
+        <span className="font-black tracking-wider" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+          {timeLeft.days}<span className="text-white/70 text-xs mx-0.5">天</span>
+          {String(timeLeft.hours).padStart(2, '0')}<span className="text-white/70 text-xs mx-0.5">時</span>
+          {String(timeLeft.minutes).padStart(2, '0')}<span className="text-white/70 text-xs mx-0.5">分</span>
+          {String(timeLeft.seconds).padStart(2, '0')}<span className="text-white/70 text-xs mx-0.5">秒</span>
+        </span>
+        <a
+          href={JOTFORM_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="ml-3 px-3 py-0.5 rounded-full bg-white text-[#ff5588] text-xs font-bold hover:bg-white/90 transition-colors"
+        >
+          立即報名
+        </a>
+      </div>
+    </div>
+  );
+}
+
 // ─── Navigation ───
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -131,7 +184,7 @@ function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-[36px] left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
           ? "bg-white/90 backdrop-blur-md shadow-md"
           : "bg-transparent"
@@ -231,8 +284,8 @@ function HeroSection() {
       <div className="absolute top-20 right-10 w-64 h-64 rounded-full bg-[#b8a9d4]/10 blur-3xl hidden md:block" />
       <div className="absolute bottom-20 left-10 w-96 h-96 rounded-full bg-[#b8a9d4]/8 blur-3xl hidden md:block" />
 
-      <div className="container relative z-10 pt-20 pb-12 md:pt-24 md:pb-16">
-        <div className="w-full mx-auto text-center">
+      <div className="relative z-10 w-full pt-24 pb-12 md:pt-28 md:pb-16 px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col items-center w-full">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -247,7 +300,7 @@ function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-3 md:mb-5 tracking-wide whitespace-nowrap"
+            className="text-3xl md:text-5xl lg:text-[4rem] xl:text-[5rem] font-black mb-3 md:mb-5 tracking-wide text-center w-full"
             style={{ fontFamily: "'Space Grotesk', sans-serif", color: '#ff6b9d' }}
           >
             Win the Race Before AI
@@ -257,7 +310,7 @@ function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-3xl md:text-[2.5rem] lg:text-[2.8rem] xl:text-[3.2rem] font-black text-white leading-tight mb-4 md:mb-6"
+            className="text-3xl md:text-[2.5rem] lg:text-[2.8rem] xl:text-[3.2rem] font-black text-white leading-tight mb-4 md:mb-6 text-center w-full"
           >
             <span className="hidden md:inline whitespace-nowrap">香港跨大專<span className="text-[#d4c8e8]">技術經理人</span>實戰營 2026</span>
             <span className="md:hidden">香港跨大專<br /><span className="text-[#d4c8e8]">技術經理人</span><br />實戰營 2026</span>
@@ -267,7 +320,7 @@ function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-base md:text-xl text-white/80 mb-6 md:mb-8 max-w-4xl mx-auto leading-relaxed"
+            className="text-base md:text-xl text-white/80 mb-6 md:mb-8 max-w-4xl leading-relaxed text-center"
           >
             匯聚香港各大專院校學生，透過實戰工作坊、創業比賽與業界交流，
             培育下一代技術經理人。不只是理科生的舞台——商科、設計、人文學科同樣大放異彩。
@@ -419,6 +472,7 @@ function FeaturesSection() {
       desc: "透過互動遊戲學習商業策略、專利佈局與思維訓練，寓教於樂。",
       color: "from-[#5a4a7a] to-[#7a6a9a]",
       iconBg: "bg-[#fce8d0]",
+      trialUrl: "https://patentpioneer-hkiusl.netlify.app/",
     },
     {
       icon: <Trophy className="w-8 h-8" />,
@@ -466,9 +520,22 @@ function FeaturesSection() {
                   </div>
                   <h3 className="text-xl font-bold text-white mb-3">{f.title}</h3>
                   <p className="text-white/70 leading-relaxed flex-1">{f.desc}</p>
-                  <div className="mt-6 flex items-center text-[#d4c8e8] text-sm font-medium group-hover:translate-x-2 transition-transform">
-                    了解更多 <ArrowRight className="ml-1 w-4 h-4" />
-                  </div>
+                  {f.trialUrl ? (
+                    <a
+                      href={f.trialUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-6 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#ff6b9d] text-white font-bold text-base shadow-lg shadow-[#ff6b9d]/30 hover:bg-[#ff5588] hover:shadow-[#ff6b9d]/50 hover:scale-105 transition-all animate-pulse hover:animate-none"
+                    >
+                      <Gamepad2 className="w-5 h-5" />
+                      立即試玩
+                      <ArrowRight className="w-4 h-4" />
+                    </a>
+                  ) : (
+                    <div className="mt-6 flex items-center text-[#d4c8e8] text-sm font-medium group-hover:translate-x-2 transition-transform">
+                      了解更多 <ArrowRight className="ml-1 w-4 h-4" />
+                    </div>
+                  )}
                 </div>
               </motion.div>
             ))}
@@ -487,6 +554,8 @@ interface Speaker {
   photo: string;
   bio: string;
   linkedin?: string;
+  companyLogo?: string;
+  companyName?: string;
 }
 
 const SPEAKERS: Record<string, Speaker> = {
@@ -502,6 +571,8 @@ const SPEAKERS: Record<string, Speaker> = {
     photo: IMAGES.angelPhoto,
     bio: "香港教育大學準畢業生，擁有五年數學教學經驗。將數學與科技結合，創辦「創想教育」，曾獲得60萬創業基金及受邀海外參展。",
     linkedin: "https://hk.linkedin.com/in/sin-hang-angel-kwong",
+    companyLogo: IMAGES.inspireEduLogo,
+    companyName: "創想教育 Inspire Education",
   },
   ryan: {
     name: "張永超 Ryan",
@@ -521,7 +592,6 @@ function ScheduleSection() {
     event: string;
     type: string;
     speaker?: string;
-    trialUrl?: string;
   }
 
   const days: { date: string; venue: string; label: string; items: ScheduleItem[] }[] = [
@@ -542,7 +612,7 @@ function ScheduleSection() {
         { time: "11:55", event: "主辦座談 — MODA", type: "speech" },
         { time: "12:30", event: "Q & A 環節", type: "general" },
         { time: "12:40", event: "自由交流・午餐", type: "break" },
-        { time: "14:15", event: "商業策略遊戲", type: "highlight", trialUrl: "https://patentpioneer-hkiusl.netlify.app/" },
+        { time: "14:15", event: "商業策略遊戲", type: "highlight" },
         { time: "14:30", event: "Startup 分享", type: "speech" },
         { time: "14:50", event: "思維策略遊戲", type: "highlight" },
         { time: "15:00", event: "Startup 分享 — RiceUp", type: "speech" },
@@ -638,7 +708,7 @@ function ScheduleSection() {
           <motion.div variants={fadeIn} className="max-w-3xl mx-auto">
             <div className="bg-white rounded-2xl shadow-lg border border-[#e8e0f0] overflow-hidden">
               {/* Header */}
-              <div className="bg-gradient-to-r from-[#1a1a4e] to-[#3a2a6e] p-6">
+              <div className="bg-gradient-to-r from-[#1a1a4e] to-[#3a2a6e] px-4 py-3">
                 <div className="flex items-center gap-3 text-white flex-wrap">
                   <Calendar className="w-5 h-5" />
                   <span className="font-bold">{days[activeDay].date}</span>
@@ -649,47 +719,36 @@ function ScheduleSection() {
               </div>
 
               {/* Items */}
-              <div className="p-5 md:p-8 space-y-1">
+              <div className="divide-y divide-[#e8e0f0]/60">
                 {days[activeDay].items.map((item, i) => {
                   const speaker = item.speaker ? SPEAKERS[item.speaker] : null;
                   const isExpanded = expandedSpeaker === `${activeDay}-${i}`;
                   return (
                     <div key={i}>
                       <div
-                        className={`flex items-center gap-3 md:gap-4 px-4 py-3.5 md:py-4 rounded-xl transition-colors ${
+                        className={`flex items-center gap-3 px-4 py-2.5 transition-colors ${
                           speaker ? "hover:bg-[#f0ecf8] cursor-pointer" : "hover:bg-[#faf8f5]"
                         } ${isExpanded ? "bg-[#f0ecf8]" : ""}`}
                         onClick={() => speaker && setExpandedSpeaker(isExpanded ? null : `${activeDay}-${i}`)}
                       >
                         <div
-                          className="w-14 md:w-16 text-center font-bold text-[#1a1a4e] shrink-0 text-sm md:text-base"
+                          className="w-12 md:w-14 text-right font-bold text-[#1a1a4e] shrink-0 text-xs md:text-sm"
                           style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                         >
                           {item.time}
                         </div>
-                        <div className="w-1 h-10 rounded-full bg-[#e8e0f0] shrink-0" />
-                        <div className="flex-1 flex items-center gap-3 flex-wrap">
+                        <div className="w-0.5 h-8 rounded-full bg-[#e8e0f0] shrink-0" />
+                        <div className="flex-1 flex items-center gap-2 flex-wrap">
                           {speaker && (
                             <img
                               src={speaker.photo}
                               alt={speaker.name}
-                              className="w-9 h-9 rounded-full object-cover border-2 border-[#b8a9d4] shrink-0"
+                              className="w-7 h-7 rounded-full object-cover border-2 border-[#b8a9d4] shrink-0"
                             />
                           )}
-                          <span className={`inline-block px-3 py-1.5 rounded-full text-xs md:text-sm font-medium ${typeColors[item.type]}`}>
+                          <span className={`inline-block px-2.5 py-1 rounded-full text-xs font-medium ${typeColors[item.type]}`}>
                             {item.event}
                           </span>
-                          {item.trialUrl && (
-                            <a
-                              href={item.trialUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onClick={(e) => e.stopPropagation()}
-                              className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#1a1a4e] text-white text-xs font-medium hover:bg-[#2a2a6e] transition-colors"
-                            >
-                              <Gamepad2 className="w-3 h-3" /> 試玩
-                            </a>
-                          )}
                         </div>
                         {speaker && (
                           <ChevronRight className={`w-4 h-4 text-[#b8a9d4] transition-transform shrink-0 ${isExpanded ? "rotate-90" : ""}`} />
@@ -701,7 +760,7 @@ function ScheduleSection() {
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: "auto" }}
                           exit={{ opacity: 0, height: 0 }}
-                          className="ml-[4.5rem] md:ml-[5rem] mr-4 mb-2"
+                          className="ml-[4rem] md:ml-[4.5rem] mr-4 mb-1 mt-1"
                         >
                           <div className="bg-gradient-to-r from-[#f8f5ff] to-[#f0ecf8] rounded-xl p-4 border border-[#e8e0f0]">
                             <div className="flex items-start gap-4">
@@ -714,17 +773,24 @@ function ScheduleSection() {
                                 <h4 className="font-bold text-[#1a1a4e] text-sm">{speaker.name}</h4>
                                 <p className="text-[#7a5a9a] text-xs mb-2">{speaker.role}</p>
                                 <p className="text-[#5a5a7a] text-xs leading-relaxed">{speaker.bio}</p>
-                                {speaker.linkedin && (
-                                  <a
-                                    href={speaker.linkedin}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-1 text-xs text-[#0077b5] hover:underline mt-2"
-                                    onClick={(e) => e.stopPropagation()}
-                                  >
-                                    <ExternalLink className="w-3 h-3" /> LinkedIn
-                                  </a>
-                                )}
+                                <div className="flex items-center gap-3 mt-2 flex-wrap">
+                                  {speaker.linkedin && (
+                                    <a
+                                      href={speaker.linkedin}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="inline-flex items-center gap-1 text-xs text-[#0077b5] hover:underline"
+                                      onClick={(e) => e.stopPropagation()}
+                                    >
+                                      <ExternalLink className="w-3 h-3" /> LinkedIn
+                                    </a>
+                                  )}
+                                  {speaker.companyLogo && (
+                                    <div className="inline-flex items-center gap-2 bg-white rounded-lg px-2 py-1 border border-[#e8e0f0]">
+                                      <img src={speaker.companyLogo} alt={speaker.companyName || ''} className="h-5 w-auto object-contain" />
+                                    </div>
+                                  )}
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -1220,6 +1286,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
+      <CountdownBanner />
       <Navbar />
       <HeroSection />
       <AboutSection />
