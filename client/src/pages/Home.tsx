@@ -5,6 +5,7 @@
  * Font: Noto Sans TC (黑體) + Space Grotesk
  */
 import { useEffect, useRef, useState } from "react";
+import { trpc } from "@/lib/trpc";
 import { motion, useInView } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import {
@@ -867,6 +868,49 @@ function PartnersSection() {
 // ─── Signup Section ───
 function SignupSection() {
   const [formType, setFormType] = useState<"student" | "org">("student");
+  const [studentForm, setStudentForm] = useState({ name: "", email: "", school: "", phone: "" });
+  const [orgForm, setOrgForm] = useState({ orgName: "", email: "", contactPhone: "" });
+  const [submitted, setSubmitted] = useState(false);
+
+  const studentMutation = trpc.signup.student.useMutation({
+    onSuccess: (data) => {
+      import("sonner").then(({ toast }) => toast.success(data.message));
+      setStudentForm({ name: "", email: "", school: "", phone: "" });
+      setSubmitted(true);
+    },
+    onError: (err) => {
+      import("sonner").then(({ toast }) => toast.error(err.message || "提交失敗，請稍後再試。"));
+    },
+  });
+
+  const orgMutation = trpc.signup.org.useMutation({
+    onSuccess: (data) => {
+      import("sonner").then(({ toast }) => toast.success(data.message));
+      setOrgForm({ orgName: "", email: "", contactPhone: "" });
+      setSubmitted(true);
+    },
+    onError: (err) => {
+      import("sonner").then(({ toast }) => toast.error(err.message || "提交失敗，請稍後再試。"));
+    },
+  });
+
+  const isLoading = studentMutation.isPending || orgMutation.isPending;
+
+  const handleSubmit = () => {
+    if (formType === "student") {
+      if (!studentForm.name || !studentForm.email || !studentForm.school || !studentForm.phone) {
+        import("sonner").then(({ toast }) => toast.error("請填寫所有欄位"));
+        return;
+      }
+      studentMutation.mutate(studentForm);
+    } else {
+      if (!orgForm.orgName || !orgForm.email || !orgForm.contactPhone) {
+        import("sonner").then(({ toast }) => toast.error("請填寫所有欄位"));
+        return;
+      }
+      orgMutation.mutate(orgForm);
+    }
+  };
 
   return (
     <section id="signup" className="relative">
@@ -891,83 +935,119 @@ function SignupSection() {
           </AnimatedSection>
 
           <div className="max-w-lg mx-auto">
-            {/* Toggle */}
-            <div className="flex gap-2 bg-[#0d0d3a] rounded-xl p-1 mb-8">
-              <button
-                onClick={() => setFormType("student")}
-                className={`flex-1 py-3 rounded-lg font-medium text-sm transition-all ${
-                  formType === "student"
-                    ? "bg-[#b8a9d4] text-[#1a1a4e]"
-                    : "text-white/60 hover:text-white"
-                }`}
-              >
-                學生報名
-              </button>
-              <button
-                onClick={() => setFormType("org")}
-                className={`flex-1 py-3 rounded-lg font-medium text-sm transition-all ${
-                  formType === "org"
-                    ? "bg-[#b8a9d4] text-[#1a1a4e]"
-                    : "text-white/60 hover:text-white"
-                }`}
-              >
-                協辦機構申請
-              </button>
-            </div>
-
-            {/* Form */}
-            <div className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-8">
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-white/80 text-sm mb-2">
-                    {formType === "student" ? "姓名" : "機構名稱"}
-                  </label>
-                  <input
-                    type="text"
-                    placeholder={formType === "student" ? "請輸入你的姓名" : "請輸入機構名稱"}
-                    className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:border-[#b8a9d4] transition-colors"
-                  />
+            {submitted ? (
+              <div className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-12 text-center">
+                <div className="w-20 h-20 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-6">
+                  <svg className="w-10 h-10 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                 </div>
-                <div>
-                  <label className="block text-white/80 text-sm mb-2">電郵地址</label>
-                  <input
-                    type="email"
-                    placeholder="your@email.com"
-                    className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:border-[#b8a9d4] transition-colors"
-                  />
-                </div>
-                {formType === "student" && (
-                  <div>
-                    <label className="block text-white/80 text-sm mb-2">就讀院校</label>
-                    <input
-                      type="text"
-                      placeholder="請輸入你的大專院校"
-                      className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:border-[#b8a9d4] transition-colors"
-                    />
-                  </div>
-                )}
-                <div>
-                  <label className="block text-white/80 text-sm mb-2">
-                    {formType === "student" ? "聯絡電話" : "聯絡人電話"}
-                  </label>
-                  <input
-                    type="tel"
-                    placeholder="請輸入電話號碼"
-                    className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:border-[#b8a9d4] transition-colors"
-                  />
-                </div>
+                <h3 className="text-2xl font-bold text-white mb-3">報名成功！</h3>
+                <p className="text-white/60 mb-6">感謝您的報名，我們將盡快透過電郵與您聯繫。</p>
                 <Button
-                  className="w-full bg-[#b8a9d4] hover:bg-[#a08ec0] text-[#1a1a4e] font-bold py-6 rounded-xl text-lg mt-4 shadow-lg shadow-[#b8a9d4]/20 transition-transform hover:scale-[1.02]"
-                  onClick={() => {
-                    import("sonner").then(({ toast }) => {
-                      toast.success("感謝您的報名！我們將盡快與您聯繫。");
-                    });
-                  }}
+                  variant="outline"
+                  className="border-white/30 text-white hover:bg-white/10 rounded-full px-8"
+                  onClick={() => setSubmitted(false)}
                 >
-                  {formType === "student" ? "提交學生報名" : "提交機構申請"}
+                  繼續報名
                 </Button>
               </div>
-            </div>
+            ) : (
+              <>
+                {/* Toggle */}
+                <div className="flex gap-2 bg-[#0d0d3a] rounded-xl p-1 mb-8">
+                  <button
+                    onClick={() => setFormType("student")}
+                    className={`flex-1 py-3 rounded-lg font-medium text-sm transition-all ${
+                      formType === "student"
+                        ? "bg-[#b8a9d4] text-[#1a1a4e]"
+                        : "text-white/60 hover:text-white"
+                    }`}
+                  >
+                    學生報名
+                  </button>
+                  <button
+                    onClick={() => setFormType("org")}
+                    className={`flex-1 py-3 rounded-lg font-medium text-sm transition-all ${
+                      formType === "org"
+                        ? "bg-[#b8a9d4] text-[#1a1a4e]"
+                        : "text-white/60 hover:text-white"
+                    }`}
+                  >
+                    協辦機構申請
+                  </button>
+                </div>
+
+                {/* Form */}
+                <div className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-8">
+                  <div className="space-y-4">
+                    <div>
+                      <label className="block text-white/80 text-sm mb-2">
+                        {formType === "student" ? "姓名" : "機構名稱"}
+                      </label>
+                      <input
+                        type="text"
+                        value={formType === "student" ? studentForm.name : orgForm.orgName}
+                        onChange={(e) =>
+                          formType === "student"
+                            ? setStudentForm({ ...studentForm, name: e.target.value })
+                            : setOrgForm({ ...orgForm, orgName: e.target.value })
+                        }
+                        placeholder={formType === "student" ? "請輸入你的姓名" : "請輸入機構名稱"}
+                        className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:border-[#b8a9d4] transition-colors"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-white/80 text-sm mb-2">電郵地址</label>
+                      <input
+                        type="email"
+                        value={formType === "student" ? studentForm.email : orgForm.email}
+                        onChange={(e) =>
+                          formType === "student"
+                            ? setStudentForm({ ...studentForm, email: e.target.value })
+                            : setOrgForm({ ...orgForm, email: e.target.value })
+                        }
+                        placeholder="your@email.com"
+                        className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:border-[#b8a9d4] transition-colors"
+                      />
+                    </div>
+                    {formType === "student" && (
+                      <div>
+                        <label className="block text-white/80 text-sm mb-2">就讀院校</label>
+                        <input
+                          type="text"
+                          value={studentForm.school}
+                          onChange={(e) => setStudentForm({ ...studentForm, school: e.target.value })}
+                          placeholder="請輸入你的大專院校"
+                          className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:border-[#b8a9d4] transition-colors"
+                        />
+                      </div>
+                    )}
+                    <div>
+                      <label className="block text-white/80 text-sm mb-2">
+                        {formType === "student" ? "聯絡電話" : "聯絡人電話"}
+                      </label>
+                      <input
+                        type="tel"
+                        value={formType === "student" ? studentForm.phone : orgForm.contactPhone}
+                        onChange={(e) =>
+                          formType === "student"
+                            ? setStudentForm({ ...studentForm, phone: e.target.value })
+                            : setOrgForm({ ...orgForm, contactPhone: e.target.value })
+                        }
+                        placeholder="請輸入電話號碼"
+                        className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:border-[#b8a9d4] transition-colors"
+                      />
+                    </div>
+                    <Button
+                      className="w-full bg-[#b8a9d4] hover:bg-[#a08ec0] text-[#1a1a4e] font-bold py-6 rounded-xl text-lg mt-4 shadow-lg shadow-[#b8a9d4]/20 transition-transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
+                      onClick={handleSubmit}
+                      disabled={isLoading}
+                    >
+                      {isLoading ? "提交中..." : formType === "student" ? "提交學生報名" : "提交機構申請"}
+                    </Button>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>
