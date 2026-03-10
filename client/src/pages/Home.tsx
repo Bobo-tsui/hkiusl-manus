@@ -40,6 +40,7 @@ const IMAGES = {
   venuePhoto4: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/venue-photo-4_38c516eb.jpg",
   venuePhoto5: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/venue-photo-5_1dfa06e8.jpg",
   heroBanner: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/hero-banner_8b36b15d.png",
+  logo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/logo_069317ec.png",
 };
 
 const PARTNER_LOGOS = [
@@ -134,14 +135,13 @@ function Navbar() {
     >
       <div className="container flex items-center justify-between h-16 md:h-20">
         <a href="#" className="flex items-center gap-2">
-          <span
-            className={`font-bold text-lg md:text-xl tracking-tight transition-colors ${
-              scrolled ? "text-[#1a1a4e]" : "text-white"
+          <img
+            src={IMAGES.logo}
+            alt="HKIUSL 2026"
+            className={`h-8 md:h-10 w-auto transition-all ${
+              scrolled ? "" : "brightness-0 invert"
             }`}
-            style={{ fontFamily: "'Space Grotesk', 'Noto Sans TC', sans-serif" }}
-          >
-            HKIUSL 2026
-          </span>
+          />
         </a>
 
         {/* Desktop nav */}
@@ -973,12 +973,11 @@ function Footer() {
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
           <div>
-            <h3
-              className="text-xl font-bold text-white mb-4"
-              style={{ fontFamily: "'Space Grotesk', 'Noto Sans TC', sans-serif" }}
-            >
-              HKIUSL 2026
-            </h3>
+            <img
+              src={IMAGES.logo}
+              alt="HKIUSL 2026"
+              className="h-10 w-auto brightness-0 invert mb-4"
+            />
             <p className="text-white/50 text-sm leading-relaxed mb-6">
               香港跨大專技術經理人實戰營 2026
               <br />
