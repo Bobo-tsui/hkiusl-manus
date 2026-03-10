@@ -120,7 +120,7 @@ function Navbar() {
     { label: "日程安排", href: "#schedule" },
     { label: "活動花絮", href: "#gallery" },
     { label: "合作機構", href: "#partners" },
-    { label: "報名", href: "#signup" },
+    { label: "報名", href: JOTFORM_URL, external: true },
   ];
 
   return (
@@ -148,6 +148,7 @@ function Navbar() {
             <a
               key={link.href}
               href={link.href}
+              {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               className={`text-sm font-medium transition-colors hover:text-[#b8a9d4] ${
                 scrolled ? "text-[#1a1a4e]" : "text-white/90"
               }`}
@@ -155,7 +156,7 @@ function Navbar() {
               {link.label}
             </a>
           ))}
-          <a href="#signup">
+          <a href={JOTFORM_URL} target="_blank" rel="noopener noreferrer">
             <Button
               className="bg-[#b8a9d4] hover:bg-[#a08ec0] text-[#1a1a4e] font-semibold rounded-full px-6"
             >
@@ -187,13 +188,14 @@ function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
+                {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 className="text-[#1a1a4e] font-medium py-2 border-b border-[#e8e0f0]"
                 onClick={() => setMobileOpen(false)}
               >
                 {link.label}
               </a>
             ))}
-            <a href="#signup" onClick={() => setMobileOpen(false)}>
+            <a href={JOTFORM_URL} target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)}>
               <Button className="w-full bg-[#1a1a4e] hover:bg-[#2a2a6e] text-white rounded-full mt-2">
                 立即報名
               </Button>
@@ -271,7 +273,7 @@ function HeroSection() {
             transition={{ duration: 0.8, delay: 0.8 }}
             className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center"
           >
-            <a href="#signup">
+            <a href={JOTFORM_URL} target="_blank" rel="noopener noreferrer">
               <Button className="w-full sm:w-auto bg-[#b8a9d4] hover:bg-[#a08ec0] text-[#1a1a4e] font-bold text-base md:text-lg rounded-full px-6 py-5 md:px-8 md:py-6 shadow-lg shadow-[#b8a9d4]/25 transition-transform hover:scale-105">
                 立即報名 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
@@ -859,20 +861,9 @@ function PartnersSection() {
 }
 
 // ─── Signup Section ───
-function SignupSection() {
-  const mailtoSubject = encodeURIComponent("HKIUSL 2026 活動登記 Event Registration");
-  const mailtoBody = encodeURIComponent(
-    "你好 Hello,\n\n" +
-    "我希望登記參加 HKIUSL 2026 技術經理人實戰營。\n" +
-    "I would like to register for HKIUSL 2026.\n\n" +
-    "請填寫以下資料 Please fill in the following:\n\n" +
-    "姓名 Name：\n" +
-    "聯絡電話 Phone：\n" +
-    "就讀大學 University：\n\n" +
-    "謝謝 Thank you!"
-  );
-  const mailtoHref = `mailto:hkiusl.startup@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`;
+const JOTFORM_URL = "https://form.jotform.com/260611266654052";
 
+function SignupSection() {
   return (
     <section id="signup" className="relative">
       <WaveDividerBottom color="white" />
@@ -890,20 +881,20 @@ function SignupSection() {
                 報名參加
               </h2>
               <p className="text-white/60 max-w-xl mx-auto mb-10 text-lg">
-                名額有限，先到先得。點擊下方按鈕發送電郵登記，請在郵件中填寫姓名、電話及就讀大學。
+                名額有限，先到先得。點擊下方按鈕填寫報名表格，成為 2026 年技術經理人實戰營的一員！
               </p>
 
-              <a href={mailtoHref}>
+              <a href={JOTFORM_URL} target="_blank" rel="noopener noreferrer">
                 <Button
                   className="bg-[#b8a9d4] hover:bg-[#a08ec0] text-[#1a1a4e] font-black text-xl md:text-2xl rounded-full px-12 py-7 md:px-16 md:py-8 shadow-2xl shadow-[#b8a9d4]/30 transition-all hover:scale-105 hover:shadow-[#b8a9d4]/40"
                 >
-                  <Mail className="w-6 h-6 md:w-7 md:h-7 mr-3" />
-                  電郵登記 Email Register
+                  <ArrowRight className="w-6 h-6 md:w-7 md:h-7 mr-3" />
+                  立即報名 Register Now
                 </Button>
               </a>
 
               <p className="text-white/40 text-sm mt-6">
-                點擊後將開啟您的郵件應用程式，請填寫姓名、電話及大學後發送
+                點擊後將開啟報名表格，填寫資料後即完成登記
               </p>
             </motion.div>
           </AnimatedSection>
@@ -954,7 +945,7 @@ function Footer() {
                 { label: "日程安排", href: "#schedule" },
                 { label: "活動花絮", href: "#gallery" },
                 { label: "合作機構", href: "#partners" },
-                { label: "報名", href: "#signup" },
+                { label: "報名", href: JOTFORM_URL },
               ].map((link) => (
                 <a
                   key={link.href}

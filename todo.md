@@ -22,3 +22,5 @@
 - [x] Set rocket logo as favicon
 - [x] Simplify Open Graph description
 - [x] Hero full-page-width centered (remove max-w-3xl constraint)
+- [x] Replace mailto signup button with JotForm link (https://form.jotform.com/260611266654052)
+- [x] Update all "立即報名" nav/hero buttons to link to JotForm
