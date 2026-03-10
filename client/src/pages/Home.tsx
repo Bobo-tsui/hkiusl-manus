@@ -290,16 +290,16 @@ function HeroSection() {
             className="mt-8 md:mt-12 grid grid-cols-3 gap-6 md:gap-8 md:flex md:flex-wrap"
           >
             {[
-              { num: "2天", label: "精彩活動" },
+              { num: "2", suffix: "天", label: "精彩活動" },
               { num: "6+", label: "業界嘉賓" },
               { num: "150+", label: "參與學生" },
-            ].map((stat) => (
+            ].map((stat: { num: string; suffix?: string; label: string }) => (
               <div key={stat.label} className="text-center">
                 <div
                   className="text-2xl md:text-4xl font-bold text-[#d4c8e8]"
                   style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                 >
-                  {stat.num}
+                  {stat.num}{stat.suffix && <span className="text-xl md:text-3xl">{stat.suffix}</span>}
                 </div>
                 <div className="text-white/60 text-xs md:text-sm mt-1">{stat.label}</div>
               </div>
