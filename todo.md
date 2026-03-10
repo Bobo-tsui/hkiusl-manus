@@ -27,3 +27,4 @@
 - [x] Add registration deadline (Apr 1), fee ($380), early bird (only $100 before Mar 25) to signup section
 - [x] Add volunteer recruitment section with mailto link
 - [x] Add Bobo Tsui bio: 現就讀香港都會大學商學院二年級
+- [x] Rename "Technology Manager / Tech Broker" to "Technology Transfer Professional" across the site

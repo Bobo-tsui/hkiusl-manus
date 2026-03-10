@@ -336,7 +336,7 @@ function AboutSection() {
               什麼是技術經理人實戰營？
             </h2>
             <p className="text-[#5a5a7a] max-w-2xl mx-auto text-lg leading-relaxed">
-              技術經理人（Technology Manager / Tech Broker）是連結科技與商業的關鍵角色。
+              技術經理人（Technology Transfer Professional）是連結科技與商業的關鍵角色。
               本實戰營旨在讓大專學生在參加創業比賽前掌握基本概念，培養領導才能、商業知識與設計思維。
             </p>
           </motion.div>
