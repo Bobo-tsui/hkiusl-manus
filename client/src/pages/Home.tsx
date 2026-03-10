@@ -16,7 +16,6 @@ import {
   Rocket,
   ArrowRight,
   Mail,
-  Phone,
   ExternalLink,
   Gamepad2,
   Presentation,
@@ -341,8 +340,8 @@ function HeroSection() {
             className="mx-auto flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center"
           >
             <a href={JOTFORM_URL} target="_blank" rel="noopener noreferrer" className="flex justify-center">
-              <Button className="bg-[#b8a9d4] hover:bg-[#a08ec0] text-[#1a1a4e] font-bold text-base md:text-lg rounded-full px-6 py-5 md:px-8 md:py-6 shadow-lg shadow-[#b8a9d4]/25 transition-transform hover:scale-105">
-                立即報名 <ArrowRight className="ml-2 w-5 h-5" />
+              <Button className="inline-flex items-center justify-center bg-[#b8a9d4] hover:bg-[#a08ec0] text-[#1a1a4e] font-bold text-base md:text-lg rounded-full px-6 py-5 md:px-8 md:py-6 shadow-lg shadow-[#b8a9d4]/25 transition-transform hover:scale-105">
+                立即報名 <ArrowRight className="ml-2.5 w-5 h-5 shrink-0" />
               </Button>
             </a>
             <a href="#about" className="flex justify-center">
@@ -690,38 +689,44 @@ function ScheduleSection() {
             <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a4e] mb-4">
               活動時間表
             </h2>
+            <p className="text-[#5a5a7a] max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
+              手機與桌面版都重新優化閱讀節奏，按日期切換後可查看每個時段活動內容，點擊嘉賓項目可展開講者簡介。
+            </p>
           </motion.div>
         </AnimatedSection>
 
         {/* Day tabs */}
-        <div className="flex flex-wrap gap-3 justify-center mb-10">
+        <div className="flex flex-wrap gap-3 justify-center mb-8 md:mb-10 px-2">
           {days.map((day, i) => (
             <button
               key={i}
-              onClick={() => setActiveDay(i)}
-              className={`px-5 py-3 rounded-xl font-medium text-sm transition-all ${
+              onClick={() => {
+                setActiveDay(i);
+                setExpandedSpeaker(null);
+              }}
+              className={`px-4 md:px-5 py-3.5 md:py-3 rounded-2xl font-medium text-sm md:text-base transition-all min-w-[140px] ${
                 activeDay === i
                   ? "bg-[#1a1a4e] text-white shadow-lg shadow-[#1a1a4e]/20"
                   : "bg-white text-[#5a5a7a] hover:bg-[#e8e0f0] border border-[#e0d8f0]"
               }`}
             >
-              <div className="font-bold">{day.date}</div>
-              <div className="text-xs mt-0.5 opacity-80">{day.label}</div>
+              <div className="font-bold text-sm md:text-base">{day.date}</div>
+              <div className="text-[11px] md:text-xs mt-1 opacity-80 leading-snug">{day.label}</div>
             </button>
           ))}
         </div>
 
         {/* Schedule content */}
         <AnimatedSection>
-          <motion.div variants={fadeIn} className="max-w-3xl mx-auto">
-            <div className="bg-white rounded-2xl shadow-lg border border-[#e8e0f0] overflow-hidden">
+          <motion.div variants={fadeIn} className="max-w-4xl mx-auto">
+            <div className="bg-white rounded-3xl shadow-xl border border-[#e8e0f0] overflow-hidden">
               {/* Header */}
-              <div className="bg-gradient-to-r from-[#1a1a4e] to-[#3a2a6e] px-4 py-3">
-                <div className="flex items-center gap-3 text-white flex-wrap">
-                  <Calendar className="w-5 h-5" />
+              <div className="bg-gradient-to-r from-[#1a1a4e] to-[#3a2a6e] px-4 md:px-6 py-4 md:py-5">
+                <div className="flex items-center gap-3 text-white flex-wrap text-sm md:text-base leading-relaxed">
+                  <Calendar className="w-5 h-5 shrink-0" />
                   <span className="font-bold">{days[activeDay].date}</span>
-                  <span className="text-white/60">|</span>
-                  <MapPin className="w-5 h-5" />
+                  <span className="text-white/60 hidden sm:inline">|</span>
+                  <MapPin className="w-5 h-5 shrink-0" />
                   <span>{days[activeDay].venue}</span>
                 </div>
               </div>
@@ -731,74 +736,106 @@ function ScheduleSection() {
                 {days[activeDay].items.map((item, i) => {
                   const speaker = item.speaker ? SPEAKERS[item.speaker] : null;
                   const isExpanded = expandedSpeaker === `${activeDay}-${i}`;
+
                   return (
                     <div key={i}>
                       <div
-                        className={`flex items-center gap-3 px-4 py-2.5 transition-colors ${
+                        className={`flex flex-col md:flex-row md:items-center gap-2 md:gap-3 px-4 md:px-6 py-4 md:py-4 transition-colors ${
                           speaker ? "hover:bg-[#f0ecf8] cursor-pointer" : "hover:bg-[#faf8f5]"
                         } ${isExpanded ? "bg-[#f0ecf8]" : ""}`}
                         onClick={() => speaker && setExpandedSpeaker(isExpanded ? null : `${activeDay}-${i}`)}
                       >
                         <div
-                          className="w-12 md:w-14 text-right font-bold text-[#1a1a4e] shrink-0 text-xs md:text-sm"
+                          className="w-full md:w-16 text-left md:text-right font-black text-[#1a1a4e] shrink-0 text-sm md:text-base"
                           style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                         >
                           {item.time}
                         </div>
-                        <div className="w-0.5 h-8 rounded-full bg-[#e8e0f0] shrink-0" />
-                        <div className="flex-1 flex items-center gap-2 flex-wrap">
+
+                        <div className="hidden md:block w-0.5 h-10 rounded-full bg-[#e8e0f0] shrink-0" />
+
+                        <div className="flex-1 flex items-center gap-2.5 flex-wrap">
                           {speaker && (
                             <img
                               src={speaker.photo}
                               alt={speaker.name}
-                              className="w-7 h-7 rounded-full object-cover border-2 border-[#b8a9d4] shrink-0"
+                              className="w-8 h-8 rounded-full object-cover border-2 border-[#b8a9d4] shrink-0"
                             />
                           )}
-                          <span className={`inline-block px-2.5 py-1 rounded-full text-xs font-medium ${typeColors[item.type]}`}>
+                          <span
+                            className={`inline-block px-3 py-1.5 rounded-full text-sm md:text-[15px] font-semibold leading-snug ${typeColors[item.type]}`}
+                          >
                             {item.event}
                           </span>
                         </div>
+
                         {speaker && (
-                          <ChevronRight className={`w-4 h-4 text-[#b8a9d4] transition-transform shrink-0 ${isExpanded ? "rotate-90" : ""}`} />
+                          <ChevronRight
+                            className={`self-end md:self-auto w-5 h-5 text-[#b8a9d4] transition-transform shrink-0 ${
+                              isExpanded ? "rotate-90" : ""
+                            }`}
+                          />
                         )}
                       </div>
+
                       {/* Speaker bio card */}
                       {speaker && isExpanded && (
                         <motion.div
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: "auto" }}
                           exit={{ opacity: 0, height: 0 }}
-                          className="ml-[4rem] md:ml-[4.5rem] mr-4 mb-1 mt-1"
+                          className="mx-4 md:ml-[5.5rem] md:mr-6 mb-3 mt-1"
                         >
-                          <div className="bg-gradient-to-r from-[#f8f5ff] to-[#f0ecf8] rounded-xl p-4 border border-[#e8e0f0]">
-                            <div className="flex items-start gap-4">
+                          <div className="bg-gradient-to-r from-[#f8f5ff] to-[#f0ecf8] rounded-2xl p-4 md:p-5 border border-[#e8e0f0]">
+                            <div className="flex flex-col sm:flex-row items-start gap-4">
                               <img
                                 src={speaker.photo}
                                 alt={speaker.name}
-                                className="w-16 h-16 rounded-xl object-cover border-2 border-[#b8a9d4] shrink-0"
+                                className="w-20 h-20 sm:w-16 sm:h-16 rounded-2xl object-cover border-2 border-[#b8a9d4] shrink-0"
                               />
+
                               <div className="flex-1">
-                                <h4 className="font-bold text-[#1a1a4e] text-sm">{speaker.name}</h4>
-                                <p className="text-[#7a5a9a] text-xs mb-2">{speaker.role}</p>
-                                <p className="text-[#5a5a7a] text-xs leading-relaxed">{speaker.bio}</p>
-                                <div className="flex items-center gap-3 mt-2 flex-wrap">
+                                <h4 className="font-bold text-[#1a1a4e] text-base md:text-sm">
+                                  {speaker.name}
+                                </h4>
+                                <p className="text-[#7a5a9a] text-sm md:text-xs mb-2 leading-relaxed">
+                                  {speaker.role}
+                                </p>
+                                <p className="text-[#5a5a7a] text-sm md:text-xs leading-relaxed">
+                                  {speaker.bio}
+                                </p>
+
+                                <div className="flex items-center gap-3 mt-3 flex-wrap">
                                   {speaker.linkedin && (
                                     <a
                                       href={speaker.linkedin}
                                       target="_blank"
                                       rel="noopener noreferrer"
-                                      className="inline-flex items-center gap-1 text-xs text-[#0077b5] hover:underline"
+                                      className="inline-flex items-center gap-1.5 text-xs md:text-sm text-[#0077b5] hover:underline"
                                       onClick={(e) => e.stopPropagation()}
                                     >
-                                      <ExternalLink className="w-3 h-3" /> LinkedIn
+                                      <ExternalLink className="w-3.5 h-3.5 shrink-0" />
+                                      LinkedIn
                                     </a>
                                   )}
-                                  {speaker.companyLogo && (
-                                    <div className="inline-flex items-center gap-2 bg-white rounded-lg px-2 py-1 border border-[#e8e0f0]">
-                                      <img src={speaker.companyLogo} alt={speaker.companyName || ''} className="h-5 w-auto object-contain" />
-                                    </div>
-                                  )}
                                 </div>
+
+                                {speaker.companyLogo && (
+                                  <div className="mt-2 md:mt-3 w-full">
+                                    <div className="inline-flex items-center gap-2 rounded-xl bg-white px-3 py-2 border border-[#e8e0f0] shadow-sm">
+                                      <img
+                                        src={speaker.companyLogo}
+                                        alt={speaker.companyName || ""}
+                                        className="h-7 md:h-8 w-auto object-contain"
+                                      />
+                                      {speaker.companyName && (
+                                        <span className="text-xs md:text-sm font-medium text-[#5a4a7a]">
+                                          {speaker.companyName}
+                                        </span>
+                                      )}
+                                    </div>
+                                  </div>
+                                )}
                               </div>
                             </div>
                           </div>
@@ -1115,11 +1152,11 @@ function SignupSection() {
 
               <a href={JOTFORM_URL} target="_blank" rel="noopener noreferrer">
                 <Button
-                  className="bg-[#b8a9d4] hover:bg-[#a08ec0] text-[#1a1a4e] font-black text-xl md:text-2xl rounded-full px-12 py-7 md:px-16 md:py-8 shadow-2xl shadow-[#b8a9d4]/30 transition-all hover:scale-105 hover:shadow-[#b8a9d4]/40"
-                >
-                  <ArrowRight className="w-6 h-6 md:w-7 md:h-7 mr-3" />
+                  className="inline-flex items-center justify-center bg-[#b8a9d4] hover:bg-[#a08ec0] text-[#1a1a4e] font-black text-xl md:text-2xl rounded-full px-12 py-7 md:px-16 md:py-8 shadow-2xl shadow-[#b8a9d4]/30 transition-all hover:scale-105 hover:shadow-[#b8a9d4]/40">
+                  <ArrowRight className="w-6 h-6 md:w-7 md:h-7 mr-2.5 shrink-0" />
                   立即報名 Register Now
                 </Button>
+
               </a>
 
               <p className="text-white/40 text-sm mt-6">
@@ -1146,7 +1183,7 @@ function SignupSection() {
                     variant="outline"
                     className="border-[#b8a9d4] text-[#d4c8e8] hover:bg-[#b8a9d4]/10 font-bold text-lg rounded-full px-10 py-6 transition-all hover:scale-105"
                   >
-                    <Heart className="w-5 h-5 mr-2" />
+                    <Heart className="w-5 h-5 mr-2.5 shrink-0" />
                     申請成為義工
                   </Button>
                 </a>
@@ -1232,13 +1269,6 @@ function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-4">聯絡我們</h4>
             <div className="space-y-3">
-              <a
-                href="tel:98485603"
-                className="flex items-center gap-3 text-white/50 hover:text-[#b8a9d4] text-sm transition-colors"
-              >
-                <Phone className="w-4 h-4" />
-                98485603
-              </a>
               <a
                 href="mailto:hkiusl.startup@gmail.com"
                 className="flex items-center gap-3 text-white/50 hover:text-[#b8a9d4] text-sm transition-colors"
