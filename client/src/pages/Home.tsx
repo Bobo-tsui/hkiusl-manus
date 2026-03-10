@@ -983,13 +983,14 @@ function Footer() {
               <br />
               Hong Kong Inter-University Startup Launchpad 2026
             </p>
-            <div className="flex items-center gap-3 mt-2">
+            <div className="flex flex-col items-start gap-3 mt-4">
               <img
                 src={IMAGES.boboPhoto}
                 alt="Bobo Tsui"
-                className="w-10 h-10 rounded-full object-cover border-2 border-[#b8a9d4]/30"
+                className="rounded-full object-cover border-2 border-[#b8a9d4]/30"
+                style={{ width: "200px", height: "200px" }}
               />
-              <p className="text-white/40 text-xs">
+              <p className="text-white/50 text-sm font-medium">
                 主辦人：Bobo Tsui
               </p>
             </div>
