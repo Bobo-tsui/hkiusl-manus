@@ -13,3 +13,9 @@
 - [x] Add email notification for new signups
 - [x] Run database migration
 - [x] Write vitest tests for signup API
+- [x] Simplify signup section: replace full form with mailto "電郵登記" button
+- [x] Remove org registration form (using mailto instead)
+- [x] Update backend: removed signup routes (no longer needed)
+- [x] Update tests: removed old signup tests, auth test passes
+- [x] Center Hero content (not left-aligned)
+- [x] Enlarge slogan "Win the Race Before AI" font size
