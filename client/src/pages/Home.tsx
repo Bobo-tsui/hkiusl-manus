@@ -22,6 +22,9 @@ import {
   Presentation,
   Trophy,
   Quote,
+  Clock,
+  Heart,
+  Sparkles,
 } from "lucide-react";
 
 // ─── Image URLs ───
@@ -864,6 +867,8 @@ function PartnersSection() {
 const JOTFORM_URL = "https://form.jotform.com/260611266654052";
 
 function SignupSection() {
+  const volunteerMailto = `mailto:hkiusl.startup@gmail.com?subject=${encodeURIComponent("HKIUSL 2026 義工申請 Volunteer Application")}&body=${encodeURIComponent("你好 Hello,\n\n我希望申請成為 HKIUSL 2026 的義工。\nI would like to apply as a volunteer for HKIUSL 2026.\n\n姓名 Name：\n聯絡電話 Phone：\n就讀大學 University：\n\n謝謝 Thank you!")}`;
+
   return (
     <section id="signup" className="relative">
       <WaveDividerBottom color="white" />
@@ -873,7 +878,7 @@ function SignupSection() {
 
         <div className="container relative z-10">
           <AnimatedSection>
-            <motion.div variants={fadeUp} className="text-center">
+            <motion.div variants={fadeUp} className="text-center mb-16">
               <span className="inline-block px-4 py-1.5 rounded-full bg-[#b8a9d4]/20 text-[#d4c8e8] text-sm font-medium mb-6">
                 立即行動
               </span>
@@ -881,8 +886,45 @@ function SignupSection() {
                 報名參加
               </h2>
               <p className="text-white/60 max-w-xl mx-auto mb-10 text-lg">
-                名額有限，先到先得。點擊下方按鈕填寫報名表格，成為 2026 年技術經理人實戰營的一員！
+                名額有限，先到先得。成為 2026 年技術經理人實戰營的一員！
               </p>
+
+              {/* Pricing cards */}
+              <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto mb-12">
+                {/* Early bird */}
+                <div className="relative bg-white/10 backdrop-blur-md rounded-2xl border-2 border-[#b8a9d4] p-8 group hover:-translate-y-1 transition-transform">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                    <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#b8a9d4] text-[#1a1a4e] text-sm font-bold">
+                      <Sparkles className="w-4 h-4" />
+                      早鳥優惠
+                    </span>
+                  </div>
+                  <div className="mt-2">
+                    <div className="text-5xl font-black text-white mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                      $100
+                    </div>
+                    <p className="text-[#d4c8e8] font-medium mb-1">3 月 25 日前報名</p>
+                    <p className="text-white/40 text-sm">限時優惠價</p>
+                  </div>
+                </div>
+
+                {/* Regular */}
+                <div className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-8 group hover:-translate-y-1 transition-transform">
+                  <div className="mt-6">
+                    <div className="text-5xl font-black text-white/70 mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                      $380
+                    </div>
+                    <p className="text-white/50 font-medium mb-1">正價報名</p>
+                    <p className="text-white/30 text-sm">3 月 25 日後適用</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Deadline notice */}
+              <div className="flex items-center justify-center gap-2 mb-10">
+                <Clock className="w-5 h-5 text-[#ff6b9d]" />
+                <span className="text-[#ff6b9d] font-bold text-lg">報名截止日期：2026 年 4 月 1 日</span>
+              </div>
 
               <a href={JOTFORM_URL} target="_blank" rel="noopener noreferrer">
                 <Button
@@ -896,6 +938,35 @@ function SignupSection() {
               <p className="text-white/40 text-sm mt-6">
                 點擊後將開啟報名表格，填寫資料後即完成登記
               </p>
+            </motion.div>
+          </AnimatedSection>
+
+          {/* Volunteer recruitment */}
+          <AnimatedSection>
+            <motion.div variants={fadeUp} className="max-w-2xl mx-auto">
+              <div className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-8 md:p-10 text-center">
+                <div className="w-16 h-16 rounded-full bg-[#b8a9d4]/20 flex items-center justify-center mx-auto mb-5">
+                  <Heart className="w-8 h-8 text-[#b8a9d4]" />
+                </div>
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
+                  招聘義工 Volunteer Helpers
+                </h3>
+                <p className="text-white/60 mb-8 max-w-lg mx-auto">
+                  我們正在招募活動義工，協助場地佈置、簽到接待、攝影記錄等工作。歡迎有熱誠的同學加入我們的團隊！
+                </p>
+                <a href={volunteerMailto}>
+                  <Button
+                    variant="outline"
+                    className="border-[#b8a9d4] text-[#d4c8e8] hover:bg-[#b8a9d4]/10 font-bold text-lg rounded-full px-10 py-6 transition-all hover:scale-105"
+                  >
+                    <Mail className="w-5 h-5 mr-2" />
+                    申請成為義工
+                  </Button>
+                </a>
+                <p className="text-white/30 text-sm mt-4">
+                  點擊後將開啟郵件應用程式，發送至 hkiusl.startup@gmail.com
+                </p>
+              </div>
             </motion.div>
           </AnimatedSection>
         </div>
@@ -931,6 +1002,9 @@ function Footer() {
               />
               <p className="text-white/50 text-sm font-medium">
                 主辦人：Bobo Tsui
+              </p>
+              <p className="text-white/40 text-xs">
+                現就讀香港都會大學商學院二年級
               </p>
             </div>
           </div>

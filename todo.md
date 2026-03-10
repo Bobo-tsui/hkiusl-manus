@@ -24,3 +24,6 @@
 - [x] Hero full-page-width centered (remove max-w-3xl constraint)
 - [x] Replace mailto signup button with JotForm link (https://form.jotform.com/260611266654052)
 - [x] Update all "立即報名" nav/hero buttons to link to JotForm
+- [x] Add registration deadline (Apr 1), fee ($380), early bird (only $100 before Mar 25) to signup section
+- [x] Add volunteer recruitment section with mailto link
+- [x] Add Bobo Tsui bio: 現就讀香港都會大學商學院二年級
