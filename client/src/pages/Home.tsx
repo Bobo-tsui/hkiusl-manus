@@ -341,7 +341,7 @@ function HeroSection() {
           >
             <a href={JOTFORM_URL} target="_blank" rel="noopener noreferrer" className="flex justify-center">
               <Button className="inline-flex items-center justify-center bg-[#b8a9d4] hover:bg-[#a08ec0] text-[#1a1a4e] font-bold text-base md:text-lg rounded-full px-6 py-5 md:px-8 md:py-6 shadow-lg shadow-[#b8a9d4]/25 transition-transform hover:scale-105">
-                立即報名 <ArrowRight className="ml-2.5 w-5 h-5 shrink-0" />
+                立即報名<ArrowRight className="ml-2.5 w-5 h-5 shrink-0" />
               </Button>
             </a>
             <a href="#about" className="flex justify-center">
@@ -690,7 +690,7 @@ function ScheduleSection() {
               活動時間表
             </h2>
             <p className="text-[#5a5a7a] max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
-              手機與桌面版都重新優化閱讀節奏，按日期切換後可查看每個時段活動內容，點擊嘉賓項目可展開講者簡介。
+              按日期切換後可查看每個時段活動內容，點擊嘉賓項目可展開講者簡介。
             </p>
           </motion.div>
         </AnimatedSection>
@@ -1153,8 +1153,7 @@ function SignupSection() {
               <a href={JOTFORM_URL} target="_blank" rel="noopener noreferrer">
                 <Button
                   className="inline-flex items-center justify-center bg-[#b8a9d4] hover:bg-[#a08ec0] text-[#1a1a4e] font-black text-xl md:text-2xl rounded-full px-12 py-7 md:px-16 md:py-8 shadow-2xl shadow-[#b8a9d4]/30 transition-all hover:scale-105 hover:shadow-[#b8a9d4]/40">
-                  <ArrowRight className="w-6 h-6 md:w-7 md:h-7 mr-2.5 shrink-0" />
-                  立即報名 Register Now
+                  立即報名 Register Now<ArrowRight className="w-6 h-6 md:w-7 md:h-7 mr-2.5 shrink-0" />
                 </Button>
 
               </a>
@@ -1183,8 +1182,7 @@ function SignupSection() {
                     variant="outline"
                     className="border-[#b8a9d4] text-[#d4c8e8] hover:bg-[#b8a9d4]/10 font-bold text-lg rounded-full px-10 py-6 transition-all hover:scale-105"
                   >
-                    <Heart className="w-5 h-5 mr-2.5 shrink-0" />
-                    申請成為義工
+                    <Heart className="w-5 h-5 mr-2.5 shrink-0" />申請成為義工
                   </Button>
                 </a>
                 <p className="text-white/30 text-sm mt-4">
