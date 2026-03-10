@@ -29,3 +29,6 @@
 - [x] Add Bobo Tsui bio: 現就讀香港都會大學商學院二年級
 - [x] Rename "Technology Manager / Tech Broker" to "Technology Transfer Professional" across the site
 - [x] Add context about HK government promoting university technology transfer in About section
+- [x] Change volunteer signup from mailto to JotForm link (https://form.jotform.com/260610919201044)
+- [x] Add Bobo Tsui LinkedIn link (https://www.linkedin.com/in/bobo-tsuipuichi/)
+- [x] Add social media links in footer (Email, Website, Instagram, LinkedIn)
