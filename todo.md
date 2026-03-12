@@ -53,3 +53,4 @@
 - [x] Move trial button from schedule to Features section (商業策略遊戲 card) with eye-catching animation
 - [x] Remove trial button from schedule items
 - [x] Ensure Hero text is centered on ALL devices (flex column items-center)
+- [x] Add Instagram button to Hero section linking to https://www.instagram.com/hkiusl.startup/
