@@ -494,8 +494,8 @@ function FeaturesSection() {
   const features = [
     {
       icon: <Presentation className="w-8 h-8" />,
-      title: "業界嘉賓演講",
-      desc: "邀請來自理工大學、立法會議員等重量級嘉賓，分享創業政策與實戰經驗。",
+      title: "星級嘉賓演講",
+      desc: "邀請來自不同大學的創業者分享創業政策與實戰經驗。",
       color: "from-[#1a1a4e] to-[#2a3a6e]",
       iconBg: "bg-[#d4c8e8]",
     },
@@ -622,8 +622,8 @@ const SPEAKERS: Record<string, Speaker> = {
     companyName: "有飯科技 RiceUp",
   },
   bobo: {
-    name: "Bobo Tsui",
-    role: "HKIUSL 2026 籌委會主席 | 香港都會大學商學院二年級",
+    name: "徐沛慈 Bobo",
+    role: "HKIUSL 2026 發起人 | 杏林苑創辦人 | 香港都會大學商學院二年級",
     photo: IMAGES.boboPhoto,
     bio: "現就讀香港都會大學商學院二年級，本活動的學生籌辦人與籌委會主席，致力於推動跨大專創業交流與合作。",
   },
