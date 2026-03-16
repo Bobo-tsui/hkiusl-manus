@@ -45,6 +45,8 @@ const IMAGES = {
   alanPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/alan-cheung-photo_2c32214a.jpg",
   ryanPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/ryan-photo_52137c0c.png",
   inspireEduLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/inspire-education-logo_7e0d8b46.png",
+  ericPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/Eric_358fa678.jpeg",
+  riceUpLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/RiceUp-Eric_3a90cbde.jpeg",
 };
 
 const PARTNER_LOGOS = [
@@ -596,6 +598,14 @@ const SPEAKERS: Record<string, Speaker> = {
     photo: IMAGES.ryanPhoto,
     bio: "多次在權威創業大賽中獲獎，包括HKMU Hackathon冠軍、挑戰杯全國二等獎，擁有多年企業管理與創業經驗。",
   },
+  eric: {
+    name: "黃泳洋 Eric",
+    role: "有飯科技 RiceUp Co-Founder | 香港城市大學大三學生",
+    photo: IMAGES.ericPhoto,
+    bio: "曾創辦自媒體公司，擁有5年以上市場拓展和初創獲客0-1的實戰經驗。其參與創辦的 RiceUp，獲科學園及高校在內的多輪種子輪支持，擁有超萬人的私域社群，專注於讓用戶用科技，吃得好，省到錢。",
+    companyLogo: IMAGES.riceUpLogo,
+    companyName: "有飯科技 RiceUp",
+  },
 };
 
 // ─── Schedule Section ───
@@ -656,9 +666,9 @@ function ScheduleSection() {
           timeRange: "14:30 - 16:15",
           title: "Startup 分享與真實案例啟發",
           description:
-            "多位創業者分享從教育科技到醫療創新的實戰經驗，包括 Inspire Education 與光合抗菌人工皮等案例。",
+            "多位創業者分享從教育科技、醫療創新到餐飲科技的實戰經驗，包括 Inspire Education、光合抗菌人工皮與有飯科技 RiceUp 等案例。",
           type: "speech",
-          speakers: ["angel", "ryan"],
+          speakers: ["angel", "ryan", "eric"],
         },
         {
           timeRange: "16:15 - 17:00",

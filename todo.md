@@ -54,3 +54,4 @@
 - [x] Remove trial button from schedule items
 - [x] Ensure Hero text is centered on ALL devices (flex column items-center)
 - [x] Add Instagram button to Hero section linking to https://www.instagram.com/hkiusl.startup/
+- [x] Add 黃泳洋 Eric (有飯科技 RiceUp Co-Founder) to Startup 分享與真實案例啟發 schedule slot with photo and RiceUp logo
