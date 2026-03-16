@@ -368,6 +368,20 @@ function HeroSection() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
+            className="mx-auto mt-4 md:mt-5 max-w-3xl"
+          >
+            <div className="rounded-2xl border border-white/15 bg-white/10 backdrop-blur-md px-4 py-3 md:px-5 md:py-4 text-center shadow-lg">
+              <p className="text-sm md:text-base font-semibold text-[#ffe6a8]">
+                HKMU 學生完成活動後，可向學校申請 Student Life Enrichment Subsidy Scheme，
+                每宗申請最高可獲 HK$300 資助，以報銷部分報名費。
+              </p>
+            </div>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.0 }}
             className="mx-auto mt-8 md:mt-12 grid grid-cols-3 gap-6 md:gap-8"
           >
@@ -1325,7 +1339,18 @@ function SignupSection() {
                   </div>
                 </div>
               </div>
-
+              
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.9 }}
+                className="mx-auto mt-4 max-w-3xl text-center text-sm md:text-base text-white/85"
+              >
+                <span className="font-semibold text-[#ffe6a8]">
+                  HKMU 學生完成活動後，可申請 Student Life Enrichment Subsidy Scheme，最高資助 HK$300。
+                </span>
+              </motion.p>
+                            
               {/* Deadline notice */}
               <div className="flex items-center justify-center gap-2 mb-10">
                 <Clock className="w-5 h-5 text-[#ff6b9d]" />
