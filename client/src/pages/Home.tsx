@@ -620,6 +620,24 @@ const SPEAKERS: Record<string, Speaker> = {
     companyLogo: IMAGES.riceUpLogo,
     companyName: "有飯科技 RiceUp",
   },
+  bobo: {
+    name: "Bobo Tsui",
+    role: "HKIUSL 2026 籌委會主席 | 香港都會大學商學院二年級",
+    photo: IMAGES.boboPhoto,
+    bio: "現就讀香港都會大學商學院二年級，本活動的學生籌辦人與籌委會主席，致力於推動跨大專創業交流與合作。",
+  },
+  marcus: {
+    name: "Marcus",
+    role: "ScentSafe 創辦人",
+    photo: "",
+    bio: "ScentSafe 創辦人，將分享創業歷程與產品開發經驗。",
+  },
+  emil: {
+    name: "陳家豪 Emil",
+    role: "大隊長",
+    photo: "",
+    bio: "大隊長，協助參加者掌握團隊領導、任務拆解與臨場執行要點。",
+  },
 };
 
 // ─── Schedule Section ───
@@ -655,67 +673,141 @@ function ScheduleSection() {
       themeColor: "from-[#2f63e0] to-[#3d73f0]",
       slots: [
         {
-          timeRange: "10:00 - 10:30",
-          title: "簽到與開幕禮",
-          description: "參加者簽到入場，主辦方致歡迎辭，介紹活動整體框架與目標。",
+          timeRange: "10:00",
+          title: "簽到",
+          description: "參加者簽到入場，領取活動資料。",
           type: "general",
         },
         {
-          timeRange: "10:30 - 11:30",
-          title: "嘉賓致辭與創業政策分享",
-          description: "嘉賓分享香港技術轉移政策、創業生態與未來趨勢，讓參加者掌握宏觀方向。",
+          timeRange: "10:30",
+          title: "正式開始",
+          description: "主辦方致歡迎辭，介紹活動整體框架與目標。",
+          type: "general",
+        },
+        {
+          timeRange: "10:40",
+          title: "致辭一",
+          description: "嘉賓致辭，分享對香港技術轉移與青年創業的展望。",
           type: "speech",
           speakers: ["alan"],
         },
         {
-          timeRange: "11:30 - 12:40",
-          title: "主辦座談及 Q&A",
-          description: "主辦團隊與嘉賓進行座談，參加者自由提問，深入探討技術經理人的角色與機遇。",
+          timeRange: "10:50",
+          title: "致辭二",
+          description: "HKDi 副校長致辭。",
           type: "speech",
         },
         {
-          timeRange: "12:40 - 14:15",
-          title: "午餐與自由交流",
-          description: "參加者與嘉賓自由交流、建立跨校連結，為下午互動與協作環節熱身。",
+          timeRange: "11:00",
+          title: "嘉賓分享",
+          description: "嘉賓分享香港創業生態與未來趨勢，讓參加者掌握宏觀方向。",
+          type: "speech",
+        },
+        {
+          timeRange: "11:20",
+          title: "嘉賓分享",
+          description: "嘉賓分享技術轉移政策與創業機遇。",
+          type: "speech",
+        },
+        {
+          timeRange: "11:40",
+          title: "創業政策分享",
+          description: "深入探討香港創業政策環境與支援措施。",
+          type: "speech",
+        },
+        {
+          timeRange: "11:55",
+          title: "主辦座談",
+          description: "主辦團隊與嘉賓進行座談，深入探討技術經理人的角色與機遇。",
+          type: "speech",
+        },
+        {
+          timeRange: "12:30",
+          title: "Q & A",
+          description: "參加者自由提問，與嘉賓互動交流。",
+          type: "speech",
+        },
+        {
+          timeRange: "12:40",
+          title: "自由交流 / LUNCH",
+          description: "參加者與嘉賓自由交流、建立跨校連結，享用午餐。",
           type: "break",
         },
         {
-          timeRange: "14:15 - 14:30",
-          title: "Startup 分享 — 創想教育",
+          timeRange: "2:15",
+          title: "商業策略遊戲",
+          description: "透過互動遊戲學習商業策略，以遊戲方式理解創業決策與價值定位。",
+          type: "highlight",
+        },
+        {
+          timeRange: "2:30",
+          title: "Startup 分享",
+          description: "Bobo 分享創業歷程與實戰經驗。",
+          type: "speech",
+          speakers: ["bobo"],
+        },
+        {
+          timeRange: "2:50",
+          title: "思維策略遊戲",
+          description: "透過思維策略遊戲訓練創業思維與邏輯分析能力。",
+          type: "highlight",
+        },
+        {
+          timeRange: "3:00",
+          title: "Startup 分享 — RiceUp",
+          description: "Eric 分享從自媒體到餐飲科技的創業轉型，RiceUp 如何獲得科學園種子輪支持並建立超萬人社群。",
+          type: "speech",
+          speakers: ["eric"],
+        },
+        {
+          timeRange: "3:15",
+          title: "Startup 分享 — Inspire Education",
           description: "Angel 分享創辦創想教育的歷程，如何將數學與科技結合，獲得60萬創業基金及海外參展機會。",
           type: "speech",
           speakers: ["angel"],
         },
         {
-          timeRange: "14:30 - 14:45",
+          timeRange: "3:30",
+          title: "專利策略遊戲",
+          description: "透過專利策略遊戲了解知識產權佈局與專利申請策略。",
+          type: "highlight",
+        },
+        {
+          timeRange: "3:45",
+          title: "小休",
+          description: "短暫休息，補充能量。",
+          type: "break",
+        },
+        {
+          timeRange: "4:00",
+          title: "Startup 分享 — ScentSafe [暫定]",
+          description: "Marcus 分享 ScentSafe 的創業歷程與產品開發經驗。",
+          type: "speech",
+          speakers: ["marcus"],
+        },
+        {
+          timeRange: "4:15",
           title: "Startup 分享 — 光合抗菌人工皮",
           description: "Ryan 分享從 HKMU Hackathon 冠軍到創辦奇智醫學的創業歷程，以及醫療創新的實戰經驗。",
           type: "speech",
           speakers: ["ryan"],
         },
         {
-          timeRange: "14:45 - 15:00",
-          title: "Startup 分享 — 有飯科技 RiceUp",
-          description: "Eric 分享從自媒體到餐飲科技的創業轉型，RiceUp 如何獲得科學園種子輪支持並建立超萬人社群。",
+          timeRange: "4:30",
+          title: "分享",
+          description: "香港設計文化協會（MODA）分享設計思維與創業的結合。",
           type: "speech",
-          speakers: ["eric"],
         },
         {
-          timeRange: "15:00 - 15:45",
-          title: "商業策略與思維遊戲",
-          description: "透過商業策略遊戲、思維策略遊戲與專利策略遊戲，以互動方式理解創業決策、價值定位與競爭策略。",
-          type: "highlight",
+          timeRange: "4:50",
+          title: "Day 2 工作坊講解",
+          description: "預告 Day 2 組隊實作、工作坊流程與極創客挑戰要求。",
+          type: "general",
         },
         {
-          timeRange: "15:45 - 16:15",
-          title: "互動環節與自由交流",
-          description: "參加者與講者自由交流，深入討論創業議題，建立人脈連結。",
-          type: "break",
-        },
-        {
-          timeRange: "16:15 - 17:00",
-          title: "總結與 Day 2 工作坊講解",
-          description: "整理 Day 1 所學，預告 Day 2 組隊實作、工作坊流程與極創客挑戰要求。",
+          timeRange: "5:30",
+          title: "完結",
+          description: "Day 1 活動圓滿結束。",
           type: "general",
         },
       ],
@@ -729,40 +821,59 @@ function ScheduleSection() {
       themeColor: "from-[#ff7a18] to-[#ff6b00]",
       slots: [
         {
-          timeRange: "10:00 - 10:30",
-          title: "簽到與開場",
-          description: "參加者簽到，回顧 Day 1 重點，介紹 Day 2 流程與目標。",
+          timeRange: "10:00",
+          title: "簽到",
+          description: "參加者簽到入場。",
           type: "general",
         },
         {
-          timeRange: "10:30 - 12:00",
-          title: "組隊、破冰與角色建立",
-          description: "選隊長、組隊與破冰活動，建立跨學科團隊合作基礎，準備進入創業實戰。",
+          timeRange: "10:30",
+          title: "正式開始",
+          description: "回顧 Day 1 重點，介紹 Day 2 流程與目標。",
+          type: "general",
+        },
+        {
+          timeRange: "10:40",
+          title: "選隊長",
+          description: "各組選出隊長，確立團隊領導角色。",
           type: "highlight",
         },
         {
-          timeRange: "12:00 - 12:45",
-          title: "大隊長分享",
-          description: "由大隊長帶來實戰分享，協助參加者掌握團隊領導、任務拆解與臨場執行要點。",
-          type: "speech",
+          timeRange: "11:00",
+          title: "組隊 + 破冰",
+          description: "組隊與破冰活動，建立跨學科團隊合作基礎，準備進入創業實戰。",
+          type: "highlight",
         },
         {
-          timeRange: "12:45 - 14:00",
-          title: "午餐與交流",
+          timeRange: "12:00",
+          title: "大隊長架到",
+          description: "由大隊長帶來實戰分享，協助參加者掌握團隊領導、任務拆解與臨場執行要點。",
+          type: "speech",
+          speakers: ["emil"],
+        },
+        {
+          timeRange: "12:45",
+          title: "Lunch",
           description: "團隊整理方向、補充能量，並與其他隊伍交流初步想法。",
           type: "break",
         },
         {
-          timeRange: "14:00 - 17:30",
-          title: "極創客工作坊",
+          timeRange: "2:00",
+          title: "極創客",
           description: "團隊進行創意整合、方案設計、商業模式梳理與簡報準備，在限時內完成創業提案。",
           type: "workshop",
         },
         {
-          timeRange: "17:30 - 18:30",
-          title: "Pitching 路演與總結",
-          description: "各隊進行最終簡報展示，接受評審回饋，為後續線上投票及評選作準備。",
+          timeRange: "5:30",
+          title: "Pitching",
+          description: "各隊進行最終簡報展示，接受評審回饋。",
           type: "highlight",
+        },
+        {
+          timeRange: "6:30",
+          title: "Finish",
+          description: "Day 2 活動圓滿結束，為後續線上投票及評選作準備。",
+          type: "general",
         },
       ],
     },
@@ -871,11 +982,17 @@ function ScheduleSection() {
         >
           <div className="flex items-center gap-4 flex-wrap">
             {/* Photo */}
-            <img
-              src={speaker.photo}
-              alt={speaker.name}
-              className="w-14 h-14 md:w-16 md:h-16 rounded-2xl object-cover border-2 border-[#b8a9d4] shrink-0"
-            />
+            {speaker.photo ? (
+              <img
+                src={speaker.photo}
+                alt={speaker.name}
+                className="w-14 h-14 md:w-16 md:h-16 rounded-2xl object-cover border-2 border-[#b8a9d4] shrink-0"
+              />
+            ) : (
+              <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl border-2 border-[#b8a9d4] shrink-0 bg-[#e8e0f0] flex items-center justify-center">
+                <Users className="w-7 h-7 text-[#7a5a9a]" />
+              </div>
+            )}
             {/* Company logo - same size as photo */}
             {speaker.companyLogo && (
               <img

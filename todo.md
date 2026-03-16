@@ -58,3 +58,6 @@
 - [x] Redesign schedule to chronological order (one block per timeslot, not grouped by type)
 - [x] Redesign speaker cards: show photo + company logo (same size) + name + title directly in timeslot; only hide bio behind expand
 - [x] Update Eric's photo to new version
+- [x] Redesign schedule based on new PDF rundown with one block per timeslot (Day 1: 22 timeslots, Day 2: 9 timeslots)
+- [x] Add new speakers: Marcus (ScentSafe), 陳家豪 Emil (大隊長)
+- [x] Add new timeslots: 致辭二 (HKDi副校長), 創業政策分享, 主辦座談, Q&A, Bobo Startup分享, 思維策略遊戲, 專利策略遊戲, MODA分享, Day2工作坊講解, Day2 detailed schedule
