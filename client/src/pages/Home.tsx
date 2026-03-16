@@ -45,7 +45,7 @@ const IMAGES = {
   alanPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/alan-cheung-photo_2c32214a.jpg",
   ryanPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/ryan-photo_52137c0c.png",
   inspireEduLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/inspire-education-logo_7e0d8b46.png",
-  ericPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/Eric_358fa678.jpeg",
+  ericPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/eric-photo-v2_23d3407a.jpeg",
   riceUpLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/RiceUp-Eric_3a90cbde.jpeg",
 };
 
@@ -641,40 +641,67 @@ function ScheduleSection() {
       themeColor: "from-[#2f63e0] to-[#3d73f0]",
       slots: [
         {
-          timeRange: "10:00 - 12:40",
-          title: "上午時段：開幕、嘉賓分享與創業啟發",
-          description:
-            "簽到、開幕禮、嘉賓致辭、創業政策分享、主辦座談及 Q&A，讓參加者掌握技術轉移、創業方向與活動整體框架。",
+          timeRange: "10:00 - 10:30",
+          title: "簽到與開幕禮",
+          description: "參加者簽到入場，主辦方致歡迎辭，介紹活動整體框架與目標。",
+          type: "general",
+        },
+        {
+          timeRange: "10:30 - 11:30",
+          title: "嘉賓致辭與創業政策分享",
+          description: "嘉賓分享香港技術轉移政策、創業生態與未來趨勢，讓參加者掌握宏觀方向。",
           type: "speech",
           speakers: ["alan"],
         },
         {
+          timeRange: "11:30 - 12:40",
+          title: "主辦座談及 Q&A",
+          description: "主辦團隊與嘉賓進行座談，參加者自由提問，深入探討技術經理人的角色與機遇。",
+          type: "speech",
+        },
+        {
           timeRange: "12:40 - 14:15",
           title: "午餐與自由交流",
-          description:
-            "參加者與嘉賓自由交流、建立跨校連結，為下午互動與協作環節熱身。",
+          description: "參加者與嘉賓自由交流、建立跨校連結，為下午互動與協作環節熱身。",
           type: "break",
         },
         {
-          timeRange: "14:15 - 15:45",
-          title: "下午時段：商業策略與思維遊戲",
-          description:
-            "透過商業策略遊戲、思維策略遊戲與專利策略遊戲，以互動方式理解創業決策、價值定位與競爭策略。",
+          timeRange: "14:15 - 14:30",
+          title: "Startup 分享 — 創想教育",
+          description: "Angel 分享創辦創想教育的歷程，如何將數學與科技結合，獲得60萬創業基金及海外參展機會。",
+          type: "speech",
+          speakers: ["angel"],
+        },
+        {
+          timeRange: "14:30 - 14:45",
+          title: "Startup 分享 — 光合抗菌人工皮",
+          description: "Ryan 分享從 HKMU Hackathon 冠軍到創辦奇智醫學的創業歷程，以及醫療創新的實戰經驗。",
+          type: "speech",
+          speakers: ["ryan"],
+        },
+        {
+          timeRange: "14:45 - 15:00",
+          title: "Startup 分享 — 有飯科技 RiceUp",
+          description: "Eric 分享從自媒體到餐飲科技的創業轉型，RiceUp 如何獲得科學園種子輪支持並建立超萬人社群。",
+          type: "speech",
+          speakers: ["eric"],
+        },
+        {
+          timeRange: "15:00 - 15:45",
+          title: "商業策略與思維遊戲",
+          description: "透過商業策略遊戲、思維策略遊戲與專利策略遊戲，以互動方式理解創業決策、價值定位與競爭策略。",
           type: "highlight",
         },
         {
-          timeRange: "14:30 - 16:15",
-          title: "Startup 分享與真實案例啟發",
-          description:
-            "多位創業者分享從教育科技、醫療創新到餐飲科技的實戰經驗，包括 Inspire Education、光合抗菌人工皮與有飯科技 RiceUp 等案例。",
-          type: "speech",
-          speakers: ["angel", "ryan", "eric"],
+          timeRange: "15:45 - 16:15",
+          title: "互動環節與自由交流",
+          description: "參加者與講者自由交流，深入討論創業議題，建立人脈連結。",
+          type: "break",
         },
         {
           timeRange: "16:15 - 17:00",
           title: "總結與 Day 2 工作坊講解",
-          description:
-            "整理 Day 1 所學，預告 Day 2 組隊實作、工作坊流程與極創客挑戰要求。",
+          description: "整理 Day 1 所學，預告 Day 2 組隊實作、工作坊流程與極創客挑戰要求。",
           type: "general",
         },
       ],
@@ -688,38 +715,39 @@ function ScheduleSection() {
       themeColor: "from-[#ff7a18] to-[#ff6b00]",
       slots: [
         {
-          timeRange: "10:00 - 12:00",
-          title: "上午時段：組隊、破冰與角色建立",
-          description:
-            "簽到、開場、選隊長、組隊與破冰活動，建立跨學科團隊合作基礎，準備進入創業實戰。",
+          timeRange: "10:00 - 10:30",
+          title: "簽到與開場",
+          description: "參加者簽到，回顧 Day 1 重點，介紹 Day 2 流程與目標。",
+          type: "general",
+        },
+        {
+          timeRange: "10:30 - 12:00",
+          title: "組隊、破冰與角色建立",
+          description: "選隊長、組隊與破冰活動，建立跨學科團隊合作基礎，準備進入創業實戰。",
           type: "highlight",
         },
         {
           timeRange: "12:00 - 12:45",
           title: "大隊長分享",
-          description:
-            "由大隊長帶來實戰分享，協助參加者掌握團隊領導、任務拆解與臨場執行要點。",
+          description: "由大隊長帶來實戰分享，協助參加者掌握團隊領導、任務拆解與臨場執行要點。",
           type: "speech",
         },
         {
           timeRange: "12:45 - 14:00",
           title: "午餐與交流",
-          description:
-            "團隊整理方向、補充能量，並與其他隊伍交流初步想法。",
+          description: "團隊整理方向、補充能量，並與其他隊伍交流初步想法。",
           type: "break",
         },
         {
           timeRange: "14:00 - 17:30",
-          title: "下午時段：極創客工作坊",
-          description:
-            "團隊進行創意整合、方案設計、商業模式梳理與簡報準備，在限時內完成創業提案。",
+          title: "極創客工作坊",
+          description: "團隊進行創意整合、方案設計、商業模式梳理與簡報準備，在限時內完成創業提案。",
           type: "workshop",
         },
         {
           timeRange: "17:30 - 18:30",
           title: "Pitching 路演與總結",
-          description:
-            "各隊進行最終簡報展示，接受評審回饋，為後續線上投票及評選作準備。",
+          description: "各隊進行最終簡報展示，接受評審回饋，為後續線上投票及評選作準備。",
           type: "highlight",
         },
       ],
@@ -735,22 +763,19 @@ function ScheduleSection() {
         {
           timeRange: "全天",
           title: "線上投票開放",
-          description:
-            "公眾可於平台瀏覽隊伍成果並進行投票，提升作品曝光與社會參與度。",
+          description: "公眾可於平台瀏覽隊伍成果並進行投票，提升作品曝光與社會參與度。",
           type: "highlight",
         },
         {
           timeRange: "全天",
           title: "AI 評審系統運作",
-          description:
-            "系統輔助分析提案內容、表達邏輯與創新方向，提供多維度參考評估。",
+          description: "系統輔助分析提案內容、表達邏輯與創新方向，提供多維度參考評估。",
           type: "workshop",
         },
         {
           timeRange: "全天",
           title: "作品展示平台",
-          description:
-            "統一展示各隊提案內容、概念摘要與成果亮點，方便評審與公眾瀏覽。",
+          description: "統一展示各隊提案內容、概念摘要與成果亮點，方便評審與公眾瀏覽。",
           type: "general",
         },
       ],
@@ -766,15 +791,13 @@ function ScheduleSection() {
         {
           timeRange: "待定",
           title: "線上宣佈優秀作品",
-          description:
-            "公佈優秀團隊與評審結果，展示活動成果與參加者的創新表現。",
+          description: "公佈優秀團隊與評審結果，展示活動成果與參加者的創新表現。",
           type: "highlight",
         },
         {
           timeRange: "待定",
           title: "頒獎典禮",
-          description:
-            "透過線上形式進行嘉許與成果總結，為整個實戰營畫上圓滿句號。",
+          description: "透過線上形式進行嘉許與成果總結，為整個實戰營畫上圓滿句號。",
           type: "speech",
         },
       ],
@@ -826,81 +849,65 @@ function ScheduleSection() {
     const isExpanded = expandedSpeaker === speakerKey;
 
     return (
-      <div key={speakerKey} className="w-full">
-        <button
-          type="button"
+      <div key={speakerKey} className="mt-4">
+        {/* Always-visible speaker card with photo, logo, name, title */}
+        <div
+          className="rounded-2xl bg-white/90 border border-white shadow-sm p-4 cursor-pointer hover:shadow-md transition-shadow"
           onClick={() => setExpandedSpeaker(isExpanded ? null : speakerKey)}
-          className="mt-3 inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-2 text-xs md:text-sm font-medium text-[#5a4a7a] border border-white/70 shadow-sm hover:bg-white transition-colors"
         >
-          <img
-            src={speaker.photo}
-            alt={speaker.name}
-            className="w-6 h-6 rounded-full object-cover border border-[#d8c8f0]"
-          />
-          <span>{speaker.name}</span>
-          <ChevronRight className={`w-4 h-4 transition-transform ${isExpanded ? "rotate-90" : ""}`} />
-        </button>
-
-        {isExpanded && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            className="mt-3"
-          >
-            <div className="rounded-2xl bg-white/90 border border-white shadow-sm p-4 md:p-5">
-              <div className="flex flex-col sm:flex-row gap-4 items-start">
-                <img
-                  src={speaker.photo}
-                  alt={speaker.name}
-                  className="w-20 h-20 sm:w-16 sm:h-16 rounded-2xl object-cover border-2 border-[#b8a9d4] shrink-0"
-                />
-
-                <div className="flex-1">
-                  <h4 className="font-bold text-[#1a1a4e] text-base md:text-lg">
-                    {speaker.name}
-                  </h4>
-                  <p className="text-[#7a5a9a] text-sm md:text-sm mt-1 leading-relaxed">
-                    {speaker.role}
-                  </p>
-                  <p className="text-[#5a5a7a] text-sm md:text-sm mt-3 leading-relaxed">
-                    {speaker.bio}
-                  </p>
-
-                  <div className="flex items-center gap-3 mt-3 flex-wrap">
-                    {speaker.linkedin && (
-                      <a
-                        href={speaker.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-sm text-[#0077b5] hover:underline"
-                      >
-                        <ExternalLink className="w-4 h-4 shrink-0" />
-                        LinkedIn
-                      </a>
-                    )}
-                  </div>
-
-                  {speaker.companyLogo && (
-                    <div className="mt-3">
-                      <div className="inline-flex items-center gap-2 rounded-xl bg-[#faf8ff] px-3 py-2 border border-[#e8e0f0] shadow-sm">
-                        <img
-                          src={speaker.companyLogo}
-                          alt={speaker.companyName || ""}
-                          className="h-8 md:h-9 w-auto object-contain"
-                        />
-                        {speaker.companyName && (
-                          <span className="text-xs md:text-sm font-medium text-[#5a4a7a]">
-                            {speaker.companyName}
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
+          <div className="flex items-center gap-4 flex-wrap">
+            {/* Photo */}
+            <img
+              src={speaker.photo}
+              alt={speaker.name}
+              className="w-14 h-14 md:w-16 md:h-16 rounded-2xl object-cover border-2 border-[#b8a9d4] shrink-0"
+            />
+            {/* Company logo - same size as photo */}
+            {speaker.companyLogo && (
+              <img
+                src={speaker.companyLogo}
+                alt={speaker.companyName || ""}
+                className="w-14 h-14 md:w-16 md:h-16 rounded-2xl object-contain border-2 border-[#e8e0f0] bg-white shrink-0 p-1"
+              />
+            )}
+            {/* Name and title */}
+            <div className="flex-1 min-w-0">
+              <h4 className="font-bold text-[#1a1a4e] text-base md:text-lg leading-snug">
+                {speaker.name}
+              </h4>
+              <p className="text-[#7a5a9a] text-xs md:text-sm mt-1 leading-relaxed">
+                {speaker.role}
+              </p>
             </div>
-          </motion.div>
-        )}
+            {/* Expand indicator */}
+            <ChevronRight className={`w-5 h-5 text-[#b8a9d4] shrink-0 transition-transform ${isExpanded ? "rotate-90" : ""}`} />
+          </div>
+
+          {/* Expandable bio section */}
+          {isExpanded && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              className="mt-4 pt-4 border-t border-[#e8e0f0]"
+            >
+              <p className="text-[#5a5a7a] text-sm leading-relaxed">
+                {speaker.bio}
+              </p>
+              {speaker.linkedin && (
+                <a
+                  href={speaker.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm text-[#0077b5] hover:underline mt-3"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <ExternalLink className="w-4 h-4 shrink-0" />
+                  LinkedIn
+                </a>
+              )}
+            </motion.div>
+          )}
+        </div>
       </div>
     );
   };
@@ -1010,7 +1017,7 @@ function ScheduleSection() {
                           </p>
 
                           {slot.speakers && slot.speakers.length > 0 && (
-                            <div className="mt-3 md:mt-4 space-y-3">
+                            <div className="mt-2">
                               {slot.speakers.map((speakerKey) => renderSpeakerCard(speakerKey))}
                             </div>
                           )}
