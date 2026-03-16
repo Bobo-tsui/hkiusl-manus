@@ -1347,7 +1347,8 @@ function SignupSection() {
                 className="mx-auto mt-4 max-w-3xl text-center text-sm md:text-base text-white/85"
               >
                 <span className="font-semibold text-[#ffe6a8]">
-                  HKMU 學生完成活動後，可申請 Student Life Enrichment Subsidy Scheme，最高資助 HK$300。
+                  HKMU 學生完成活動後，可申請 Student Life Enrichment Subsidy Scheme，最高資助 HK$300
+                  
                 </span>
               </motion.p>
                             
