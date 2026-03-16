@@ -47,6 +47,7 @@ const IMAGES = {
   inspireEduLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/inspire-education-logo_7e0d8b46.png",
   ericPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/eric-photo-v2_23d3407a.jpeg",
   riceUpLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/RiceUp-Eric_3a90cbde.jpeg",
+  modaLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/moda-logo_09948e95.png",
 };
 
 const PARTNER_LOGOS = [
@@ -638,6 +639,22 @@ const SPEAKERS: Record<string, Speaker> = {
     photo: "",
     bio: "大隊長，協助參加者掌握團隊領導、任務拆解與臨場執行要點。",
   },
+  moda_panel: {
+    name: "香港設計文化協會 (MODA)",
+    role: "主辦座談協辦機構",
+    photo: "",
+    bio: "香港設計文化協會（MODA）負責主辦座談環節，探討設計思維與創業的結合。",
+    companyLogo: IMAGES.modaLogo,
+    companyName: "香港設計文化協會 MODA",
+  },
+  maurice: {
+    name: "Maurice",
+    role: "香港設計文化協會 (MODA)",
+    photo: "",
+    bio: "來自香港設計文化協會（MODA），將分享設計思維與創業的結合。",
+    companyLogo: IMAGES.modaLogo,
+    companyName: "香港設計文化協會 MODA",
+  },
 };
 
 // ─── Schedule Section ───
@@ -693,7 +710,7 @@ function ScheduleSection() {
         },
         {
           timeRange: "10:50",
-          title: "致辭二",
+          title: "致辭二 [暫定]",
           description: "HKDi 副校長致辭。",
           type: "speech",
         },
@@ -718,8 +735,9 @@ function ScheduleSection() {
         {
           timeRange: "11:55",
           title: "主辦座談",
-          description: "主辦團隊與嘉賓進行座談，深入探討技術經理人的角色與機遇。",
+          description: "由香港設計文化協會（MODA）負責，與嘉賓進行座談，深入探討技術經理人的角色與機遇。",
           type: "speech",
+          speakers: ["moda_panel"],
         },
         {
           timeRange: "12:30",
@@ -795,8 +813,9 @@ function ScheduleSection() {
         {
           timeRange: "4:30",
           title: "分享",
-          description: "香港設計文化協會（MODA）分享設計思維與創業的結合。",
+          description: "香港設計文化協會（MODA）的 Maurice 分享設計思維與創業的結合。",
           type: "speech",
+          speakers: ["maurice"],
         },
         {
           timeRange: "4:50",

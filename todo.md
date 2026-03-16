@@ -61,3 +61,6 @@
 - [x] Redesign schedule based on new PDF rundown with one block per timeslot (Day 1: 22 timeslots, Day 2: 9 timeslots)
 - [x] Add new speakers: Marcus (ScentSafe), 陳家豪 Emil (大隊長)
 - [x] Add new timeslots: 致辭二 (HKDi副校長), 創業政策分享, 主辦座談, Q&A, Bobo Startup分享, 思維策略遊戲, 專利策略遊戲, MODA分享, Day2工作坊講解, Day2 detailed schedule
+- [x] Mark 致辭二 as 暫定
+- [x] Add MODA logo to 主辦座談 timeslot (11:55)
+- [x] Add Maurice speaker (MODA) with MODA logo to 4:30 分享 timeslot
