@@ -603,88 +603,296 @@ function ScheduleSection() {
   const [activeDay, setActiveDay] = useState(0);
   const [expandedSpeaker, setExpandedSpeaker] = useState<string | null>(null);
 
-  interface ScheduleItem {
-    time: string;
-    event: string;
-    type: string;
-    speaker?: string;
+  interface TimeSlot {
+    timeRange: string;
+    title: string;
+    description: string;
+    type: "highlight" | "speech" | "workshop" | "break" | "general";
+    speakers?: string[];
   }
 
-  const days: { date: string; venue: string; label: string; items: ScheduleItem[] }[] = [
+  interface ScheduleDay {
+    date: string;
+    shortDate: string;
+    venue: string;
+    label: string;
+    theme: string;
+    themeColor: string;
+    slots: TimeSlot[];
+  }
+
+  const days: ScheduleDay[] = [
     {
       date: "4月11日（六）",
+      shortDate: "Day 1",
       venue: "都會大學中國銀行演講廳",
       label: "開幕禮・演講・授課",
-      items: [
-        { time: "10:00", event: "簽到（QR Code）", type: "general" },
-        { time: "10:20", event: "入座", type: "general" },
-        { time: "10:30", event: "開始／合照", type: "highlight" },
-        { time: "10:35", event: "開場白", type: "general" },
-        { time: "10:40", event: "致辭一", type: "speech", speaker: "alan" },
-        { time: "10:50", event: "致辭二 — HKMU 副校長", type: "speech" },
-        { time: "11:00", event: "嘉賓 A 分享（理工大學）", type: "speech" },
-        { time: "11:20", event: "嘉賓 B 分享（立法會議員）", type: "speech" },
-        { time: "11:40", event: "創業政策分享 — 香港設計文化協會 (MODA)", type: "speech" },
-        { time: "11:55", event: "主辦座談 — MODA", type: "speech" },
-        { time: "12:30", event: "Q & A 環節", type: "general" },
-        { time: "12:40", event: "自由交流・午餐", type: "break" },
-        { time: "14:15", event: "商業策略遊戲", type: "highlight" },
-        { time: "14:30", event: "Startup 分享", type: "speech" },
-        { time: "14:50", event: "思維策略遊戲", type: "highlight" },
-        { time: "15:00", event: "Startup 分享 — RiceUp", type: "speech" },
-        { time: "15:15", event: "Startup 分享 — Inspire Education", type: "speech", speaker: "angel" },
-        { time: "15:30", event: "專利策略遊戲", type: "highlight" },
-        { time: "15:45", event: "小休", type: "break" },
-        { time: "16:00", event: "香港設計文化協會 (MODA) 分享", type: "speech" },
-        { time: "16:15", event: "Startup 分享 — 光合抗菌人工皮", type: "speech", speaker: "ryan" },
-        { time: "16:30", event: "Day 2 工作坊講解", type: "general" },
-        { time: "17:00", event: "Day 1 完結", type: "general" },
+      theme: "開幕啟航與創業導入",
+      themeColor: "from-[#2f63e0] to-[#3d73f0]",
+      slots: [
+        {
+          timeRange: "10:00 - 12:40",
+          title: "上午時段：開幕、嘉賓分享與創業啟發",
+          description:
+            "簽到、開幕禮、嘉賓致辭、創業政策分享、主辦座談及 Q&A，讓參加者掌握技術轉移、創業方向與活動整體框架。",
+          type: "speech",
+          speakers: ["alan"],
+        },
+        {
+          timeRange: "12:40 - 14:15",
+          title: "午餐與自由交流",
+          description:
+            "參加者與嘉賓自由交流、建立跨校連結，為下午互動與協作環節熱身。",
+          type: "break",
+        },
+        {
+          timeRange: "14:15 - 15:45",
+          title: "下午時段：商業策略與思維遊戲",
+          description:
+            "透過商業策略遊戲、思維策略遊戲與專利策略遊戲，以互動方式理解創業決策、價值定位與競爭策略。",
+          type: "highlight",
+        },
+        {
+          timeRange: "14:30 - 16:15",
+          title: "Startup 分享與真實案例啟發",
+          description:
+            "多位創業者分享從教育科技到醫療創新的實戰經驗，包括 Inspire Education 與光合抗菌人工皮等案例。",
+          type: "speech",
+          speakers: ["angel", "ryan"],
+        },
+        {
+          timeRange: "16:15 - 17:00",
+          title: "總結與 Day 2 工作坊講解",
+          description:
+            "整理 Day 1 所學，預告 Day 2 組隊實作、工作坊流程與極創客挑戰要求。",
+          type: "general",
+        },
       ],
     },
     {
       date: "4月12日（日）",
+      shortDate: "Day 2",
       venue: "柴灣青年廣場「青立方」",
       label: "工作坊・極創客",
-      items: [
-        { time: "10:00", event: "簽到（QR Code）", type: "general" },
-        { time: "10:20", event: "入座", type: "general" },
-        { time: "10:30", event: "開始／合照", type: "highlight" },
-        { time: "10:35", event: "開場白", type: "general" },
-        { time: "10:40", event: "選隊長", type: "highlight" },
-        { time: "11:00", event: "組隊 + 破冰活動", type: "highlight" },
-        { time: "12:00", event: "大隊長駕到 — 陳家豪 Emil", type: "speech" },
-        { time: "12:45", event: "午餐", type: "break" },
-        { time: "14:00", event: "極創客工作坊", type: "highlight" },
-        { time: "17:30", event: "Pitching 路演", type: "highlight" },
-        { time: "18:30", event: "Day 2 完結", type: "general" },
+      theme: "組隊實戰與極創客路演",
+      themeColor: "from-[#ff7a18] to-[#ff6b00]",
+      slots: [
+        {
+          timeRange: "10:00 - 12:00",
+          title: "上午時段：組隊、破冰與角色建立",
+          description:
+            "簽到、開場、選隊長、組隊與破冰活動，建立跨學科團隊合作基礎，準備進入創業實戰。",
+          type: "highlight",
+        },
+        {
+          timeRange: "12:00 - 12:45",
+          title: "大隊長分享",
+          description:
+            "由大隊長帶來實戰分享，協助參加者掌握團隊領導、任務拆解與臨場執行要點。",
+          type: "speech",
+        },
+        {
+          timeRange: "12:45 - 14:00",
+          title: "午餐與交流",
+          description:
+            "團隊整理方向、補充能量，並與其他隊伍交流初步想法。",
+          type: "break",
+        },
+        {
+          timeRange: "14:00 - 17:30",
+          title: "下午時段：極創客工作坊",
+          description:
+            "團隊進行創意整合、方案設計、商業模式梳理與簡報準備，在限時內完成創業提案。",
+          type: "workshop",
+        },
+        {
+          timeRange: "17:30 - 18:30",
+          title: "Pitching 路演與總結",
+          description:
+            "各隊進行最終簡報展示，接受評審回饋，為後續線上投票及評選作準備。",
+          type: "highlight",
+        },
       ],
     },
     {
       date: "4月13-18日",
+      shortDate: "Day 3-8",
       venue: "線上",
       label: "線上投票・AI 評審",
-      items: [
-        { time: "全天", event: "線上投票開放", type: "highlight" },
-        { time: "全天", event: "AI 評審系統運作", type: "highlight" },
-        { time: "全天", event: "作品展示平台", type: "general" },
+      theme: "作品展示與公眾參與",
+      themeColor: "from-[#7a5af8] to-[#6941c6]",
+      slots: [
+        {
+          timeRange: "全天",
+          title: "線上投票開放",
+          description:
+            "公眾可於平台瀏覽隊伍成果並進行投票，提升作品曝光與社會參與度。",
+          type: "highlight",
+        },
+        {
+          timeRange: "全天",
+          title: "AI 評審系統運作",
+          description:
+            "系統輔助分析提案內容、表達邏輯與創新方向，提供多維度參考評估。",
+          type: "workshop",
+        },
+        {
+          timeRange: "全天",
+          title: "作品展示平台",
+          description:
+            "統一展示各隊提案內容、概念摘要與成果亮點，方便評審與公眾瀏覽。",
+          type: "general",
+        },
       ],
     },
     {
       date: "4月19日（六）",
+      shortDate: "Finale",
       venue: "線上",
       label: "宣佈優秀作品",
-      items: [
-        { time: "待定", event: "線上宣佈優秀作品", type: "highlight" },
-        { time: "待定", event: "頒獎典禮", type: "highlight" },
+      theme: "成果公佈與榮譽嘉許",
+      themeColor: "from-[#ec4899] to-[#db2777]",
+      slots: [
+        {
+          timeRange: "待定",
+          title: "線上宣佈優秀作品",
+          description:
+            "公佈優秀團隊與評審結果，展示活動成果與參加者的創新表現。",
+          type: "highlight",
+        },
+        {
+          timeRange: "待定",
+          title: "頒獎典禮",
+          description:
+            "透過線上形式進行嘉許與成果總結，為整個實戰營畫上圓滿句號。",
+          type: "speech",
+        },
       ],
     },
   ];
 
-  const typeColors: Record<string, string> = {
-    highlight: "bg-[#b8a9d4] text-[#1a1a4e]",
-    speech: "bg-[#d0e8f0] text-[#2a5a7a]",
-    break: "bg-[#fce8d0] text-[#7a5a2a]",
-    general: "bg-[#e8e0f0] text-[#5a4a7a]",
+  const slotStyles = {
+    highlight: {
+      card: "bg-gradient-to-br from-[#f3ecff] to-[#ebe2ff] border-[#d7c2ff]",
+      time: "text-[#6b46c1]",
+      title: "text-[#2d1b69]",
+      desc: "text-[#5b4b8a]",
+      dot: "bg-[#8b5cf6]",
+    },
+    speech: {
+      card: "bg-gradient-to-br from-[#eaf4ff] to-[#dfeeff] border-[#bfdcff]",
+      time: "text-[#2563eb]",
+      title: "text-[#163a7a]",
+      desc: "text-[#47618f]",
+      dot: "bg-[#3b82f6]",
+    },
+    workshop: {
+      card: "bg-gradient-to-br from-[#e8fbf3] to-[#dcf7ec] border-[#b7ebd2]",
+      time: "text-[#0f766e]",
+      title: "text-[#134e4a]",
+      desc: "text-[#3d6c68]",
+      dot: "bg-[#14b8a6]",
+    },
+    break: {
+      card: "bg-gradient-to-br from-[#fff4e8] to-[#ffedd9] border-[#ffd7ad]",
+      time: "text-[#c2410c]",
+      title: "text-[#7c2d12]",
+      desc: "text-[#9a5b33]",
+      dot: "bg-[#f97316]",
+    },
+    general: {
+      card: "bg-gradient-to-br from-[#f4f4f5] to-[#ededf1] border-[#d9d9e3]",
+      time: "text-[#475569]",
+      title: "text-[#1e293b]",
+      desc: "text-[#5b6474]",
+      dot: "bg-[#64748b]",
+    },
+  } as const;
+
+  const renderSpeakerCard = (speakerKey: string) => {
+    const speaker = SPEAKERS[speakerKey];
+    if (!speaker) return null;
+
+    const isExpanded = expandedSpeaker === speakerKey;
+
+    return (
+      <div key={speakerKey} className="w-full">
+        <button
+          type="button"
+          onClick={() => setExpandedSpeaker(isExpanded ? null : speakerKey)}
+          className="mt-3 inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-2 text-xs md:text-sm font-medium text-[#5a4a7a] border border-white/70 shadow-sm hover:bg-white transition-colors"
+        >
+          <img
+            src={speaker.photo}
+            alt={speaker.name}
+            className="w-6 h-6 rounded-full object-cover border border-[#d8c8f0]"
+          />
+          <span>{speaker.name}</span>
+          <ChevronRight className={`w-4 h-4 transition-transform ${isExpanded ? "rotate-90" : ""}`} />
+        </button>
+
+        {isExpanded && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            className="mt-3"
+          >
+            <div className="rounded-2xl bg-white/90 border border-white shadow-sm p-4 md:p-5">
+              <div className="flex flex-col sm:flex-row gap-4 items-start">
+                <img
+                  src={speaker.photo}
+                  alt={speaker.name}
+                  className="w-20 h-20 sm:w-16 sm:h-16 rounded-2xl object-cover border-2 border-[#b8a9d4] shrink-0"
+                />
+
+                <div className="flex-1">
+                  <h4 className="font-bold text-[#1a1a4e] text-base md:text-lg">
+                    {speaker.name}
+                  </h4>
+                  <p className="text-[#7a5a9a] text-sm md:text-sm mt-1 leading-relaxed">
+                    {speaker.role}
+                  </p>
+                  <p className="text-[#5a5a7a] text-sm md:text-sm mt-3 leading-relaxed">
+                    {speaker.bio}
+                  </p>
+
+                  <div className="flex items-center gap-3 mt-3 flex-wrap">
+                    {speaker.linkedin && (
+                      <a
+                        href={speaker.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-sm text-[#0077b5] hover:underline"
+                      >
+                        <ExternalLink className="w-4 h-4 shrink-0" />
+                        LinkedIn
+                      </a>
+                    )}
+                  </div>
+
+                  {speaker.companyLogo && (
+                    <div className="mt-3">
+                      <div className="inline-flex items-center gap-2 rounded-xl bg-[#faf8ff] px-3 py-2 border border-[#e8e0f0] shadow-sm">
+                        <img
+                          src={speaker.companyLogo}
+                          alt={speaker.companyName || ""}
+                          className="h-8 md:h-9 w-auto object-contain"
+                        />
+                        {speaker.companyName && (
+                          <span className="text-xs md:text-sm font-medium text-[#5a4a7a]">
+                            {speaker.companyName}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </div>
+    );
   };
 
   return (
@@ -695,16 +903,16 @@ function ScheduleSection() {
             <span className="inline-block px-4 py-1.5 rounded-full bg-[#e8e0f0] text-[#5a4a7a] text-sm font-medium mb-4">
               日程安排
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a4e] mb-4">
-              活動時間表
+            <h2 className="text-3xl md:text-5xl font-black text-[#1a1a4e] mb-4">
+              兩天高強度實戰日程（暫定）
             </h2>
             <p className="text-[#5a5a7a] max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
-              按日期切換後可查看每個時段活動內容，點擊嘉賓項目可展開講者簡介。
+              從早到晚，沉浸式體驗創業全流程
             </p>
           </motion.div>
         </AnimatedSection>
 
-        {/* Day tabs */}
+        {/* 日期選擇按鈕 */}
         <div className="flex flex-wrap gap-3 justify-center mb-8 md:mb-10 px-2">
           {days.map((day, i) => (
             <button
@@ -725,131 +933,79 @@ function ScheduleSection() {
           ))}
         </div>
 
-        {/* Schedule content */}
+        {/* 當前日期卡片 */}
         <AnimatedSection>
-          <motion.div variants={fadeIn} className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-3xl shadow-xl border border-[#e8e0f0] overflow-hidden">
-              {/* Header */}
-              <div className="bg-gradient-to-r from-[#1a1a4e] to-[#3a2a6e] px-4 md:px-6 py-4 md:py-5">
-                <div className="flex items-center gap-3 text-white flex-wrap text-sm md:text-base leading-relaxed">
-                  <Calendar className="w-5 h-5 shrink-0" />
-                  <span className="font-bold">{days[activeDay].date}</span>
-                  <span className="text-white/60 hidden sm:inline">|</span>
-                  <MapPin className="w-5 h-5 shrink-0" />
-                  <span>{days[activeDay].venue}</span>
+          <motion.div variants={fadeIn} className="max-w-5xl mx-auto">
+            <div className="rounded-[28px] overflow-hidden border border-[#d9e2f2] bg-white shadow-xl">
+              {/* 頂部標題列 */}
+              <div className={`bg-gradient-to-r ${days[activeDay].themeColor} px-5 md:px-7 py-4 md:py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2`}>
+                <div>
+                  <h3 className="text-white text-2xl md:text-3xl font-black tracking-tight">
+                    {days[activeDay].shortDate}: {days[activeDay].theme}
+                  </h3>
+                  <p className="text-white/85 text-sm md:text-base mt-1">
+                    {days[activeDay].label}
+                  </p>
+                </div>
+                <div className="text-white/95 text-sm md:text-lg font-semibold">
+                  {days[activeDay].date}
                 </div>
               </div>
 
-              {/* Items */}
-              <div className="divide-y divide-[#e8e0f0]/60">
-                {days[activeDay].items.map((item, i) => {
-                  const speaker = item.speaker ? SPEAKERS[item.speaker] : null;
-                  const isExpanded = expandedSpeaker === `${activeDay}-${i}`;
+              {/* 地點 */}
+              <div className="px-5 md:px-7 py-4 border-b border-[#edf1f7] bg-[#fbfcfe]">
+                <div className="flex items-center gap-2 text-[#5a5a7a] text-sm md:text-base">
+                  <MapPin className="w-4 h-4 md:w-5 md:h-5 shrink-0 text-[#6b7280]" />
+                  <span className="font-medium">{days[activeDay].venue}</span>
+                </div>
+              </div>
 
+              {/* Timeslots */}
+              <div className="px-4 md:px-7 py-4 md:py-6 space-y-4 md:space-y-5">
+                {days[activeDay].slots.map((slot, idx) => {
+                  const style = slotStyles[slot.type];
                   return (
-                    <div key={i}>
-                      <div
-                        className={`flex flex-col md:flex-row md:items-center gap-2 md:gap-3 px-4 md:px-6 py-4 md:py-4 transition-colors ${
-                          speaker ? "hover:bg-[#f0ecf8] cursor-pointer" : "hover:bg-[#faf8f5]"
-                        } ${isExpanded ? "bg-[#f0ecf8]" : ""}`}
-                        onClick={() => speaker && setExpandedSpeaker(isExpanded ? null : `${activeDay}-${i}`)}
-                      >
-                        <div
-                          className="w-full md:w-16 text-left md:text-right font-black text-[#1a1a4e] shrink-0 text-sm md:text-base"
-                          style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-                        >
-                          {item.time}
-                        </div>
-
-                        <div className="hidden md:block w-0.5 h-10 rounded-full bg-[#e8e0f0] shrink-0" />
-
-                        <div className="flex-1 flex items-center gap-2.5 flex-wrap">
-                          {speaker && (
-                            <img
-                              src={speaker.photo}
-                              alt={speaker.name}
-                              className="w-8 h-8 rounded-full object-cover border-2 border-[#b8a9d4] shrink-0"
-                            />
-                          )}
-                          <span
-                            className={`inline-block px-3 py-1.5 rounded-full text-sm md:text-[15px] font-semibold leading-snug ${typeColors[item.type]}`}
+                    <div
+                      key={idx}
+                      className={`rounded-2xl md:rounded-3xl border p-4 md:p-6 ${style.card}`}
+                    >
+                      <div className="grid grid-cols-1 md:grid-cols-[140px_1fr] gap-4 md:gap-6 items-start">
+                        {/* 時間 */}
+                        <div className="md:pt-1">
+                          <div
+                            className={`text-xl md:text-2xl font-black leading-tight ${style.time}`}
+                            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                           >
-                            {item.event}
-                          </span>
+                            {slot.timeRange}
+                          </div>
+                          <div className="flex items-center gap-2 mt-3">
+                            <span className={`w-2.5 h-2.5 rounded-full ${style.dot}`} />
+                            <span className={`text-xs md:text-sm font-semibold ${style.time}`}>
+                              {slot.type === "highlight" && "重點活動"}
+                              {slot.type === "speech" && "分享環節"}
+                              {slot.type === "workshop" && "工作坊"}
+                              {slot.type === "break" && "休息 / 交流"}
+                              {slot.type === "general" && "一般安排"}
+                            </span>
+                          </div>
                         </div>
 
-                        {speaker && (
-                          <ChevronRight
-                            className={`self-end md:self-auto w-5 h-5 text-[#b8a9d4] transition-transform shrink-0 ${
-                              isExpanded ? "rotate-90" : ""
-                            }`}
-                          />
-                        )}
-                      </div>
+                        {/* 內容 */}
+                        <div>
+                          <h4 className={`text-xl md:text-2xl font-black leading-snug ${style.title}`}>
+                            {slot.title}
+                          </h4>
+                          <p className={`mt-2 md:mt-3 text-base md:text-lg leading-relaxed ${style.desc}`}>
+                            {slot.description}
+                          </p>
 
-                      {/* Speaker bio card */}
-                      {speaker && isExpanded && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          className="mx-4 md:ml-[5.5rem] md:mr-6 mb-3 mt-1"
-                        >
-                          <div className="bg-gradient-to-r from-[#f8f5ff] to-[#f0ecf8] rounded-2xl p-4 md:p-5 border border-[#e8e0f0]">
-                            <div className="flex flex-col sm:flex-row items-start gap-4">
-                              <img
-                                src={speaker.photo}
-                                alt={speaker.name}
-                                className="w-20 h-20 sm:w-16 sm:h-16 rounded-2xl object-cover border-2 border-[#b8a9d4] shrink-0"
-                              />
-
-                              <div className="flex-1">
-                                <h4 className="font-bold text-[#1a1a4e] text-base md:text-sm">
-                                  {speaker.name}
-                                </h4>
-                                <p className="text-[#7a5a9a] text-sm md:text-xs mb-2 leading-relaxed">
-                                  {speaker.role}
-                                </p>
-                                <p className="text-[#5a5a7a] text-sm md:text-xs leading-relaxed">
-                                  {speaker.bio}
-                                </p>
-
-                                <div className="flex items-center gap-3 mt-3 flex-wrap">
-                                  {speaker.linkedin && (
-                                    <a
-                                      href={speaker.linkedin}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      className="inline-flex items-center gap-1.5 text-xs md:text-sm text-[#0077b5] hover:underline"
-                                      onClick={(e) => e.stopPropagation()}
-                                    >
-                                      <ExternalLink className="w-3.5 h-3.5 shrink-0" />
-                                      LinkedIn
-                                    </a>
-                                  )}
-                                </div>
-
-                                {speaker.companyLogo && (
-                                  <div className="mt-2 md:mt-3 w-full">
-                                    <div className="inline-flex items-center gap-2 rounded-xl bg-white px-3 py-2 border border-[#e8e0f0] shadow-sm">
-                                      <img
-                                        src={speaker.companyLogo}
-                                        alt={speaker.companyName || ""}
-                                        className="h-7 md:h-8 w-auto object-contain"
-                                      />
-                                      {speaker.companyName && (
-                                        <span className="text-xs md:text-sm font-medium text-[#5a4a7a]">
-                                          {speaker.companyName}
-                                        </span>
-                                      )}
-                                    </div>
-                                  </div>
-                                )}
-                              </div>
+                          {slot.speakers && slot.speakers.length > 0 && (
+                            <div className="mt-3 md:mt-4 space-y-3">
+                              {slot.speakers.map((speakerKey) => renderSpeakerCard(speakerKey))}
                             </div>
-                          </div>
-                        </motion.div>
-                      )}
+                          )}
+                        </div>
+                      </div>
                     </div>
                   );
                 })}
