@@ -64,3 +64,5 @@
 - [x] Mark 致辭二 as 暫定
 - [x] Add MODA logo to 主辦座談 timeslot (11:55)
 - [x] Add Maurice speaker (MODA) with MODA logo to 4:30 分享 timeslot
+- [x] Add 杏林苑 Xinglin Yuan logo to Bobo's speaker card
+- [x] Update Bobo's bio to Traditional Chinese translation

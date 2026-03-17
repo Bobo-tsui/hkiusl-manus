@@ -48,6 +48,7 @@ const IMAGES = {
   ericPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/eric-photo-v2_23d3407a.jpeg",
   riceUpLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/RiceUp-Eric_3a90cbde.jpeg",
   modaLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/moda-logo_09948e95.png",
+  xinglinYuanLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/xinglin-yuan-logo_bca5a808.png",
 };
 
 const PARTNER_LOGOS = [
@@ -625,7 +626,9 @@ const SPEAKERS: Record<string, Speaker> = {
     name: "徐沛慈 Bobo",
     role: "HKIUSL 2026 發起人 | 杏林苑創辦人 | 香港都會大學商學院二年級",
     photo: IMAGES.boboPhoto,
-    bio: "現就讀香港都會大學商學院二年級，本活動的學生籌辦人與籌委會主席，致力於推動跨大專創業交流與合作。",
+    bio: "年輕創業者，具備商業策劃、募資、產品設計及專案管理的實戰經驗。她創辦了教育科技項目「杏林苑」，獲得數碼港創意微型基金（CCMF）港幣十萬元資助，並入圍多個初創比賽決賽。她負責策略規劃、合作夥伴拓展、業務發展及整體執行。",
+    companyLogo: IMAGES.xinglinYuanLogo,
+    companyName: "杏林苑 Xinglin Yuan",
   },
   marcus: {
     name: "Marcus",
