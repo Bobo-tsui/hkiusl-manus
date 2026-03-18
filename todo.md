@@ -66,3 +66,5 @@
 - [x] Add Maurice speaker (MODA) with MODA logo to 4:30 分享 timeslot
 - [x] Add 杏林苑 Xinglin Yuan logo to Bobo's speaker card
 - [x] Update Bobo's bio to Traditional Chinese translation
+- [x] Change regular registration fee from HK$380 to HK$300 on website
+- [x] Change regular registration fee from HK$380 to HK$300 in Jotform registration form

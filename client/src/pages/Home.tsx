@@ -1471,7 +1471,7 @@ function SignupSection() {
                 <div className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-8 group hover:-translate-y-1 transition-transform">
                   <div className="mt-6">
                     <div className="text-5xl font-black text-white/70 mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                      $380
+                      $300
                     </div>
                     <p className="text-white/50 font-medium mb-1">正價報名</p>
                     <p className="text-white/30 text-sm">3 月 25 日後適用</p>
