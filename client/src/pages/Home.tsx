@@ -801,7 +801,7 @@ function ScheduleSection() {
         },
         {
           timeRange: "4:00",
-          title: "Startup 分享 — ScentSafe [暫定]",
+          title: "Startup 分享 — ScentSafe",
           description: "Marcus 分享 ScentSafe 的創業歷程與產品開發經驗。",
           type: "speech",
           speakers: ["marcus"],
