@@ -630,11 +630,17 @@ const SPEAKERS: Record<string, Speaker> = {
     companyLogo: IMAGES.xinglinYuanLogo,
     companyName: "杏林苑 Xinglin Yuan",
   },
-  marcus: {
-    name: "Marcus",
-    role: "ScentSafe 創辦人",
+  xidorsi: {
+    name: "西DorSi",
+    role: "自媒體博主 | YouTube 頻道「西DorSi偽中產生活態度」",
     photo: "",
-    bio: "ScentSafe 創辦人，將分享創業歷程與產品開發經驗。",
+    bio: "自媒體博主，營運 YouTube 頻道「西DorSi偽中產生活態度」9年，主要向香港人提供大中華地區文旅資訊，擁有超35萬訂閱及超1億收看次數，境內外所有平台粉絲量超77萬。西DorSi亦是暢銷書作者，著有數本大灣區城市的旅遊、移居攻略書。2025年，西DorSi亦獲得香港特別行政區律政司委任，成為大灣區專責小組成員。",
+  },
+  marcus: {
+    name: "余浩堃 Marcus",
+    role: "ScentSafe 創辦人 | 香港大學學生",
+    photo: "",
+    bio: "ScentSafe 創辦人，香港大學學生，將分享創業歷程與產品開發經驗。",
   },
   emil: {
     name: "陳家豪 Emil",
@@ -706,10 +712,9 @@ function ScheduleSection() {
         },
         {
           timeRange: "10:40",
-          title: "致辭一",
+          title: "致辭一 [待定]",
           description: "嘉賓致辭，分享對香港技術轉移與青年創業的展望。",
           type: "speech",
-          speakers: ["alan"],
         },
         {
           timeRange: "10:50",
@@ -719,24 +724,26 @@ function ScheduleSection() {
         },
         {
           timeRange: "11:00",
-          title: "嘉賓分享",
-          description: "嘉賓分享香港創業生態與未來趨勢，讓參加者掌握宏觀方向。",
+          title: "創業政策分享 [邀請中]",
+          description: "數碼港代表分享香港創業政策環境與支援措施。",
           type: "speech",
         },
         {
           timeRange: "11:20",
           title: "嘉賓分享",
-          description: "嘉賓分享技術轉移政策與創業機遇。",
+          description: "嘉賓分享香港創業生態與未來趨勢，讓參加者掌握宏觀方向。",
           type: "speech",
+          speakers: ["alan"],
         },
         {
-          timeRange: "11:40",
-          title: "創業政策分享",
-          description: "深入探討香港創業政策環境與支援措施。",
+          timeRange: "11:20",
+          title: "嘉賓分享（Zoom）",
+          description: "西DorSi 透過 Zoom 連線分享自媒體創業經驗與個人品牌建立心得。",
           type: "speech",
+          speakers: ["xidorsi"],
         },
         {
-          timeRange: "11:55",
+          timeRange: "11:45",
           title: "主辦座談",
           description: "由香港設計文化協會（MODA）負責，與嘉賓進行座談，深入探討技術經理人的角色與機遇。",
           type: "speech",
@@ -802,7 +809,7 @@ function ScheduleSection() {
         {
           timeRange: "4:00",
           title: "Startup 分享 — ScentSafe",
-          description: "Marcus 分享 ScentSafe 的創業歷程與產品開發經驗。",
+          description: "余浩堃 Marcus 分享 ScentSafe 的創業歷程與產品開發經驗。",
           type: "speech",
           speakers: ["marcus"],
         },

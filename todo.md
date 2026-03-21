@@ -68,3 +68,8 @@
 - [x] Update Bobo's bio to Traditional Chinese translation
 - [x] Change regular registration fee from HK$380 to HK$300 on website
 - [x] Change regular registration fee from HK$380 to HK$300 in Jotform registration form
+- [x] Update Day 1 morning schedule times (致辭一 10:40, 致辭二 10:50, 創業政策分享 11:00, 嘉賓分享 11:20, 主辦座談 11:45, Q&A 12:30, 自由交流/LUNCH 12:40)
+- [x] Add 西DorSi as new speaker (Zoom嘉賓分享 at 11:20) with bio
+- [x] Update Marcus (ScentSafe) - remove 暫定 tag, add full name 余浩堃 Marcus and title
+- [x] Update 致辭一 to [待定]
+- [x] Update 創業政策分享 to [邀請中] 數碼港代表
