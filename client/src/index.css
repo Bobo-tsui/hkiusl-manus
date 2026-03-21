@@ -185,3 +185,31 @@ html {
 .animate-glow-yellow {
   animation: glowPulseYellow 2.5s ease-in-out infinite;
 }
+
+/* Red YouTube glow for 西DorSi star guest */
+@keyframes glowPulseRed {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.25), 0 0 25px rgba(255, 0, 0, 0.12);
+  }
+  50% {
+    box-shadow: 0 0 22px rgba(255, 0, 0, 0.5), 0 0 50px rgba(255, 0, 0, 0.25);
+  }
+}
+
+.animate-glow-red {
+  animation: glowPulseRed 2.5s ease-in-out infinite;
+}
+
+/* Purple glow for student-led notice */
+@keyframes glowPulsePurple {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(184, 169, 212, 0.3), 0 0 20px rgba(184, 169, 212, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(184, 169, 212, 0.6), 0 0 40px rgba(184, 169, 212, 0.3);
+  }
+}
+
+.animate-glow-student {
+  animation: glowPulsePurple 2.5s ease-in-out infinite;
+}

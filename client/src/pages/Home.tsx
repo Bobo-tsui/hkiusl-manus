@@ -40,7 +40,7 @@ const IMAGES = {
   venuePhoto5: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/venue-photo-5_1dfa06e8.jpg",
   heroBanner: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/hero-banner_8b36b15d.png",
   logo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/logo_069317ec.png",
-  boboPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/bobo-photo_dc91281d.png",
+  boboPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/bobo-photo-new_1df623ab.jpeg",
   angelPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/angel-photo_25fbc91b.jpeg",
   alanPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/alan-cheung-photo_2c32214a.jpg",
   ryanPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/ryan-photo_52137c0c.png",
@@ -432,7 +432,7 @@ function AboutSection() {
               近年香港政府大力推動大學技術轉移，鼓勵將學術研究成果轉化為商業應用。技術經理人（Technology Transfer Professional）正是這個過程中連結科技與商業的關鍵角色。
               本實戰營旨在讓大專學生在參加創業比賽前掌握基本概念，培養領導才能、商業知識與設計思維。
             </p>
-            <p className="text-[#7a5a9a] max-w-2xl mx-auto text-base mt-4 font-medium bg-[#e8e0f0] rounded-xl px-6 py-3">
+            <p className="text-[#7a5a9a] max-w-2xl mx-auto text-base mt-4 font-medium bg-[#e8e0f0] rounded-xl px-6 py-3 animate-glow-student">
               本活動完全由學生發起，由香港都會大學、香港理工大學及香港城市大學的學生主導籌辦。
             </p>
           </motion.div>
@@ -686,9 +686,9 @@ function ScheduleSection() {
     timeRange: string;
     title: string;
     description: string;
-    type: "highlight" | "speech" | "workshop" | "break" | "general";
+    type: "highlight" | "speech" | "workshop" | "break" | "general" | "star-guest";
     speakers?: string[];
-    specialStyle?: "yellow-glow";
+    specialStyle?: "yellow-glow" | "red-glow";
   }
 
   interface ScheduleDay {
@@ -748,28 +748,28 @@ function ScheduleSection() {
           speakers: ["alan"],
         },
         {
-          timeRange: "11:20",
-          title: "嘉賓分享（Zoom）",
+          timeRange: "11:30",
+          title: "星級嘉賓（Zoom）",
           description: "西DorSi 透過 Zoom 連線分享自媒體創業經驗與個人品牌建立心得。",
-          type: "speech",
+          type: "star-guest",
           speakers: ["xidorsi"],
-          specialStyle: "yellow-glow",
+          specialStyle: "red-glow",
         },
         {
-          timeRange: "11:45",
+          timeRange: "12:00",
           title: "主辦座談",
           description: "由香港設計文化協會（MODA）負責，與嘉賓進行座談，深入探討技術經理人的角色與機遇。",
           type: "speech",
           speakers: ["moda_panel"],
         },
         {
-          timeRange: "12:30",
+          timeRange: "12:45",
           title: "Q & A",
           description: "參加者自由提問，與嘉賓互動交流。",
           type: "speech",
         },
         {
-          timeRange: "12:40",
+          timeRange: "1:00",
           title: "自由交流 / LUNCH",
           description: "參加者與嘉賓自由交流、建立跨校連結，享用午餐。",
           type: "break",
@@ -1007,6 +1007,13 @@ function ScheduleSection() {
       desc: "text-[#5b6474]",
       dot: "bg-[#64748b]",
     },
+    "star-guest": {
+      card: "bg-gradient-to-br from-[#fff0f0] to-[#ffe0e0] border-[#ff4444]",
+      time: "text-[#cc0000]",
+      title: "text-[#990000]",
+      desc: "text-[#8a3333]",
+      dot: "bg-[#ff0000]",
+    },
   } as const;
 
   const renderSpeakerCard = (speakerKey: string) => {
@@ -1040,7 +1047,7 @@ function ScheduleSection() {
               <img
                 src={speaker.companyLogo}
                 alt={speaker.companyName || ""}
-                className="w-14 h-14 md:w-16 md:h-16 rounded-2xl object-contain border-2 border-[#e8e0f0] bg-white shrink-0 p-1"
+                className="w-14 h-14 md:w-16 md:h-16 rounded-2xl object-contain bg-transparent shrink-0"
               />
             )}
             {/* Second company logo */}
@@ -1048,7 +1055,7 @@ function ScheduleSection() {
               <img
                 src={speaker.companyLogo2}
                 alt={speaker.companyName2 || ""}
-                className="w-14 h-14 md:w-16 md:h-16 rounded-2xl object-contain border-2 border-[#e8e0f0] bg-white shrink-0 p-1"
+                className="w-14 h-14 md:w-16 md:h-16 rounded-2xl object-contain bg-transparent shrink-0"
               />
             )}
             {/* Name and title */}
@@ -1179,13 +1186,17 @@ function ScheduleSection() {
                 {days[activeDay].slots.map((slot, idx) => {
                   const style = slotStyles[slot.type];
                   const isYellowGlow = slot.specialStyle === "yellow-glow";
+                  const isRedGlow = slot.specialStyle === "red-glow";
+                  const specialCardClass = isRedGlow
+                    ? "bg-gradient-to-br from-[#fff0f0] to-[#ffe0e0] border-[#ff4444] animate-glow-red"
+                    : isYellowGlow
+                      ? "bg-gradient-to-br from-[#fff8e1] to-[#fff3cd] border-[#ffd54f] animate-glow-yellow"
+                      : null;
                   return (
                     <div
                       key={idx}
                       className={`rounded-2xl md:rounded-3xl border p-4 md:p-6 ${
-                        isYellowGlow
-                          ? "bg-gradient-to-br from-[#fff8e1] to-[#fff3cd] border-[#ffd54f] animate-glow-yellow"
-                          : style.card
+                        specialCardClass || style.card
                       }`}
                     >
                       <div className="grid grid-cols-1 md:grid-cols-[140px_1fr] gap-4 md:gap-6 items-start">
@@ -1205,6 +1216,7 @@ function ScheduleSection() {
                               {slot.type === "workshop" && "工作坊"}
                               {slot.type === "break" && "休息 / 交流"}
                               {slot.type === "general" && "一般安排"}
+                              {slot.type === "star-guest" && "⭐ 星級嘉賓"}
                             </span>
                           </div>
                         </div>

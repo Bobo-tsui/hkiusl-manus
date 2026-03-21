@@ -79,3 +79,8 @@
 - [x] Add ScentSafe company logo to Marcus speaker card
 - [x] Update Bobo title to include 安顏科技創辦人 and update bio text
 - [x] Add 安顏科技 OnAn logo to Bobo speaker card
+- [x] Replace Bobo personal photo with new headshot
+- [x] Remove square border from 杏林苑 logo in speaker card
+- [x] Change 西DorSi slot type from 分享環節 to 星級嘉賓, red YouTube style, add (Zoom) label, time to 11:30
+- [x] Push subsequent timeslots after 西DorSi to start at 12:00 (主辦座談 12:00, Q&A 12:30 → 12:45, LUNCH 12:40 → 1:00)
+- [x] Add glow animation to 學生發起 text in About section
