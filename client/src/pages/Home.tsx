@@ -49,6 +49,9 @@ const IMAGES = {
   riceUpLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/RiceUp-Eric_3a90cbde.jpeg",
   modaLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/moda-logo_09948e95.png",
   xinglinYuanLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/xinglin-yuan-logo_bca5a808.png",
+  xidorsiPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/xidorsi-photo_8c37cb8f.jpg",
+  scentsafeLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/scentsafe-logo_22dca674.png",
+  onanLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/onan-logo_e7683513.jpeg",
 };
 
 const PARTNER_LOGOS = [
@@ -373,9 +376,9 @@ function HeroSection() {
             transition={{ duration: 0.8, delay: 0.9 }}
             className="mx-auto mt-4 md:mt-5 max-w-3xl"
           >
-            <div className="rounded-2xl border border-white/15 bg-white/10 backdrop-blur-md px-4 py-3 md:px-5 md:py-4 text-center shadow-lg">
+            <div className="rounded-2xl border border-[#ffe6a8]/40 bg-white/10 backdrop-blur-md px-4 py-3 md:px-5 md:py-4 text-center shadow-lg animate-glow-hkmu">
               <p className="text-sm md:text-base font-semibold text-[#ffe6a8]">
-                HKMU 學生完成活動後，可向學校申請 Student Life Enrichment Subsidy Scheme，
+                🎓 HKMU 學生可免費參加！完成活動後，可向學校申請 Student Life Enrichment Subsidy Scheme，
                 每宗申請最高可獲 HK$300 資助，以報銷部分報名費。
               </p>
             </div>
@@ -588,8 +591,11 @@ interface Speaker {
   photo: string;
   bio: string;
   linkedin?: string;
+  youtube?: string;
   companyLogo?: string;
   companyName?: string;
+  companyLogo2?: string;
+  companyName2?: string;
 }
 
 const SPEAKERS: Record<string, Speaker> = {
@@ -624,23 +630,28 @@ const SPEAKERS: Record<string, Speaker> = {
   },
   bobo: {
     name: "徐沛慈 Bobo",
-    role: "HKIUSL 2026 發起人 | 杏林苑創辦人 | 香港都會大學商學院二年級",
+    role: "HKIUSL 2026 發起人 | 杏林苑創辦人 | 安顏科技創辦人 | 香港都會大學商學院二年級",
     photo: IMAGES.boboPhoto,
-    bio: "年輕創業者，具備商業策劃、募資、產品設計及專案管理的實戰經驗。她創辦了教育科技項目「杏林苑」，獲得數碼港創意微型基金（CCMF）港幣十萬元資助，並入圍多個初創比賽決賽。她負責策略規劃、合作夥伴拓展、業務發展及整體執行。",
+    bio: "作為青年創業者，現正推動兩個創新項目，包括以遊戲推廣中醫藥文化的「杏林苑」，以及結合 AI、3D 建模與 3D 打印技術的「安顏科技 OnAn Technology」。她曾獲數碼港創意微型基金（CCMF）港幣十萬元資助，並於 HKSTP Techathon+ 10A 及 HKSEC 2025-26 獲獎。",
     companyLogo: IMAGES.xinglinYuanLogo,
     companyName: "杏林苑 Xinglin Yuan",
+    companyLogo2: IMAGES.onanLogo,
+    companyName2: "安顏科技 OnAn Technology",
   },
   xidorsi: {
     name: "西DorSi",
     role: "自媒體博主 | YouTube 頻道「西DorSi偽中產生活態度」",
-    photo: "",
+    photo: IMAGES.xidorsiPhoto,
     bio: "自媒體博主，營運 YouTube 頻道「西DorSi偽中產生活態度」9年，主要向香港人提供大中華地區文旅資訊，擁有超35萬訂閱及超1億收看次數，境內外所有平台粉絲量超77萬。西DorSi亦是暢銷書作者，著有數本大灣區城市的旅遊、移居攻略書。2025年，西DorSi亦獲得香港特別行政區律政司委任，成為大灣區專責小組成員。",
+    youtube: "https://www.youtube.com/@saidorsi",
   },
   marcus: {
     name: "余浩堃 Marcus",
     role: "ScentSafe 創辦人 | 香港大學學生",
     photo: "",
     bio: "ScentSafe 創辦人，香港大學學生，將分享創業歷程與產品開發經驗。",
+    companyLogo: IMAGES.scentsafeLogo,
+    companyName: "ScentSafe",
   },
   emil: {
     name: "陳家豪 Emil",
@@ -677,6 +688,7 @@ function ScheduleSection() {
     description: string;
     type: "highlight" | "speech" | "workshop" | "break" | "general";
     speakers?: string[];
+    specialStyle?: "yellow-glow";
   }
 
   interface ScheduleDay {
@@ -741,6 +753,7 @@ function ScheduleSection() {
           description: "西DorSi 透過 Zoom 連線分享自媒體創業經驗與個人品牌建立心得。",
           type: "speech",
           speakers: ["xidorsi"],
+          specialStyle: "yellow-glow",
         },
         {
           timeRange: "11:45",
@@ -1030,6 +1043,14 @@ function ScheduleSection() {
                 className="w-14 h-14 md:w-16 md:h-16 rounded-2xl object-contain border-2 border-[#e8e0f0] bg-white shrink-0 p-1"
               />
             )}
+            {/* Second company logo */}
+            {speaker.companyLogo2 && (
+              <img
+                src={speaker.companyLogo2}
+                alt={speaker.companyName2 || ""}
+                className="w-14 h-14 md:w-16 md:h-16 rounded-2xl object-contain border-2 border-[#e8e0f0] bg-white shrink-0 p-1"
+              />
+            )}
             {/* Name and title */}
             <div className="flex-1 min-w-0">
               <h4 className="font-bold text-[#1a1a4e] text-base md:text-lg leading-snug">
@@ -1053,18 +1074,34 @@ function ScheduleSection() {
               <p className="text-[#5a5a7a] text-sm leading-relaxed">
                 {speaker.bio}
               </p>
-              {speaker.linkedin && (
-                <a
-                  href={speaker.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm text-[#0077b5] hover:underline mt-3"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <ExternalLink className="w-4 h-4 shrink-0" />
-                  LinkedIn
-                </a>
-              )}
+              <div className="flex flex-wrap gap-3 mt-3">
+                {speaker.linkedin && (
+                  <a
+                    href={speaker.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm text-[#0077b5] hover:underline"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <ExternalLink className="w-4 h-4 shrink-0" />
+                    LinkedIn
+                  </a>
+                )}
+                {speaker.youtube && (
+                  <a
+                    href={speaker.youtube}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm text-[#ff0000] hover:underline"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                    YouTube
+                  </a>
+                )}
+              </div>
             </motion.div>
           )}
         </div>
@@ -1141,10 +1178,15 @@ function ScheduleSection() {
               <div className="px-4 md:px-7 py-4 md:py-6 space-y-4 md:space-y-5">
                 {days[activeDay].slots.map((slot, idx) => {
                   const style = slotStyles[slot.type];
+                  const isYellowGlow = slot.specialStyle === "yellow-glow";
                   return (
                     <div
                       key={idx}
-                      className={`rounded-2xl md:rounded-3xl border p-4 md:p-6 ${style.card}`}
+                      className={`rounded-2xl md:rounded-3xl border p-4 md:p-6 ${
+                        isYellowGlow
+                          ? "bg-gradient-to-br from-[#fff8e1] to-[#fff3cd] border-[#ffd54f] animate-glow-yellow"
+                          : style.card
+                      }`}
                     >
                       <div className="grid grid-cols-1 md:grid-cols-[140px_1fr] gap-4 md:gap-6 items-start">
                         {/* 時間 */}
@@ -1486,17 +1528,18 @@ function SignupSection() {
                 </div>
               </div>
               
-              <motion.p
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.9 }}
-                className="mx-auto mt-4 max-w-3xl text-center text-sm md:text-base text-white/85"
+                className="mx-auto mt-4 max-w-3xl"
               >
-                <span className="font-semibold text-[#ffe6a8]">
-                  HKMU 學生完成活動後，可申請 Student Life Enrichment Subsidy Scheme，最高資助 HK$300
-                  
-                </span>
-              </motion.p>
+                <div className="rounded-2xl border border-[#ffe6a8]/40 bg-white/10 backdrop-blur-md px-4 py-3 md:px-5 md:py-4 text-center shadow-lg animate-glow-hkmu">
+                  <p className="text-sm md:text-base font-semibold text-[#ffe6a8]">
+                    🎓 HKMU 學生可免費參加！完成活動後，可申請 Student Life Enrichment Subsidy Scheme，最高資助 HK$300
+                  </p>
+                </div>
+              </motion.div>
                             
               {/* Deadline notice */}
               <div className="flex items-center justify-center gap-2 mb-10">

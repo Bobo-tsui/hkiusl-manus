@@ -158,3 +158,30 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: oklch(0.60 0.08 290);
 }
+
+/* Animated glow effect for special elements */
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(255, 230, 168, 0.4), 0 0 20px rgba(255, 230, 168, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(255, 230, 168, 0.7), 0 0 40px rgba(255, 230, 168, 0.35);
+  }
+}
+
+@keyframes glowPulseYellow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(255, 200, 50, 0.3), 0 0 25px rgba(255, 200, 50, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 200, 50, 0.6), 0 0 50px rgba(255, 200, 50, 0.3);
+  }
+}
+
+.animate-glow-hkmu {
+  animation: glowPulse 2.5s ease-in-out infinite;
+}
+
+.animate-glow-yellow {
+  animation: glowPulseYellow 2.5s ease-in-out infinite;
+}

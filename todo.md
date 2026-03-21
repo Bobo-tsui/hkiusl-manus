@@ -73,3 +73,9 @@
 - [x] Update Marcus (ScentSafe) - remove 暫定 tag, add full name 余浩堃 Marcus and title
 - [x] Update 致辭一 to [待定]
 - [x] Update 創業政策分享 to [邀請中] 數碼港代表
+- [x] Add 西DorSi YouTube icon and link (https://www.youtube.com/@saidorsi) to bio
+- [x] Style 西DorSi timeslot with yellow background, animation and glow effect
+- [x] Add animation and glow effect to HKMU free participation notice
+- [x] Add ScentSafe company logo to Marcus speaker card
+- [x] Update Bobo title to include 安顏科技創辦人 and update bio text
+- [x] Add 安顏科技 OnAn logo to Bobo speaker card
