@@ -379,7 +379,7 @@ function HeroSection() {
             <div className="rounded-2xl border border-[#ffe6a8]/40 bg-white/10 backdrop-blur-md px-4 py-3 md:px-5 md:py-4 text-center shadow-lg animate-glow-hkmu">
               <p className="text-sm md:text-base font-semibold text-[#ffe6a8]">
                 🎓 HKMU 學生可免費參加！完成活動後，可向學校申請 Student Life Enrichment Subsidy Scheme，
-                每宗申請最高可獲 HK$300 資助，以報銷部分報名費。
+                每宗申請最高可獲 HK$300 資助，以報銷全額報名！
               </p>
             </div>
           </motion.div>
@@ -749,7 +749,7 @@ function ScheduleSection() {
         },
         {
           timeRange: "11:30",
-          title: "星級嘉賓（Zoom）",
+          title: "⭐ 星級嘉賓",
           description: "西DorSi 透過 Zoom 連線分享自媒體創業經驗與個人品牌建立心得。",
           type: "star-guest",
           speakers: ["xidorsi"],
@@ -1216,7 +1216,7 @@ function ScheduleSection() {
                               {slot.type === "workshop" && "工作坊"}
                               {slot.type === "break" && "休息 / 交流"}
                               {slot.type === "general" && "一般安排"}
-                              {slot.type === "star-guest" && "⭐ 星級嘉賓"}
+                              {slot.type === "star-guest" && "星級嘉賓（Zoom）"}
                             </span>
                           </div>
                         </div>
@@ -1349,19 +1349,19 @@ function TestimonialSection() {
     {
       quote: "這個實戰營讓我明白，創業不只是寫程式，更需要商業策略和團隊合作。作為商科生，我終於找到了自己在科技領域的定位。",
       name: "陳同學",
-      school: "都會大學商學院",
+      school: "商學院",
       avatar: "C",
     },
     {
       quote: "線上遊戲融合課程的方式非常創新，讓原本枯燥的商業理論變得生動有趣。Pitching 環節更是讓我突破了自己的舒適圈。",
       name: "李同學",
-      school: "理工大學設計學院",
+      school: "設計學院",
       avatar: "L",
     },
     {
       quote: "認識了來自不同大專的同學，大家各有專長，互相學習。這種跨校合作的經驗是課堂上學不到的寶貴財富。",
       name: "王同學",
-      school: "城市大學工程學院",
+      school: "工程學院",
       avatar: "W",
     },
   ];
