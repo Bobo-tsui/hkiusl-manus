@@ -50,7 +50,7 @@ const IMAGES = {
   modaLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/moda-logo_09948e95.png",
   xinglinYuanLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/xinglin-yuan-logo_bca5a808.png",
   xidorsiPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/xidorsi-photo_8c37cb8f.jpg",
-  scentsafeLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/scentsafe-logo_22dca674.png",
+  scentsafeLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/scentsafe-logo-new_47ec5bed.png",
   onanLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/onan-logo_e7683513.jpeg",
 };
 
@@ -1554,7 +1554,7 @@ function SignupSection() {
               </motion.div>
                             
               {/* Deadline notice */}
-              <div className="flex items-center justify-center gap-2 mb-10">
+              <div className="flex items-center justify-center gap-2 mb-10 mt-10">
                 <Clock className="w-5 h-5 text-[#ff6b9d]" />
                 <span className="text-[#ff6b9d] font-bold text-lg">報名截止日期：2026 年 4 月 1 日</span>
               </div>

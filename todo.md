@@ -84,3 +84,5 @@
 - [x] Change 西DorSi slot type from 分享環節 to 星級嘉賓, red YouTube style, add (Zoom) label, time to 11:30
 - [x] Push subsequent timeslots after 西DorSi to start at 12:00 (主辦座談 12:00, Q&A 12:30 → 12:45, LUNCH 12:40 → 1:00)
 - [x] Add glow animation to 學生發起 text in About section
+- [x] Replace ScentSafe logo with new dark blue version
+- [x] Increase spacing between signup section block and deadline date line below
