@@ -86,3 +86,6 @@
 - [x] Add glow animation to 學生發起 text in About section
 - [x] Replace ScentSafe logo with new dark blue version
 - [x] Increase spacing between signup section block and deadline date line below
+- [x] Replace Marcus speaker photo with new headshot
+- [x] Add 致辭一 timeslot: 林詠欣 Sophia（南區區議員 / 大灣區青年企業家協會創會會長）[暫定]
+- [x] Add 致辭二 timeslot: [待定]

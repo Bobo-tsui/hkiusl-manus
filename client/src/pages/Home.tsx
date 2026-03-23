@@ -52,6 +52,8 @@ const IMAGES = {
   xidorsiPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/xidorsi-photo_8c37cb8f.jpg",
   scentsafeLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/scentsafe-logo-new_47ec5bed.png",
   onanLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/onan-logo_e7683513.jpeg",
+  marcusPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/marcus-photo_893ddebc.jpg",
+  sophiaPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/sophia-lam-photo_bda96cd1.jpg",
 };
 
 const PARTNER_LOGOS = [
@@ -645,10 +647,16 @@ const SPEAKERS: Record<string, Speaker> = {
     bio: "自媒體博主，營運 YouTube 頻道「西DorSi偽中產生活態度」9年，主要向香港人提供大中華地區文旅資訊，擁有超35萬訂閱及超1億收看次數，境內外所有平台粉絲量超77萬。西DorSi亦是暢銷書作者，著有數本大灣區城市的旅遊、移居攻略書。2025年，西DorSi亦獲得香港特別行政區律政司委任，成為大灣區專責小組成員。",
     youtube: "https://www.youtube.com/@saidorsi",
   },
+  sophia: {
+    name: "林詠欣 Sophia",
+    role: "南區區議員 | 大灣區青年企業家協會創會會長",
+    photo: IMAGES.sophiaPhoto,
+    bio: "南區區議員，大灣區青年企業家協會創會會長，致力於推動青年創業與大灣區合作發展。",
+  },
   marcus: {
     name: "余浩堃 Marcus",
     role: "ScentSafe 創辦人 | 香港大學學生",
-    photo: "",
+    photo: IMAGES.marcusPhoto,
     bio: "ScentSafe 創辦人，香港大學學生，將分享創業歷程與產品開發經驗。",
     companyLogo: IMAGES.scentsafeLogo,
     companyName: "ScentSafe",
@@ -724,14 +732,15 @@ function ScheduleSection() {
         },
         {
           timeRange: "10:40",
-          title: "致辭一 [待定]",
-          description: "嘉賓致辭，分享對香港技術轉移與青年創業的展望。",
+          title: "致辭一 [暫定]",
+          description: "林詠欣 Sophia（南區區議員 / 大灣區青年企業家協會創會會長）致辭，分享對香港青年創業與大灣區合作發展的展望。",
           type: "speech",
+          speakers: ["sophia"],
         },
         {
           timeRange: "10:50",
-          title: "致辭二 [暫定]",
-          description: "HKDi 副校長致辭。",
+          title: "致辭二 [待定]",
+          description: "嘉賓致辭。",
           type: "speech",
         },
         {
