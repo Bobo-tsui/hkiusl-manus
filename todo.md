@@ -89,3 +89,5 @@
 - [x] Replace Marcus speaker photo with new headshot
 - [x] Add 致辭一 timeslot: 林詠欣 Sophia（南區區議員 / 大灣區青年企業家協會創會會長）[暫定]
 - [x] Add 致辭二 timeslot: [待定]
+- [x] Update Emil speaker: new photo, HKDFA logo, translated bio in Traditional Chinese
+- [x] Update 致辭一 description to: 區議員林詠欣 Sophia 致辭，分享對香港青年創業與大灣區合作發展的展望。

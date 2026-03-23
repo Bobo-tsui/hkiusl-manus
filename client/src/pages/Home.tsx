@@ -54,6 +54,8 @@ const IMAGES = {
   onanLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/onan-logo_e7683513.jpeg",
   marcusPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/marcus-photo_893ddebc.jpg",
   sophiaPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/sophia-lam-photo_bda96cd1.jpg",
+  emilChanPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/emil-chan-photo_f68382d2.jpg",
+  hkdfaLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/hkdfa-logo_79941dde.png",
 };
 
 const PARTNER_LOGOS = [
@@ -663,9 +665,11 @@ const SPEAKERS: Record<string, Speaker> = {
   },
   emil: {
     name: "陳家豪 Emil",
-    role: "大隊長",
-    photo: "",
-    bio: "大隊長，協助參加者掌握團隊領導、任務拆解與臨場執行要點。",
+    role: "大隊長 | 金融服務及初創業界資深人士",
+    photo: IMAGES.emilChanPhoto,
+    bio: "Emil Chan 是金融服務及初創業界的知名人物，在跨境金融領域塑造了重要格局，並為企業提供數碼轉型的專業建議。他積極指導初創企業，在多所著名大學任教，並在多個具影響力的組織中擔任要職。Emil 的貢獻超越金融領域，持續啟發創新思維，並致力於培育良好的創業生態。",
+    companyLogo: IMAGES.hkdfaLogo,
+    companyName: "Hong Kong Digital Finance Association",
   },
   moda_panel: {
     name: "香港設計文化協會 (MODA)",
@@ -733,7 +737,7 @@ function ScheduleSection() {
         {
           timeRange: "10:40",
           title: "致辭一 [暫定]",
-          description: "林詠欣 Sophia（南區區議員 / 大灣區青年企業家協會創會會長）致辭，分享對香港青年創業與大灣區合作發展的展望。",
+          description: "區議員林詠欣 Sophia 致辭，分享對香港青年創業與大灣區合作發展的展望。",
           type: "speech",
           speakers: ["sophia"],
         },
