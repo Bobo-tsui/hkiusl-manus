@@ -5,6 +5,7 @@
  * Font: Noto Sans TC (黑體) + Space Grotesk
  */
 import { useEffect, useRef, useState } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { motion, useInView } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import {
@@ -60,11 +61,11 @@ const IMAGES = {
   vhaLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/venturehub_49410dbe.jpeg",
 };
 
-const PARTNER_LOGOS = [
-  { name: "香港設計文化協會 (MODA)", logo: "https://i.postimg.cc/pLgVQ1bW/moda_logo_2.png" },
-  { name: "幼聯 (HKCECES)", logo: "https://i.postimg.cc/LXjgQVVc/icon5.png" },
-  { name: "工合空間 (GUNGHO SPACE)", logo: "https://i.postimg.cc/2SY3X6VN/new-logo.png" },
-  { name: "Venture Hub Academy", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/venturehub_49410dbe.jpeg", url: "https://academy.venturehub.tech" },
+const PARTNER_LOGOS_STATIC = [
+  { nameKey: "partner.moda", logo: "https://i.postimg.cc/pLgVQ1bW/moda_logo_2.png" },
+  { nameKey: "partner.hkceces", logo: "https://i.postimg.cc/LXjgQVVc/icon5.png" },
+  { nameKey: "partner.gungho", logo: "https://i.postimg.cc/2SY3X6VN/new-logo.png" },
+  { nameKey: "partner.vha", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/venturehub_49410dbe.jpeg", url: "https://academy.venturehub.tech" },
 ];
 
 // ─── Animation Variants ───
@@ -125,6 +126,7 @@ function WaveDividerBottom({ color = "#1a1a4e" }: { color?: string }) {
 
 // ─── Countdown Timer ───
 function CountdownBanner() {
+  const { t } = useLanguage();
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const deadline = new Date('2026-04-01T23:59:59+08:00').getTime();
 
@@ -155,12 +157,12 @@ function CountdownBanner() {
     <div className="fixed top-0 left-0 right-0 z-[60] bg-gradient-to-r from-[#ff6b9d] via-[#ff5588] to-[#ff6b9d] text-white py-2 text-center shadow-md">
       <div className="container flex items-center justify-center gap-2 text-sm font-medium">
         <Clock className="w-4 h-4 animate-pulse" />
-        <span>報名截止倒數：</span>
+        <span>{t("countdown.label")}</span>
         <span className="font-black tracking-wider" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-          {timeLeft.days}<span className="text-white/70 text-xs mx-0.5">天</span>
-          {String(timeLeft.hours).padStart(2, '0')}<span className="text-white/70 text-xs mx-0.5">時</span>
-          {String(timeLeft.minutes).padStart(2, '0')}<span className="text-white/70 text-xs mx-0.5">分</span>
-          {String(timeLeft.seconds).padStart(2, '0')}<span className="text-white/70 text-xs mx-0.5">秒</span>
+          {timeLeft.days}<span className="text-white/70 text-xs mx-0.5">{t("countdown.days")}</span>
+          {String(timeLeft.hours).padStart(2, '0')}<span className="text-white/70 text-xs mx-0.5">{t("countdown.hours")}</span>
+          {String(timeLeft.minutes).padStart(2, '0')}<span className="text-white/70 text-xs mx-0.5">{t("countdown.minutes")}</span>
+          {String(timeLeft.seconds).padStart(2, '0')}<span className="text-white/70 text-xs mx-0.5">{t("countdown.seconds")}</span>
         </span>
         <a
           href={JOTFORM_URL}
@@ -168,7 +170,7 @@ function CountdownBanner() {
           rel="noopener noreferrer"
           className="ml-3 px-3 py-0.5 rounded-full bg-white text-[#ff5588] text-xs font-bold hover:bg-white/90 transition-colors"
         >
-          立即報名
+          {t("countdown.register")}
         </a>
       </div>
     </div>
@@ -177,6 +179,7 @@ function CountdownBanner() {
 
 // ─── Navigation ───
 function Navbar() {
+  const { lang, setLang, t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -187,12 +190,12 @@ function Navbar() {
   }, []);
 
   const navLinks = [
-    { label: "關於活動", href: "#about" },
-    { label: "活動亮點", href: "#features" },
-    { label: "日程安排", href: "#schedule" },
-    { label: "活動花絮", href: "#gallery" },
-    { label: "合作機構", href: "#partners" },
-    { label: "報名", href: JOTFORM_URL, external: true },
+    { label: t("nav.about"), href: "#about" },
+    { label: t("nav.features"), href: "#features" },
+    { label: t("nav.schedule"), href: "#schedule" },
+    { label: t("nav.gallery"), href: "#gallery" },
+    { label: t("nav.partners"), href: "#partners" },
+    { label: t("nav.register"), href: JOTFORM_URL, external: true },
   ];
 
   return (
@@ -232,9 +235,19 @@ function Navbar() {
             <Button
               className="bg-[#b8a9d4] hover:bg-[#a08ec0] text-[#1a1a4e] font-semibold rounded-full px-6"
             >
-              立即報名
+              {t("nav.registerBtn")}
             </Button>
           </a>
+          <button
+            onClick={() => setLang(lang === "zh" ? "en" : "zh")}
+            className={`ml-2 px-3 py-1.5 rounded-full text-xs font-bold border transition-colors ${
+              scrolled
+                ? "border-[#1a1a4e]/30 text-[#1a1a4e] hover:bg-[#1a1a4e]/10"
+                : "border-white/30 text-white hover:bg-white/10"
+            }`}
+          >
+            {lang === "zh" ? "EN" : "中"}
+          </button>
         </div>
 
         {/* Mobile hamburger */}
@@ -269,9 +282,15 @@ function Navbar() {
             ))}
             <a href={JOTFORM_URL} target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)}>
               <Button className="w-full bg-[#1a1a4e] hover:bg-[#2a2a6e] text-white rounded-full mt-2">
-                立即報名
+                {t("nav.registerBtn")}
               </Button>
             </a>
+            <button
+              onClick={() => { setLang(lang === "zh" ? "en" : "zh"); setMobileOpen(false); }}
+              className="w-full mt-2 px-3 py-2 rounded-full text-sm font-bold border border-[#1a1a4e]/30 text-[#1a1a4e] hover:bg-[#1a1a4e]/10 transition-colors"
+            >
+              {lang === "zh" ? "Switch to English" : "切換至中文"}
+            </button>
           </div>
         </motion.div>
       )}
@@ -281,6 +300,7 @@ function Navbar() {
 
 // ─── Hero Section ───
 function HeroSection() {
+  const { t } = useLanguage();
   return (
     <section className="relative min-h-screen overflow-hidden">
       {/* Background image */}
@@ -307,7 +327,7 @@ function HeroSection() {
             className="mx-auto"
           >
             <span className="inline-block px-3 py-1 md:px-4 md:py-1.5 rounded-full bg-[#b8a9d4]/20 text-[#d4c8e8] text-xs md:text-sm font-medium mb-4 md:mb-6 backdrop-blur-sm border border-[#b8a9d4]/20">
-              2026 年 4 月 11-19 日
+              {t("hero.date")}
             </span>
           </motion.div>
 
@@ -328,12 +348,12 @@ function HeroSection() {
             className="mx-auto text-3xl md:text-[2.5rem] lg:text-[2.8rem] xl:text-[3.2rem] font-black text-white leading-tight mb-4 md:mb-6 text-center"
           >
             <span className="hidden md:inline whitespace-nowrap">
-              香港跨大專<span className="text-[#d4c8e8]">技術經理人</span>實戰營 2026
+              {t("hero.titleLine1")}<span className="text-[#d4c8e8]">{t("hero.titleHighlight")}</span>{t("hero.titleLine3")}
             </span>
             <span className="md:hidden">
-              香港跨大專<br />
-              <span className="text-[#d4c8e8]">技術經理人</span><br />
-              實戰營 2026
+              {t("hero.titleLine1")}<br />
+              <span className="text-[#d4c8e8]">{t("hero.titleHighlight")}</span><br />
+              {t("hero.titleLine3")}
             </span>
           </motion.h1>
 
@@ -343,8 +363,7 @@ function HeroSection() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="mx-auto text-base md:text-xl text-white/80 mb-6 md:mb-8 max-w-4xl leading-relaxed text-center"
           >
-            匯聚香港各大專院校學生，透過實戰工作坊、創業比賽與業界交流，
-            培育下一代技術經理人。不只是理科生的舞台——商科、設計、人文學科同樣大放異彩。
+            {t("hero.description")}
           </motion.p>
 
           <motion.div
@@ -355,7 +374,7 @@ function HeroSection() {
           >
             <a href={JOTFORM_URL} target="_blank" rel="noopener noreferrer" className="flex justify-center">
               <Button className="inline-flex items-center justify-center bg-[#b8a9d4] hover:bg-[#a08ec0] text-[#1a1a4e] font-bold text-base md:text-lg rounded-full px-6 py-5 md:px-8 md:py-6 shadow-lg shadow-[#b8a9d4]/25 transition-transform hover:scale-105">
-                立即報名<ArrowRight className="ml-2.5 w-5 h-5 shrink-0" />
+                {t("hero.registerBtn")}<ArrowRight className="ml-2.5 w-5 h-5 shrink-0" />
               </Button>
             </a>
             <a href="#about" className="flex justify-center">
@@ -363,7 +382,7 @@ function HeroSection() {
                 variant="outline"
                 className="border-white/30 text-white hover:bg-white/10 font-medium text-base md:text-lg rounded-full px-6 py-5 md:px-8 md:py-6 backdrop-blur-sm"
               >
-                了解更多
+                {t("hero.learnMore")}
               </Button>
             </a>
             <a href="https://www.instagram.com/hkiusl.startup/" target="_blank" rel="noopener noreferrer" className="flex justify-center">
@@ -372,7 +391,7 @@ function HeroSection() {
                 className="border-[#E1306C]/50 text-white hover:bg-[#E1306C]/20 font-medium text-base md:text-lg rounded-full px-6 py-5 md:px-8 md:py-6 backdrop-blur-sm gap-2"
               >
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                Follow Us
+                {t("hero.followUs")}
               </Button>
             </a>
           </motion.div>
@@ -385,8 +404,7 @@ function HeroSection() {
           >
             <div className="rounded-2xl border border-[#ffe6a8]/40 bg-white/10 backdrop-blur-md px-4 py-3 md:px-5 md:py-4 text-center shadow-lg animate-glow-hkmu">
               <p className="text-sm md:text-base font-semibold text-[#ffe6a8]">
-                🎓 HKMU 學生可免費參加！完成活動後，可向學校申請 Student Life Enrichment Subsidy Scheme，
-                每宗申請最高可獲 HK$300 資助，以報銷全額報名！
+                {t("hero.hkmuNotice")}
               </p>
             </div>
           </motion.div>
@@ -398,9 +416,9 @@ function HeroSection() {
             className="mx-auto mt-8 md:mt-12 grid grid-cols-3 gap-6 md:gap-8"
           >
             {[
-              { num: "2", suffix: "天", label: "精彩活動" },
-              { num: "6+", label: "業界嘉賓" },
-              { num: "150+", label: "參與學生" },
+              { num: "2", suffix: t("hero.statDaysSuffix"), label: t("hero.statEvents") },
+              { num: "6+", label: t("hero.statSpeakers") },
+              { num: "150+", label: t("hero.statStudents") },
             ].map((stat: { num: string; suffix?: string; label: string }) => (
               <div key={stat.label} className="text-center">
                 <div
@@ -424,23 +442,23 @@ function HeroSection() {
 
 // ─── About Section ───
 function AboutSection() {
+  const { t } = useLanguage();
   return (
     <section id="about" className="py-20 bg-[#faf8f5]">
       <div className="container">
         <AnimatedSection>
           <motion.div variants={fadeUp} className="text-center mb-16">
             <span className="inline-block px-4 py-1.5 rounded-full bg-[#e8e0f0] text-[#5a4a7a] text-sm font-medium mb-4">
-              關於活動
+              {t("about.badge")}
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a4e] mb-4">
-              什麼是技術經理人實戰營？
+              {t("about.title")}
             </h2>
             <p className="text-[#5a5a7a] max-w-2xl mx-auto text-lg leading-relaxed">
-              近年香港政府大力推動大學技術轉移，鼓勵將學術研究成果轉化為商業應用。技術經理人（Technology Transfer Professional）正是這個過程中連結科技與商業的關鍵角色。
-              本實戰營旨在讓大專學生在參加創業比賽前掌握基本概念，培養領導才能、商業知識與設計思維。
+              {t("about.description")}
             </p>
             <p className="text-[#7a5a9a] max-w-2xl mx-auto text-base mt-4 font-medium bg-[#e8e0f0] rounded-xl px-6 py-3 animate-glow-student">
-              本活動完全由學生發起，由香港都會大學、香港理工大學、香港城市大學、香港大學及香港科技大學的學生主導籌辦。
+              {t("about.studentLed")}
             </p>
           </motion.div>
         </AnimatedSection>
@@ -454,7 +472,7 @@ function AboutSection() {
                 className="w-full h-80 object-cover"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#1a1a4e]/80 to-transparent p-6">
-                <p className="text-white text-sm font-medium">AI 生成活動模擬圖 — 主題演講</p>
+                <p className="text-white text-sm font-medium">{t("about.imageCaption")}</p>
               </div>
             </div>
           </motion.div>
@@ -465,9 +483,9 @@ function AboutSection() {
                 <Users className="w-6 h-6 text-[#5a4a7a]" />
               </div>
               <div>
-                <h3 className="font-bold text-[#1a1a4e] text-lg mb-1">跨學科參與</h3>
+                <h3 className="font-bold text-[#1a1a4e] text-lg mb-1">{t("about.feature1Title")}</h3>
                 <p className="text-[#5a5a7a]">
-                  不是只有理科生才可以參加高科技發展！商學院、設計學院學生同樣是技術經理人的最佳人選。
+                  {t("about.feature1Desc")}
                 </p>
               </div>
             </div>
@@ -476,9 +494,9 @@ function AboutSection() {
                 <Gamepad2 className="w-6 h-6 text-[#8a6a3a]" />
               </div>
               <div>
-                <h3 className="font-bold text-[#1a1a4e] text-lg mb-1">線上遊戲融合課程</h3>
+                <h3 className="font-bold text-[#1a1a4e] text-lg mb-1">{t("about.feature2Title")}</h3>
                 <p className="text-[#5a5a7a]">
-                  2026 年最大特色——將課程融入線上遊戲，讓學習變得更加互動有趣。
+                  {t("about.feature2Desc")}
                 </p>
               </div>
             </div>
@@ -487,9 +505,9 @@ function AboutSection() {
                 <Rocket className="w-6 h-6 text-[#3a6a8a]" />
               </div>
               <div>
-                <h3 className="font-bold text-[#1a1a4e] text-lg mb-1">實戰創業體驗</h3>
+                <h3 className="font-bold text-[#1a1a4e] text-lg mb-1">{t("about.feature3Title")}</h3>
                 <p className="text-[#5a5a7a]">
-                  從商業策略遊戲到 Startup Pitching，全方位模擬真實創業歷程。
+                  {t("about.feature3Desc")}
                 </p>
               </div>
             </div>
@@ -502,26 +520,27 @@ function AboutSection() {
 
 // ─── Features Grid ───
 function FeaturesSection() {
+  const { t } = useLanguage();
   const features = [
     {
       icon: <Presentation className="w-8 h-8" />,
-      title: "星級嘉賓演講",
-      desc: "邀請來自不同大學的創業者分享創業政策與實戰經驗。",
+      title: t("features.item1Title"),
+      desc: t("features.item1Desc"),
       color: "from-[#1a1a4e] to-[#2a3a6e]",
       iconBg: "bg-[#d4c8e8]",
     },
     {
       icon: <Gamepad2 className="w-8 h-8" />,
-      title: "商業策略遊戲",
-      desc: "透過互動遊戲學習商業策略、專利佈局與思維訓練，寓教於樂。",
+      title: t("features.item2Title"),
+      desc: t("features.item2Desc"),
       color: "from-[#5a4a7a] to-[#7a6a9a]",
       iconBg: "bg-[#fce8d0]",
       trialUrl: "https://patentpioneer-hkiusl.netlify.app/",
     },
     {
       icon: <Trophy className="w-8 h-8" />,
-      title: "極創客 Pitching",
-      desc: "組隊參加極創客挑戰，在限時內完成創業提案並向評審進行路演。",
+      title: t("features.item3Title"),
+      desc: t("features.item3Desc"),
       color: "from-[#3a6a8a] to-[#4a8aaa]",
       iconBg: "bg-[#d0f0e8]",
     },
@@ -539,13 +558,13 @@ function FeaturesSection() {
           <AnimatedSection>
             <motion.div variants={fadeUp} className="text-center mb-16">
               <span className="inline-block px-4 py-1.5 rounded-full bg-[#b8a9d4]/20 text-[#d4c8e8] text-sm font-medium mb-4">
-                活動亮點
+                {t("features.badge")}
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                三大核心體驗
+                {t("features.title")}
               </h2>
               <p className="text-white/60 max-w-xl mx-auto">
-                從演講到實戰，全方位提升你的創業與管理能力
+                {t("features.subtitle")}
               </p>
             </motion.div>
           </AnimatedSection>
@@ -572,12 +591,12 @@ function FeaturesSection() {
                       className="mt-6 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#ff6b9d] text-white font-bold text-base shadow-lg shadow-[#ff6b9d]/30 hover:bg-[#ff5588] hover:shadow-[#ff6b9d]/50 hover:scale-105 transition-all animate-pulse hover:animate-none"
                     >
                       <Gamepad2 className="w-5 h-5" />
-                      立即試玩
+                      {t("features.tryNow")}
                       <ArrowRight className="w-4 h-4" />
                     </a>
                   ) : (
                     <div className="mt-6 flex items-center text-[#d4c8e8] text-sm font-medium group-hover:translate-x-2 transition-transform">
-                      了解更多 <ArrowRight className="ml-1 w-4 h-4" />
+                      {t("features.learnMore")} <ArrowRight className="ml-1 w-4 h-4" />
                     </div>
                   )}
                 </div>
@@ -601,117 +620,120 @@ interface Speaker {
   youtube?: string;
   companyLogo?: string;
   companyName?: string;
+  companyNameKey?: string;
   companyLogo2?: string;
   companyName2?: string;
+  companyName2Key?: string;
 }
 
-const SPEAKERS: Record<string, Speaker> = {
+const SPEAKERS_STATIC: Record<string, Omit<Speaker, 'name' | 'role' | 'bio'> & { nameKey: string; roleKey: string; bioKey: string }> = {
   alan: {
-    name: "張益麟 Alan, MH",
-    role: "都會大學校董會成員 | 興迅集團創辦人及董事總經理 | 香港社會創業論壇主席",
+    nameKey: "speaker.alan.name",
+    roleKey: "speaker.alan.role",
     photo: IMAGES.alanPhoto,
-    bio: "資深商界領袖，興迅集團創辦人及董事總經理，同時擔任香港社會創業論壇主席及都會大學校董會成員，長期支持香港高等教育與青年創業發展。",
+    bioKey: "speaker.alan.bio",
   },
   angel: {
-    name: "鄺善珩 Angel",
-    role: "創想教育 Co-founder",
+    nameKey: "speaker.angel.name",
+    roleKey: "speaker.angel.role",
     photo: IMAGES.angelPhoto,
-    bio: "香港教育大學準畢業生，擁有五年數學教學經驗。將數學與科技結合，創辦「創想教育」，曾獲得60萬創業基金及受邀海外參展。",
+    bioKey: "speaker.angel.bio",
     linkedin: "https://hk.linkedin.com/in/sin-hang-angel-kwong",
     companyLogo: IMAGES.inspireEduLogo,
-    companyName: "創想教育 Inspire Education",
+    companyNameKey: "company.inspireEdu",
   },
   ryan: {
-    name: "張永超 Ryan",
-    role: "香港奇智醫學 CEO",
+    nameKey: "speaker.ryan.name",
+    roleKey: "speaker.ryan.role",
     photo: IMAGES.ryanPhoto,
-    bio: "多次在權威創業大賽中獲獎，包括HKMU Hackathon冠軍、挑戰杯全國二等獎，擁有多年企業管理與創業經驗。",
+    bioKey: "speaker.ryan.bio",
   },
   eric: {
-    name: "黃泳洋 Eric",
-    role: "有飯科技 RiceUp Co-Founder | 香港城市大學大三學生",
+    nameKey: "speaker.eric.name",
+    roleKey: "speaker.eric.role",
     photo: IMAGES.ericPhoto,
-    bio: "曾創辦自媒體公司，擁有5年以上市場拓展和初創獲客0-1的實戰經驗。其參與創辦的 RiceUp，獲科學園及高校在內的多輪種子輪支持，擁有超萬人的私域社群，專注於讓用戶用科技，吃得好，省到錢。",
+    bioKey: "speaker.eric.bio",
     companyLogo: IMAGES.riceUpLogo,
-    companyName: "有飯科技 RiceUp",
+    companyNameKey: "company.riceUp",
   },
   bobo: {
-    name: "徐沛慈 Bobo",
-    role: "HKIUSL 2026 發起人 | 杏林苑創辦人 | 安顏科技創辦人 | 香港都會大學商學院二年級",
+    nameKey: "speaker.bobo.name",
+    roleKey: "speaker.bobo.role",
     photo: IMAGES.boboPhoto,
-    bio: "作為青年創業者，現正推動兩個創新項目，包括以遊戲推廣中醫藥文化的「杏林苑」，以及結合 AI、3D 建模與 3D 打印技術的「安顏科技 OnAn Technology」。她曾獲數碼港創意微型基金（CCMF）港幣十萬元資助，並於 HKSTP Techathon+ 10A 及 HKSEC 2025-26 獲獎。",
+    bioKey: "speaker.bobo.bio",
     companyLogo: IMAGES.xinglinYuanLogo,
-    companyName: "杏林苑 Xinglin Yuan",
+    companyNameKey: "company.xinglinYuan",
     companyLogo2: IMAGES.onanLogo,
-    companyName2: "安顏科技 OnAn Technology",
+    companyName2Key: "company.onan",
   },
   xidorsi: {
-    name: "西DorSi",
-    role: "自媒體博主 | YouTube 頻道「西DorSi偽中產生活態度」",
+    nameKey: "speaker.xidorsi.name",
+    roleKey: "speaker.xidorsi.role",
     photo: IMAGES.xidorsiPhoto,
-    bio: "自媒體博主，營運 YouTube 頻道「西DorSi偽中產生活態度」9年，主要向香港人提供大中華地區文旅資訊，擁有超35萬訂閱及超1億收看次數，境內外所有平台粉絲量超77萬。西DorSi亦是暢銷書作者，著有數本大灣區城市的旅遊、移居攻略書。2025年，西DorSi亦獲得香港特別行政區律政司委任，成為大灣區專責小組成員。",
+    bioKey: "speaker.xidorsi.bio",
     youtube: "https://www.youtube.com/@saidorsi",
   },
   sophia: {
-    name: "林詠欣 Sophia",
-    role: "南區區議員 | 大灣區青年企業家協會創會會長",
+    nameKey: "speaker.sophia.name",
+    roleKey: "speaker.sophia.role",
     photo: IMAGES.sophiaPhoto,
-    bio: "南區區議員，大灣區青年企業家協會創會會長，致力於推動青年創業與大灣區合作發展。",
+    bioKey: "speaker.sophia.bio",
     companyLogo: IMAGES.gbaLogo,
-    companyName: "大灣區青年企業家協會",
+    companyNameKey: "company.gba",
   },
   marcus: {
-    name: "余浩堃 Marcus",
-    role: "ScentSafe 創辦人 | 香港大學學生",
+    nameKey: "speaker.marcus.name",
+    roleKey: "speaker.marcus.role",
     photo: IMAGES.marcusPhoto,
-    bio: "ScentSafe 創辦人，香港大學學生，將分享創業歷程與產品開發經驗。",
+    bioKey: "speaker.marcus.bio",
     companyLogo: IMAGES.scentsafeLogo,
-    companyName: "ScentSafe",
+    companyNameKey: "company.scentsafe",
   },
   emil: {
-    name: "陳家豪 Emil",
-    role: "大隊長 | 金融服務及初創業界資深人士",
+    nameKey: "speaker.emil.name",
+    roleKey: "speaker.emil.role",
     photo: IMAGES.emilChanPhoto,
-    bio: "Emil Chan 是金融服務及初創業界的知名人物，在跨境金融領域塑造了重要格局，並為企業提供數碼轉型的專業建議。他積極指導初創企業，在多所著名大學任教，並在多個具影響力的組織中擔任要職。Emil 的貢獻超越金融領域，持續啟發創新思維，並致力於培育良好的創業生態。",
+    bioKey: "speaker.emil.bio",
     companyLogo: IMAGES.hkdfaLogo,
-    companyName: "Hong Kong Digital Finance Association",
+    companyNameKey: "company.hkdfa",
   },
   moda_panel: {
-    name: "香港設計文化協會 (MODA)",
-    role: "主辦座談協辦機構",
+    nameKey: "speaker.moda_panel.name",
+    roleKey: "speaker.moda_panel.role",
     photo: "",
-    bio: "香港設計文化協會（MODA）負責主辦座談環節，探討設計思維與創業的結合。",
+    bioKey: "speaker.moda_panel.name",
     companyLogo: IMAGES.modaLogo,
-    companyName: "香港設計文化協會 MODA",
+    companyNameKey: "company.moda",
   },
   maurice: {
-    name: "Maurice",
-    role: "香港設計文化協會 (MODA)",
+    nameKey: "speaker.maurice.name",
+    roleKey: "speaker.maurice.role",
     photo: "",
-    bio: "來自香港設計文化協會（MODA），將分享設計思維與創業的結合。",
+    bioKey: "speaker.maurice.name",
     companyLogo: IMAGES.modaLogo,
-    companyName: "香港設計文化協會 MODA",
+    companyNameKey: "company.moda",
   },
   vha_business: {
-    name: "Venture Hub Academy 代表（Business）",
-    role: "Venture Hub Academy 合夥人",
+    nameKey: "speaker.vha_business.name",
+    roleKey: "speaker.vha_business.role",
     photo: "",
-    bio: "Venture Hub Academy 商業合夥人，將分享創業實戰經驗與商業策略見解。",
+    bioKey: "speaker.vha_business.bio",
     companyLogo: IMAGES.vhaLogo,
-    companyName: "Venture Hub Academy",
+    companyNameKey: "company.vha",
   },
   vha_tech: {
-    name: "Venture Hub Academy 代表（Tech）",
-    role: "Venture Hub Academy 技術團隊",
+    nameKey: "speaker.vha_tech.name",
+    roleKey: "speaker.vha_tech.role",
     photo: "",
-    bio: "Venture Hub Academy 技術團隊代表，將分享 AI 時代 Vibe Coding 的機遇與實踐。",
+    bioKey: "speaker.vha_tech.bio",
     companyLogo: IMAGES.vhaLogo,
-    companyName: "Venture Hub Academy",
+    companyNameKey: "company.vha",
   },
 };
 
 // ─── Schedule Section ───
 function ScheduleSection() {
+  const { t } = useLanguage();
   const [activeDay, setActiveDay] = useState(0);
   const [expandedSpeaker, setExpandedSpeaker] = useState<string | null>(null);
 
@@ -736,262 +758,262 @@ function ScheduleSection() {
 
   const days: ScheduleDay[] = [
     {
-      date: "4月11日（六）",
+      date: t("schedule.day1.date"),
       shortDate: "Day 1",
-      venue: "都會大學中國銀行演講廳",
-      label: "開幕禮・演講・授課",
-      theme: "開幕啟航與創業導入",
+      venue: t("schedule.venue.hkmu"),
+      label: t("schedule.day1.label"),
+      theme: t("schedule.day1.theme"),
       themeColor: "from-[#2f63e0] to-[#3d73f0]",
       slots: [
         {
           timeRange: "10:00",
-          title: "簽到",
-          description: "參加者簽到入場，領取活動資料。",
+          title: t("d1.s1.title"),
+          description: t("d1.s1.desc"),
           type: "general",
         },
         {
           timeRange: "10:30",
-          title: "正式開始",
-          description: "主辦方致歡迎辭，介紹活動整體框架與目標。",
+          title: t("d1.s2.title"),
+          description: t("d1.s2.desc"),
           type: "opening",
         },
         {
           timeRange: "10:35",
-          title: "Venture Hub Academy 分享",
-          description: "Venture Hub Academy 派出兩位代表前來分享，商業合夥人分享創業實戰經驗，技術團隊探討 AI 時代 Vibe Coding 的機遇。",
+          title: t("d1.s3.title"),
+          description: t("d1.s3.desc"),
           type: "guest-share",
           speakers: ["vha_business", "vha_tech"],
         },
         {
           timeRange: "11:00",
-          title: "致辭一 [暫定]",
-          description: "區議員林詠欣 Sophia 致辭，分享對香港青年創業與大灣區合作發展的展望。",
+          title: t("d1.s4.title"),
+          description: t("d1.s4.desc"),
           type: "speech",
           speakers: ["sophia"],
         },
         {
           timeRange: "11:10",
-          title: "致辭二 [待定]",
-          description: "嘉賓致辭。",
+          title: t("d1.s5.title"),
+          description: t("d1.s5.desc"),
           type: "speech",
         },
         {
           timeRange: "11:20",
-          title: "嘉賓分享",
-          description: "嘉賓分享香港創業生態與未來趨勢，讓參加者掌握宏觀方向。",
+          title: t("d1.s6.title"),
+          description: t("d1.s6.desc"),
           type: "guest-share",
           speakers: ["alan"],
         },
         {
           timeRange: "11:30",
-          title: "⭐ 星級嘉賓",
-          description: "西DorSi 透過 Zoom 連線分享自媒體創業經驗與個人品牌建立心得。",
+          title: t("d1.s7.title"),
+          description: t("d1.s7.desc"),
           type: "star-guest",
           speakers: ["xidorsi"],
           specialStyle: "red-glow",
         },
         {
           timeRange: "12:00",
-          title: "主辦座談",
-          description: "與嘉賓進行座談，深入探討技術經理人的角色與機遇。",
+          title: t("d1.s8.title"),
+          description: t("d1.s8.desc"),
           type: "key-event",
         },
         {
           timeRange: "12:45",
-          title: "Q & A",
-          description: "參加者自由提問，與嘉賓互動交流。",
+          title: t("d1.s9.title"),
+          description: t("d1.s9.desc"),
           type: "key-event",
         },
         {
           timeRange: "1:00",
-          title: "自由交流 / LUNCH",
-          description: "參加者與嘉賓自由交流、建立跨校連結，享用午餐。",
+          title: t("d1.s10.title"),
+          description: t("d1.s10.desc"),
           type: "break",
         },
         {
           timeRange: "2:15",
-          title: "商業策略遊戲",
-          description: "透過互動遊戲學習商業策略，以遊戲方式理解創業決策與價值定位。",
+          title: t("d1.s11.title"),
+          description: t("d1.s11.desc"),
           type: "highlight",
         },
         {
           timeRange: "2:30",
-          title: "Startup 分享",
-          description: "Bobo 分享創業歷程與實戰經驗。",
+          title: t("d1.s12.title"),
+          description: t("d1.s12.desc"),
           type: "guest-share",
           speakers: ["bobo"],
         },
         {
           timeRange: "2:50",
-          title: "思維策略遊戲",
-          description: "透過思維策略遊戲訓練創業思維與邏輯分析能力。",
+          title: t("d1.s13.title"),
+          description: t("d1.s13.desc"),
           type: "highlight",
         },
         {
           timeRange: "3:00",
-          title: "Startup 分享 — RiceUp",
-          description: "Eric 分享從自媒體到餐飲科技的創業轉型，RiceUp 如何獲得科學園種子輪支持並建立超萬人社群。",
+          title: t("d1.s14.title"),
+          description: t("d1.s14.desc"),
           type: "guest-share",
           speakers: ["eric"],
         },
         {
           timeRange: "3:15",
-          title: "Startup 分享 — Inspire Education",
-          description: "Angel 分享創辦創想教育的歷程，如何將數學與科技結合，獲得60萬創業基金及海外參展機會。",
+          title: t("d1.s15.title"),
+          description: t("d1.s15.desc"),
           type: "guest-share",
           speakers: ["angel"],
         },
         {
           timeRange: "3:30",
-          title: "專利策略遊戲",
-          description: "透過專利策略遊戲了解知識產權佈局與專利申請策略。",
+          title: t("d1.s16.title"),
+          description: t("d1.s16.desc"),
           type: "highlight",
         },
         {
           timeRange: "3:45",
-          title: "小休",
-          description: "短暫休息，補充能量。",
+          title: t("d1.s17.title"),
+          description: t("d1.s17.desc"),
           type: "break",
         },
         {
           timeRange: "4:00",
-          title: "Startup 分享 — ScentSafe",
-          description: "余浩堃 Marcus 分享 ScentSafe 的創業歷程與產品開發經驗。",
+          title: t("d1.s18.title"),
+          description: t("d1.s18.desc"),
           type: "guest-share",
           speakers: ["marcus"],
         },
         {
           timeRange: "4:15",
-          title: "Startup 分享 — 光合抗菌人工皮",
-          description: "Ryan 分享從 HKMU Hackathon 冠軍到創辦奇智醫學的創業歷程，以及醫療創新的實戰經驗。",
+          title: t("d1.s19.title"),
+          description: t("d1.s19.desc"),
           type: "guest-share",
           speakers: ["ryan"],
         },
         {
           timeRange: "4:30",
-          title: "Day 2 工作坊講解",
-          description: "預告 Day 2 組隊實作、工作坊流程與極創客挑戰要求。",
+          title: t("d1.s20.title"),
+          description: t("d1.s20.desc"),
           type: "general",
         },
         {
           timeRange: "5:30",
-          title: "完結",
-          description: "Day 1 活動圓滿結束。",
+          title: t("d1.s21.title"),
+          description: t("d1.s21.desc"),
           type: "general",
         },
       ],
     },
     {
-      date: "4月12日（日）",
+      date: t("schedule.day2.date"),
       shortDate: "Day 2",
-      venue: "柴灣青年廣場「青立方」",
-      label: "工作坊・極創客",
-      theme: "組隊實戰與極創客路演",
+      venue: t("schedule.venue.youthsquare"),
+      label: t("schedule.day2.label"),
+      theme: t("schedule.day2.theme"),
       themeColor: "from-[#ff7a18] to-[#ff6b00]",
       slots: [
         {
           timeRange: "10:00",
-          title: "簽到",
-          description: "參加者簽到入場。",
+          title: t("d2.s1.title"),
+          description: t("d2.s1.desc"),
           type: "general",
         },
         {
           timeRange: "10:30",
-          title: "正式開始",
-          description: "回顧 Day 1 重點，介紹 Day 2 流程與目標。",
+          title: t("d2.s2.title"),
+          description: t("d2.s2.desc"),
           type: "opening",
         },
         {
           timeRange: "10:40",
-          title: "選隊長",
-          description: "各組選出隊長，確立團隊領導角色。",
+          title: t("d2.s3.title"),
+          description: t("d2.s3.desc"),
           type: "highlight",
         },
         {
           timeRange: "11:00",
-          title: "組隊 + 破冰",
-          description: "組隊與破冰活動，建立跨學科團隊合作基礎，準備進入創業實戰。",
+          title: t("d2.s4.title"),
+          description: t("d2.s4.desc"),
           type: "highlight",
         },
         {
           timeRange: "12:00",
-          title: "大隊長架到",
-          description: "由大隊長帶來實戰分享，協助參加者掌握團隊領導、任務拆解與臨場執行要點。",
+          title: t("d2.s5.title"),
+          description: t("d2.s5.desc"),
           type: "guest-share",
           speakers: ["emil"],
         },
         {
           timeRange: "12:45",
-          title: "Lunch",
-          description: "團隊整理方向、補充能量，並與其他隊伍交流初步想法。",
+          title: t("d2.s6.title"),
+          description: t("d2.s6.desc"),
           type: "break",
         },
         {
           timeRange: "2:00",
-          title: "極創客",
-          description: "團隊進行創意整合、方案設計、商業模式梳理與簡報準備，在限時內完成創業提案。",
+          title: t("d2.s7.title"),
+          description: t("d2.s7.desc"),
           type: "workshop",
         },
         {
           timeRange: "5:30",
-          title: "Pitching",
-          description: "各隊進行最終簡報展示，接受評審回饋。",
+          title: t("d2.s8.title"),
+          description: t("d2.s8.desc"),
           type: "highlight",
         },
         {
           timeRange: "6:30",
-          title: "Finish",
-          description: "Day 2 活動圓滿結束，為後續線上投票及評選作準備。",
+          title: t("d2.s9.title"),
+          description: t("d2.s9.desc"),
           type: "general",
         },
       ],
     },
     {
-      date: "4月13-18日",
+      date: t("schedule.day3.date"),
       shortDate: "Day 3-8",
-      venue: "線上",
-      label: "線上投票・AI 評審",
-      theme: "作品展示與公眾參與",
+      venue: t("schedule.venue.online"),
+      label: t("schedule.day3.label"),
+      theme: t("schedule.day3.theme"),
       themeColor: "from-[#7a5af8] to-[#6941c6]",
       slots: [
         {
-          timeRange: "全天",
-          title: "線上投票開放",
-          description: "公眾可於平台瀏覽隊伍成果並進行投票，提升作品曝光與社會參與度。",
+          timeRange: t("schedule.allDay"),
+          title: t("d3.s1.title"),
+          description: t("d3.s1.desc"),
           type: "highlight",
         },
         {
-          timeRange: "全天",
-          title: "AI 評審系統運作",
-          description: "系統輔助分析提案內容、表達邏輯與創新方向，提供多維度參考評估。",
+          timeRange: t("schedule.allDay"),
+          title: t("d3.s2.title"),
+          description: t("d3.s2.desc"),
           type: "workshop",
         },
         {
-          timeRange: "全天",
-          title: "作品展示平台",
-          description: "統一展示各隊提案內容、概念摘要與成果亮點，方便評審與公眾瀏覽。",
+          timeRange: t("schedule.allDay"),
+          title: t("d3.s3.title"),
+          description: t("d3.s3.desc"),
           type: "general",
         },
       ],
     },
     {
-      date: "4月19日（六）",
+      date: t("schedule.day4.date"),
       shortDate: "Finale",
-      venue: "線上",
-      label: "宣佈優秀作品",
-      theme: "成果公佈與榮譽嘉許",
+      venue: t("schedule.venue.online"),
+      label: t("schedule.day4.label"),
+      theme: t("schedule.day4.theme"),
       themeColor: "from-[#ec4899] to-[#db2777]",
       slots: [
         {
-          timeRange: "待定",
-          title: "線上宣佈優秀作品",
-          description: "公佈優秀團隊與評審結果，展示活動成果與參加者的創新表現。",
+          timeRange: t("schedule.tbc"),
+          title: t("d4.s1.title"),
+          description: t("d4.s1.desc"),
           type: "highlight",
         },
         {
-          timeRange: "待定",
-          title: "頒獎典禮",
-          description: "透過線上形式進行嘉許與成果總結，為整個實戰營畫上圓滿句號。",
+          timeRange: t("schedule.tbc"),
+          title: t("d4.s2.title"),
+          description: t("d4.s2.desc"),
           type: "speech",
         },
       ],
@@ -1063,6 +1085,21 @@ function ScheduleSection() {
       dot: "bg-[#009688]",
     },
   } as const;
+
+  // Resolve speaker translation keys
+  const SPEAKERS: Record<string, Speaker> = Object.fromEntries(
+    Object.entries(SPEAKERS_STATIC).map(([key, s]) => [
+      key,
+      {
+        ...s,
+        name: t(s.nameKey),
+        role: t(s.roleKey),
+        bio: t(s.bioKey),
+        companyName: s.companyNameKey ? t(s.companyNameKey) : s.companyName,
+        companyName2: (s as any).companyName2Key ? t((s as any).companyName2Key) : (s as any).companyName2,
+      },
+    ])
+  );
 
   const renderSpeakerCard = (speakerKey: string) => {
     const speaker = SPEAKERS[speakerKey];
@@ -1170,13 +1207,13 @@ function ScheduleSection() {
         <AnimatedSection>
           <motion.div variants={fadeUp} className="text-center mb-12">
             <span className="inline-block px-4 py-1.5 rounded-full bg-[#e8e0f0] text-[#5a4a7a] text-sm font-medium mb-4">
-              日程安排
+              {t("schedule.tag")}
             </span>
             <h2 className="text-3xl md:text-5xl font-black text-[#1a1a4e] mb-4">
-              兩天高強度實戰日程（暫定）
+              {t("schedule.title")}
             </h2>
             <p className="text-[#5a5a7a] max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
-              從早到晚，沉浸式體驗創業全流程
+              {t("schedule.desc")}
             </p>
           </motion.div>
         </AnimatedSection>
@@ -1259,15 +1296,7 @@ function ScheduleSection() {
                           <div className="flex items-center gap-2 mt-3">
                             <span className={`w-2.5 h-2.5 rounded-full ${style.dot}`} />
                             <span className={`text-xs md:text-sm font-semibold ${style.time}`}>
-                              {slot.type === "highlight" && "重點活動"}
-                              {slot.type === "speech" && "致辭"}
-                              {slot.type === "workshop" && "工作坊"}
-                              {slot.type === "break" && "休息 / 交流"}
-                              {slot.type === "general" && "一般安排"}
-                              {slot.type === "star-guest" && "星級嘉賓（Zoom）"}
-                              {slot.type === "guest-share" && "嘉賓分享"}
-                              {slot.type === "key-event" && "重點活動"}
-                              {slot.type === "opening" && "正式開始"}
+                              {t(`slot.${slot.type}`)}
                             </span>
                           </div>
                         </div>
@@ -1302,19 +1331,20 @@ function ScheduleSection() {
 
 // ─── Gallery Section (AI Generated + Real Venue Photos) ───
 function GallerySection() {
+  const { t } = useLanguage();
   const aiPhotos = [
-    { src: IMAGES.heroKeynote, label: "AI 模擬 — 主題演講" },
-    { src: IMAGES.workshop, label: "AI 模擬 — 工作坊" },
-    { src: IMAGES.pitching, label: "AI 模擬 — 創業路演" },
-    { src: IMAGES.networking, label: "AI 模擬 — 交流活動" },
-    { src: IMAGES.teamwork, label: "AI 模擬 — 團隊合作" },
+    { src: IMAGES.heroKeynote, label: t("gallery.ai.keynote") },
+    { src: IMAGES.workshop, label: t("gallery.ai.workshop") },
+    { src: IMAGES.pitching, label: t("gallery.ai.pitching") },
+    { src: IMAGES.networking, label: t("gallery.ai.networking") },
+    { src: IMAGES.teamwork, label: t("gallery.ai.teamwork") },
   ];
 
   const venuePhotos = [
-    { src: IMAGES.venuePhoto1, label: "柴灣青年廣場 — 演講廳" },
-    { src: IMAGES.venuePhoto2, label: "柴灣青年廣場 — 開放空間" },
-    { src: IMAGES.venuePhoto3, label: "柴灣青年廣場 — 座位區" },
-    { src: IMAGES.venuePhoto4, label: "柴灣青年廣場 — 休憩區" },
+    { src: IMAGES.venuePhoto1, label: t("gallery.venue.1") },
+    { src: IMAGES.venuePhoto2, label: t("gallery.venue.2") },
+    { src: IMAGES.venuePhoto3, label: t("gallery.venue.3") },
+    { src: IMAGES.venuePhoto4, label: t("gallery.venue.4") },
   ];
 
   return (
@@ -1327,13 +1357,13 @@ function GallerySection() {
           <AnimatedSection>
             <motion.div variants={fadeUp} className="text-center mb-12">
               <span className="inline-block px-4 py-1.5 rounded-full bg-[#b8a9d4]/20 text-[#d4c8e8] text-sm font-medium mb-4">
-                活動花絮
+                {t("gallery.tag")}
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                AI 生成活動模擬圖
+                {t("gallery.title")}
               </h2>
               <p className="text-white/60 max-w-xl mx-auto">
-                以下照片由人工智慧根據柴灣青年廣場實地場景生成，模擬活動進行時的精彩畫面
+                {t("gallery.desc")}
               </p>
             </motion.div>
           </AnimatedSection>
@@ -1362,8 +1392,8 @@ function GallerySection() {
           {/* Real Venue Photos */}
           <AnimatedSection>
             <motion.div variants={fadeUp} className="text-center mb-8">
-              <h3 className="text-xl font-bold text-white mb-2">場地實景</h3>
-              <p className="text-white/50 text-sm">柴灣青年廣場「青立方」實地照片</p>
+              <h3 className="text-xl font-bold text-white mb-2">{t("gallery.venue.title")}</h3>
+              <p className="text-white/50 text-sm">{t("gallery.venue.desc")}</p>
             </motion.div>
           </AnimatedSection>
 
@@ -1395,24 +1425,25 @@ function GallerySection() {
 
 // ─── Testimonial Carousel ───
 function TestimonialSection() {
+  const { t } = useLanguage();
   const [current, setCurrent] = useState(0);
   const testimonials = [
     {
-      quote: "這個實戰營讓我明白，創業不只是寫程式，更需要商業策略和團隊合作。作為商科生，我終於找到了自己在科技領域的定位。",
-      name: "陳同學",
-      school: "商學院",
+      quote: t("testimonial.1.quote"),
+      name: t("testimonial.1.name"),
+      school: t("testimonial.1.school"),
       avatar: "C",
     },
     {
-      quote: "線上遊戲融合課程的方式非常創新，讓原本枯燥的商業理論變得生動有趣。Pitching 環節更是讓我突破了自己的舒適圈。",
-      name: "李同學",
-      school: "設計學院",
+      quote: t("testimonial.2.quote"),
+      name: t("testimonial.2.name"),
+      school: t("testimonial.2.school"),
       avatar: "L",
     },
     {
-      quote: "認識了來自不同大專的同學，大家各有專長，互相學習。這種跨校合作的經驗是課堂上學不到的寶貴財富。",
-      name: "王同學",
-      school: "工程學院",
+      quote: t("testimonial.3.quote"),
+      name: t("testimonial.3.name"),
+      school: t("testimonial.3.school"),
       avatar: "W",
     },
   ];
@@ -1430,10 +1461,10 @@ function TestimonialSection() {
         <AnimatedSection>
           <motion.div variants={fadeUp} className="text-center mb-12">
             <span className="inline-block px-4 py-1.5 rounded-full bg-[#e8e0f0] text-[#5a4a7a] text-sm font-medium mb-4">
-              學生心聲
+              {t("testimonial.tag")}
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a4e] mb-4">
-              參與者分享
+              {t("testimonial.title")}
             </h2>
           </motion.div>
         </AnimatedSection>
@@ -1495,25 +1526,27 @@ function TestimonialSection() {
 
 // ─── Partners Section ───
 function PartnersSection() {
+  const { t } = useLanguage();
   return (
     <section id="partners" className="py-20 bg-white">
       <div className="container">
         <AnimatedSection>
           <motion.div variants={fadeUp} className="text-center mb-12">
             <span className="inline-block px-4 py-1.5 rounded-full bg-[#e8e0f0] text-[#5a4a7a] text-sm font-medium mb-4">
-              合作夥伴
+              {t("partners.tag")}
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a4e] mb-4">
-              合作機構
+              {t("partners.title")}
             </h2>
             <p className="text-[#5a5a7a] max-w-xl mx-auto">
-              資金贊助：新昌葉庚年教育基金——聯合學生項目基金
+              {t("partners.funding")}
             </p>
           </motion.div>
         </AnimatedSection>
 
         <AnimatedSection className="flex flex-wrap justify-center items-center gap-12 md:gap-16">
-          {PARTNER_LOGOS.map((partner, i) => {
+          {PARTNER_LOGOS_STATIC.map((partner, i) => {
+            const name = t(partner.nameKey);
             const content = (
               <motion.div
                 key={i}
@@ -1523,11 +1556,11 @@ function PartnersSection() {
                 <div className="w-28 h-28 md:w-36 md:h-36 rounded-2xl bg-white shadow-lg border border-[#e8e0f0] flex items-center justify-center p-4 group-hover:shadow-xl transition-shadow group-hover:-translate-y-1 transition-transform">
                   <img
                     src={partner.logo}
-                    alt={partner.name}
+                    alt={name}
                     className="max-w-full max-h-full object-contain"
                   />
                 </div>
-                <span className="text-sm text-[#5a5a7a] font-medium text-center">{partner.name}</span>
+                <span className="text-sm text-[#5a5a7a] font-medium text-center">{name}</span>
               </motion.div>
             );
             if ((partner as any).url) {
@@ -1550,6 +1583,7 @@ const JOTFORM_URL = "https://form.jotform.com/260611266654052";
 const VOLUNTEER_JOTFORM_URL = "https://form.jotform.com/260610919201044";
 
 function SignupSection() {
+  const { t } = useLanguage();
   return (
     <section id="signup" className="relative">
       <WaveDividerBottom color="white" />
@@ -1561,13 +1595,13 @@ function SignupSection() {
           <AnimatedSection>
             <motion.div variants={fadeUp} className="text-center mb-16">
               <span className="inline-block px-4 py-1.5 rounded-full bg-[#b8a9d4]/20 text-[#d4c8e8] text-sm font-medium mb-6">
-                立即行動
+                {t("signup.tag")}
               </span>
               <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-                報名參加
+                {t("signup.title")}
               </h2>
               <p className="text-white/60 max-w-xl mx-auto mb-10 text-lg">
-                名額有限，先到先得。成為 2026 年技術經理人實戰營的一員！
+                {t("signup.desc")}
               </p>
 
               {/* Pricing cards */}
@@ -1577,15 +1611,15 @@ function SignupSection() {
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2">
                     <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#b8a9d4] text-[#1a1a4e] text-sm font-bold">
                       <Sparkles className="w-4 h-4" />
-                      早鳥優惠
+                      {t("signup.earlybird")}
                     </span>
                   </div>
                   <div className="mt-2">
                     <div className="text-5xl font-black text-white mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                       $100
                     </div>
-                    <p className="text-[#d4c8e8] font-medium mb-1">3 月 25 日前報名</p>
-                    <p className="text-white/40 text-sm">限時優惠價</p>
+                    <p className="text-[#d4c8e8] font-medium mb-1">{t("signup.earlybird.date")}</p>
+                    <p className="text-white/40 text-sm">{t("signup.earlybird.note")}</p>
                   </div>
                 </div>
 
@@ -1595,8 +1629,8 @@ function SignupSection() {
                     <div className="text-5xl font-black text-white/70 mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                       $300
                     </div>
-                    <p className="text-white/50 font-medium mb-1">正價報名</p>
-                    <p className="text-white/30 text-sm">3 月 25 日後適用</p>
+                    <p className="text-white/50 font-medium mb-1">{t("signup.regular")}</p>
+                    <p className="text-white/30 text-sm">{t("signup.regular.date")}</p>
                   </div>
                 </div>
               </div>
@@ -1609,7 +1643,7 @@ function SignupSection() {
               >
                 <div className="rounded-2xl border border-[#ffe6a8]/40 bg-white/10 backdrop-blur-md px-4 py-3 md:px-5 md:py-4 text-center shadow-lg animate-glow-hkmu">
                   <p className="text-sm md:text-base font-semibold text-[#ffe6a8]">
-                    🎓 HKMU 學生可免費參加！完成活動後，可申請 Student Life Enrichment Subsidy Scheme，最高資助 HK$300
+                    {t("signup.hkmu")}
                   </p>
                 </div>
               </motion.div>
@@ -1617,19 +1651,19 @@ function SignupSection() {
               {/* Deadline notice */}
               <div className="flex items-center justify-center gap-2 mb-10 mt-10">
                 <Clock className="w-5 h-5 text-[#ff6b9d]" />
-                <span className="text-[#ff6b9d] font-bold text-lg">報名截止日期：2026 年 4 月 1 日</span>
+                <span className="text-[#ff6b9d] font-bold text-lg">{t("signup.deadline")}</span>
               </div>
 
               <a href={JOTFORM_URL} target="_blank" rel="noopener noreferrer">
                 <Button
                   className="inline-flex items-center justify-center bg-[#b8a9d4] hover:bg-[#a08ec0] text-[#1a1a4e] font-black text-xl md:text-2xl rounded-full px-12 py-7 md:px-16 md:py-8 shadow-2xl shadow-[#b8a9d4]/30 transition-all hover:scale-105 hover:shadow-[#b8a9d4]/40">
-                  立即報名 Register Now<ArrowRight className="w-6 h-6 md:w-7 md:h-7 mr-2.5 shrink-0" />
+                  {t("signup.registerBtn")}<ArrowRight className="w-6 h-6 md:w-7 md:h-7 mr-2.5 shrink-0" />
                 </Button>
 
               </a>
 
               <p className="text-white/40 text-sm mt-6">
-                點擊後將開啟報名表格，填寫資料後即完成登記
+                {t("signup.registerNote")}
               </p>
             </motion.div>
           </AnimatedSection>
@@ -1642,21 +1676,21 @@ function SignupSection() {
                   <Heart className="w-8 h-8 text-[#b8a9d4]" />
                 </div>
                 <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
-                  招聘義工 Volunteer Helpers
+                  {t("signup.volunteer.title")}
                 </h3>
                 <p className="text-white/60 mb-8 max-w-lg mx-auto">
-                  我們正在招募活動義工，協助場地佈置、簽到接待、攝影記錄等工作。歡迎有熱誠的同學加入我們的團隊！
+                  {t("signup.volunteer.desc")}
                 </p>
                 <a href={VOLUNTEER_JOTFORM_URL} target="_blank" rel="noopener noreferrer">
                   <Button
                     variant="outline"
                     className="border-[#b8a9d4] text-[#d4c8e8] hover:bg-[#b8a9d4]/10 font-bold text-lg rounded-full px-10 py-6 transition-all hover:scale-105"
                   >
-                    <Heart className="w-5 h-5 mr-2.5 shrink-0" />申請成為義工
+                    <Heart className="w-5 h-5 mr-2.5 shrink-0" />{t("signup.volunteer.btn")}
                   </Button>
                 </a>
                 <p className="text-white/30 text-sm mt-4">
-                  點擊後將開啟義工報名表格
+                  {t("signup.volunteer.note")}
                 </p>
               </div>
             </motion.div>
@@ -1669,6 +1703,7 @@ function SignupSection() {
 
 // ─── Footer ───
 function Footer() {
+  const { t } = useLanguage();
   return (
     <footer className="bg-[#0d0d2a] py-16">
       <div className="container">
@@ -1681,9 +1716,8 @@ function Footer() {
               className="h-10 w-auto brightness-0 invert mb-4"
             />
             <p className="text-white/50 text-sm leading-relaxed mb-6">
-              香港跨大專技術經理人實戰營 2026
-              <br />
-              Hong Kong Inter-University Startup Launchpad 2026
+              {t("footer.brand")}
+              {t("footer.brand2") && <><br />{t("footer.brand2")}</>}
             </p>
             <div className="flex flex-col items-start gap-3 mt-4">
               <img
@@ -1693,10 +1727,10 @@ function Footer() {
                 style={{ width: "200px", height: "200px" }}
               />
               <p className="text-white/50 text-sm font-medium">
-                主辦人：Bobo Tsui
+                {t("footer.organizer")}
               </p>
               <p className="text-white/40 text-xs">
-                現就讀香港都會大學商學院二年級
+                {t("footer.organizer.desc")}
               </p>
               <a
                 href="https://www.linkedin.com/in/bobo-tsuipuichi/"
@@ -1712,15 +1746,15 @@ function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white font-semibold mb-4">快速連結</h4>
+            <h4 className="text-white font-semibold mb-4">{t("footer.quickLinks")}</h4>
             <div className="space-y-3">
               {[
-                { label: "關於活動", href: "#about" },
-                { label: "活動亮點", href: "#features" },
-                { label: "日程安排", href: "#schedule" },
-                { label: "活動花絮", href: "#gallery" },
-                { label: "合作機構", href: "#partners" },
-                { label: "報名", href: JOTFORM_URL },
+                { label: t("nav.about"), href: "#about" },
+                { label: t("nav.features"), href: "#features" },
+                { label: t("nav.schedule"), href: "#schedule" },
+                { label: t("nav.gallery"), href: "#gallery" },
+                { label: t("nav.partners"), href: "#partners" },
+                { label: t("nav.register"), href: JOTFORM_URL },
               ].map((link) => (
                 <a
                   key={link.href}
@@ -1735,7 +1769,7 @@ function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-white font-semibold mb-4">聯絡我們</h4>
+            <h4 className="text-white font-semibold mb-4">{t("footer.contact")}</h4>
             <div className="space-y-3">
               <a
                 href="mailto:hkiusl.startup@gmail.com"
@@ -1773,10 +1807,10 @@ function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-white/30 text-sm">
-            &copy; 2026 香港跨大專技術經理人實戰營. All rights reserved.
+            {t("footer.copyright")}
           </p>
           <p className="text-white/20 text-xs">
-            資金贊助：新昌葉庚年教育基金——聯合學生項目基金
+            {t("footer.funding")}
           </p>
         </div>
       </div>

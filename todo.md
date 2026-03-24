@@ -92,13 +92,13 @@
 - [x] Update Emil speaker: new photo, HKDFA logo, translated bio in Traditional Chinese
 - [x] Update 致辭一 description to: 區議員林詠欣 Sophia 致辭，分享對香港青年創業與大灣區合作發展的展望。
 - [x] Add GBA Youth Entrepreneurs logo to Sophia speaker card
-- [ ] Add Venture Hub Academy as partner with logo linked to https://academy.venturehub.tech
-- [ ] Remove Day 1 afternoon 4:30 MODA sharing session
-- [ ] Remove MODA-related content from morning 主辦座談
-- [ ] Add 10:35 Venture Hub Academy sharing slot with logo and unique color
-- [ ] Add HKU and HKUST to student-led text
-- [ ] Change both days' 正式開始 slot to a different color
-- [ ] Move 致辭一 to 11:00, 致辭二 to 11:10, remove 創業政策分享 slot
-- [ ] Change Day 1 morning blue 分享環節 slots and Day 2 Emil slot to new color as 嘉賓分享
-- [ ] Change 主辦座談 and Q&A to 重點活動 category
-- [ ] Create English version page with language toggle button (HKIUSL 2026)
+- [x] Add Venture Hub Academy as partner with logo linked to https://academy.venturehub.tech
+- [x] Remove Day 1 afternoon 4:30 MODA sharing session
+- [x] Remove MODA-related content from morning 主辦座談
+- [x] Add 10:35 Venture Hub Academy sharing slot with logo and unique color
+- [x] Add HKU and HKUST to student-led text
+- [x] Change both days' 正式開始 slot to a different color
+- [x] Move 致辭一 to 11:00, 致辭二 to 11:10, remove 創業政策分享 slot
+- [x] Change Day 1 morning blue 分享環節 slots and Day 2 Emil slot to new color as 嘉賓分享
+- [x] Change 主辦座談 and Q&A to 重點活動 category
+- [x] Create English version page with language toggle button (HKIUSL 2026)
