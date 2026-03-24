@@ -56,6 +56,7 @@ const IMAGES = {
   sophiaPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/sophia-lam-photo_bda96cd1.jpg",
   emilChanPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/emil-chan-photo_f68382d2.jpg",
   hkdfaLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/hkdfa-logo_79941dde.png",
+  gbaLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/gbayouthent_e334847a.png",
 };
 
 const PARTNER_LOGOS = [
@@ -654,6 +655,8 @@ const SPEAKERS: Record<string, Speaker> = {
     role: "南區區議員 | 大灣區青年企業家協會創會會長",
     photo: IMAGES.sophiaPhoto,
     bio: "南區區議員，大灣區青年企業家協會創會會長，致力於推動青年創業與大灣區合作發展。",
+    companyLogo: IMAGES.gbaLogo,
+    companyName: "大灣區青年企業家協會",
   },
   marcus: {
     name: "余浩堃 Marcus",
