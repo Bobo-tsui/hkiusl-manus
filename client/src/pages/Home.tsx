@@ -57,12 +57,14 @@ const IMAGES = {
   emilChanPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/emil-chan-photo_f68382d2.jpg",
   hkdfaLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/hkdfa-logo_79941dde.png",
   gbaLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/gbayouthent_e334847a.png",
+  vhaLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/venturehub_49410dbe.jpeg",
 };
 
 const PARTNER_LOGOS = [
   { name: "香港設計文化協會 (MODA)", logo: "https://i.postimg.cc/pLgVQ1bW/moda_logo_2.png" },
   { name: "幼聯 (HKCECES)", logo: "https://i.postimg.cc/LXjgQVVc/icon5.png" },
   { name: "工合空間 (GUNGHO SPACE)", logo: "https://i.postimg.cc/2SY3X6VN/new-logo.png" },
+  { name: "Venture Hub Academy", logo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/venturehub_49410dbe.jpeg", url: "https://academy.venturehub.tech" },
 ];
 
 // ─── Animation Variants ───
@@ -438,7 +440,7 @@ function AboutSection() {
               本實戰營旨在讓大專學生在參加創業比賽前掌握基本概念，培養領導才能、商業知識與設計思維。
             </p>
             <p className="text-[#7a5a9a] max-w-2xl mx-auto text-base mt-4 font-medium bg-[#e8e0f0] rounded-xl px-6 py-3 animate-glow-student">
-              本活動完全由學生發起，由香港都會大學、香港理工大學及香港城市大學的學生主導籌辦。
+              本活動完全由學生發起，由香港都會大學、香港理工大學、香港城市大學、香港大學及香港科技大學的學生主導籌辦。
             </p>
           </motion.div>
         </AnimatedSection>
@@ -690,6 +692,22 @@ const SPEAKERS: Record<string, Speaker> = {
     companyLogo: IMAGES.modaLogo,
     companyName: "香港設計文化協會 MODA",
   },
+  vha_business: {
+    name: "Venture Hub Academy 代表（Business）",
+    role: "Venture Hub Academy 合夥人",
+    photo: "",
+    bio: "Venture Hub Academy 商業合夥人，將分享創業實戰經驗與商業策略見解。",
+    companyLogo: IMAGES.vhaLogo,
+    companyName: "Venture Hub Academy",
+  },
+  vha_tech: {
+    name: "Venture Hub Academy 代表（Tech）",
+    role: "Venture Hub Academy 技術團隊",
+    photo: "",
+    bio: "Venture Hub Academy 技術團隊代表，將分享 AI 時代 Vibe Coding 的機遇與實踐。",
+    companyLogo: IMAGES.vhaLogo,
+    companyName: "Venture Hub Academy",
+  },
 };
 
 // ─── Schedule Section ───
@@ -701,7 +719,7 @@ function ScheduleSection() {
     timeRange: string;
     title: string;
     description: string;
-    type: "highlight" | "speech" | "workshop" | "break" | "general" | "star-guest";
+    type: "highlight" | "speech" | "workshop" | "break" | "general" | "star-guest" | "guest-share" | "key-event" | "opening";
     speakers?: string[];
     specialStyle?: "yellow-glow" | "red-glow";
   }
@@ -735,32 +753,33 @@ function ScheduleSection() {
           timeRange: "10:30",
           title: "正式開始",
           description: "主辦方致歡迎辭，介紹活動整體框架與目標。",
-          type: "general",
+          type: "opening",
         },
         {
-          timeRange: "10:40",
+          timeRange: "10:35",
+          title: "Venture Hub Academy 分享",
+          description: "Venture Hub Academy 派出兩位代表前來分享，商業合夥人分享創業實戰經驗，技術團隊探討 AI 時代 Vibe Coding 的機遇。",
+          type: "guest-share",
+          speakers: ["vha_business", "vha_tech"],
+        },
+        {
+          timeRange: "11:00",
           title: "致辭一 [暫定]",
           description: "區議員林詠欣 Sophia 致辭，分享對香港青年創業與大灣區合作發展的展望。",
           type: "speech",
           speakers: ["sophia"],
         },
         {
-          timeRange: "10:50",
+          timeRange: "11:10",
           title: "致辭二 [待定]",
           description: "嘉賓致辭。",
-          type: "speech",
-        },
-        {
-          timeRange: "11:00",
-          title: "創業政策分享 [邀請中]",
-          description: "數碼港代表分享香港創業政策環境與支援措施。",
           type: "speech",
         },
         {
           timeRange: "11:20",
           title: "嘉賓分享",
           description: "嘉賓分享香港創業生態與未來趨勢，讓參加者掌握宏觀方向。",
-          type: "speech",
+          type: "guest-share",
           speakers: ["alan"],
         },
         {
@@ -774,15 +793,14 @@ function ScheduleSection() {
         {
           timeRange: "12:00",
           title: "主辦座談",
-          description: "由香港設計文化協會（MODA）負責，與嘉賓進行座談，深入探討技術經理人的角色與機遇。",
-          type: "speech",
-          speakers: ["moda_panel"],
+          description: "與嘉賓進行座談，深入探討技術經理人的角色與機遇。",
+          type: "key-event",
         },
         {
           timeRange: "12:45",
           title: "Q & A",
           description: "參加者自由提問，與嘉賓互動交流。",
-          type: "speech",
+          type: "key-event",
         },
         {
           timeRange: "1:00",
@@ -800,7 +818,7 @@ function ScheduleSection() {
           timeRange: "2:30",
           title: "Startup 分享",
           description: "Bobo 分享創業歷程與實戰經驗。",
-          type: "speech",
+          type: "guest-share",
           speakers: ["bobo"],
         },
         {
@@ -813,14 +831,14 @@ function ScheduleSection() {
           timeRange: "3:00",
           title: "Startup 分享 — RiceUp",
           description: "Eric 分享從自媒體到餐飲科技的創業轉型，RiceUp 如何獲得科學園種子輪支持並建立超萬人社群。",
-          type: "speech",
+          type: "guest-share",
           speakers: ["eric"],
         },
         {
           timeRange: "3:15",
           title: "Startup 分享 — Inspire Education",
           description: "Angel 分享創辦創想教育的歷程，如何將數學與科技結合，獲得60萬創業基金及海外參展機會。",
-          type: "speech",
+          type: "guest-share",
           speakers: ["angel"],
         },
         {
@@ -839,25 +857,18 @@ function ScheduleSection() {
           timeRange: "4:00",
           title: "Startup 分享 — ScentSafe",
           description: "余浩堃 Marcus 分享 ScentSafe 的創業歷程與產品開發經驗。",
-          type: "speech",
+          type: "guest-share",
           speakers: ["marcus"],
         },
         {
           timeRange: "4:15",
           title: "Startup 分享 — 光合抗菌人工皮",
           description: "Ryan 分享從 HKMU Hackathon 冠軍到創辦奇智醫學的創業歷程，以及醫療創新的實戰經驗。",
-          type: "speech",
+          type: "guest-share",
           speakers: ["ryan"],
         },
         {
           timeRange: "4:30",
-          title: "分享",
-          description: "香港設計文化協會（MODA）的 Maurice 分享設計思維與創業的結合。",
-          type: "speech",
-          speakers: ["maurice"],
-        },
-        {
-          timeRange: "4:50",
           title: "Day 2 工作坊講解",
           description: "預告 Day 2 組隊實作、工作坊流程與極創客挑戰要求。",
           type: "general",
@@ -888,7 +899,7 @@ function ScheduleSection() {
           timeRange: "10:30",
           title: "正式開始",
           description: "回顧 Day 1 重點，介紹 Day 2 流程與目標。",
-          type: "general",
+          type: "opening",
         },
         {
           timeRange: "10:40",
@@ -906,7 +917,7 @@ function ScheduleSection() {
           timeRange: "12:00",
           title: "大隊長架到",
           description: "由大隊長帶來實戰分享，協助參加者掌握團隊領導、任務拆解與臨場執行要點。",
-          type: "speech",
+          type: "guest-share",
           speakers: ["emil"],
         },
         {
@@ -1029,6 +1040,27 @@ function ScheduleSection() {
       title: "text-[#990000]",
       desc: "text-[#8a3333]",
       dot: "bg-[#ff0000]",
+    },
+    "guest-share": {
+      card: "bg-gradient-to-br from-[#fef3e2] to-[#fde8c8] border-[#f5b041]",
+      time: "text-[#b7791f]",
+      title: "text-[#744210]",
+      desc: "text-[#8b6914]",
+      dot: "bg-[#f59e0b]",
+    },
+    "key-event": {
+      card: "bg-gradient-to-br from-[#fce4ec] to-[#f8bbd0] border-[#e91e63]",
+      time: "text-[#c2185b]",
+      title: "text-[#880e4f]",
+      desc: "text-[#ad1457]",
+      dot: "bg-[#e91e63]",
+    },
+    "opening": {
+      card: "bg-gradient-to-br from-[#e0f2f1] to-[#b2dfdb] border-[#00897b]",
+      time: "text-[#00695c]",
+      title: "text-[#004d40]",
+      desc: "text-[#00796b]",
+      dot: "bg-[#009688]",
     },
   } as const;
 
@@ -1228,11 +1260,14 @@ function ScheduleSection() {
                             <span className={`w-2.5 h-2.5 rounded-full ${style.dot}`} />
                             <span className={`text-xs md:text-sm font-semibold ${style.time}`}>
                               {slot.type === "highlight" && "重點活動"}
-                              {slot.type === "speech" && "分享環節"}
+                              {slot.type === "speech" && "致辭"}
                               {slot.type === "workshop" && "工作坊"}
                               {slot.type === "break" && "休息 / 交流"}
                               {slot.type === "general" && "一般安排"}
                               {slot.type === "star-guest" && "星級嘉賓（Zoom）"}
+                              {slot.type === "guest-share" && "嘉賓分享"}
+                              {slot.type === "key-event" && "重點活動"}
+                              {slot.type === "opening" && "正式開始"}
                             </span>
                           </div>
                         </div>
@@ -1478,22 +1513,32 @@ function PartnersSection() {
         </AnimatedSection>
 
         <AnimatedSection className="flex flex-wrap justify-center items-center gap-12 md:gap-16">
-          {PARTNER_LOGOS.map((partner, i) => (
-            <motion.div
-              key={i}
-              variants={fadeUp}
-              className="flex flex-col items-center gap-3 group"
-            >
-              <div className="w-28 h-28 md:w-36 md:h-36 rounded-2xl bg-white shadow-lg border border-[#e8e0f0] flex items-center justify-center p-4 group-hover:shadow-xl transition-shadow group-hover:-translate-y-1 transition-transform">
-                <img
-                  src={partner.logo}
-                  alt={partner.name}
-                  className="max-w-full max-h-full object-contain"
-                />
-              </div>
-              <span className="text-sm text-[#5a5a7a] font-medium text-center">{partner.name}</span>
-            </motion.div>
-          ))}
+          {PARTNER_LOGOS.map((partner, i) => {
+            const content = (
+              <motion.div
+                key={i}
+                variants={fadeUp}
+                className="flex flex-col items-center gap-3 group"
+              >
+                <div className="w-28 h-28 md:w-36 md:h-36 rounded-2xl bg-white shadow-lg border border-[#e8e0f0] flex items-center justify-center p-4 group-hover:shadow-xl transition-shadow group-hover:-translate-y-1 transition-transform">
+                  <img
+                    src={partner.logo}
+                    alt={partner.name}
+                    className="max-w-full max-h-full object-contain"
+                  />
+                </div>
+                <span className="text-sm text-[#5a5a7a] font-medium text-center">{partner.name}</span>
+              </motion.div>
+            );
+            if ((partner as any).url) {
+              return (
+                <a key={i} href={(partner as any).url} target="_blank" rel="noopener noreferrer">
+                  {content}
+                </a>
+              );
+            }
+            return content;
+          })}
         </AnimatedSection>
       </div>
     </section>
