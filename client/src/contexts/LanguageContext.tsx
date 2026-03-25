@@ -183,10 +183,10 @@ const translations: Record<string, Record<Lang, string>> = {
   "d1.s17.desc": { zh: "短暫休息，補充能量。", en: "Short break to recharge." },
   "d1.s18.title": { zh: "Startup 分享 — ScentSafe", en: "Startup Sharing — ScentSafe" },
   "d1.s18.desc": { zh: "余浩堃 Marcus 分享 ScentSafe 的創業歷程與產品開發經驗。", en: "Marcus shares ScentSafe's startup journey and product development experience." },
-  "d1.s19.title": { zh: "Startup 分享 — 光合抗菌人工皮", en: "Startup Sharing — Photosynthetic Antibacterial Artificial Skin" },
+  "d1.s19.title": { zh: "Startup 分享 — SMAR TECH MEDICINE", en: "Startup Sharing — SMAR TECH MEDICINE" },
   "d1.s19.desc": {
-    zh: "Ryan 分享從 HKMU Hackathon 冠軍到創辦奇智醫學的創業歷程，以及醫療創新的實戰經驗。",
-    en: "Ryan shares his journey from HKMU Hackathon champion to founding Kei Chi Medical, and his experience in medical innovation."
+    zh: "Ryan 分享從 HKMU Hackathon 冠軍到創辦 SMAR TECH MEDICINE 的創業歷程，以及醫療創新的實戰經驗。",
+    en: "Ryan shares his journey from HKMU Hackathon champion to founding SMAR TECH MEDICINE, and his experience in medical innovation."
   },
   "d1.s20.title": { zh: "Day 2 工作坊講解", en: "Day 2 Workshop Briefing" },
   "d1.s20.desc": { zh: "預告 Day 2 組隊實作、工作坊流程與極創客挑戰要求。", en: "Preview of Day 2 team formation, workshop flow, and hackathon challenge requirements." },
@@ -298,7 +298,7 @@ const translations: Record<string, Record<Lang, string>> = {
   "footer.brand": { zh: "香港跨大專技術經理人實戰營 2026", en: "Hong Kong Inter-University Startup Launchpad 2026" },
   "footer.brand2": { zh: "Hong Kong Inter-University Startup Launchpad 2026", en: "" },
   "footer.organizer": { zh: "主辦人：Bobo Tsui", en: "Organizer: Bobo Tsui" },
-  "footer.organizer.desc": { zh: "現就讀香港都會大學商學院二年級", en: "Year 2, School of Business, HKMU" },
+  "footer.organizer.desc": { zh: "現就讀香港都會大學商學院二年級", en: "Year 2, School of Business & Administration, HKMU" },
   "footer.quickLinks": { zh: "快速連結", en: "Quick Links" },
   "footer.contact": { zh: "聯絡我們", en: "Contact Us" },
   "footer.copyright": { zh: "© 2026 香港跨大專技術經理人實戰營. All rights reserved.", en: "© 2026 Hong Kong Inter-University Startup Launchpad. All rights reserved." },
@@ -317,8 +317,8 @@ const translations: Record<string, Record<Lang, string>> = {
     zh: "香港教育大學準畢業生，擁有五年數學教學經驗。將數學與科技結合，創辦「創想教育」，曾獲得60萬創業基金及受邀海外參展。",
     en: "EdUHK graduate with 5 years of math teaching experience. Founded Inspire Education combining math and tech, secured HK$600K funding and overseas exhibition invitations."
   },
-  "speaker.ryan.name": { zh: "張永超 Ryan", en: "Ryan Cheung" },
-  "speaker.ryan.role": { zh: "香港奇智醫學 CEO", en: "CEO, Kei Chi Medical" },
+  "speaker.ryan.name": { zh: "張永超 Ryan", en: "Ryan Zhang" },
+  "speaker.ryan.role": { zh: "SMAR TECH MEDICINE COMPANY LIMITED CEO", en: "CEO, SMAR TECH MEDICINE COMPANY LIMITED" },
   "speaker.ryan.bio": {
     zh: "多次在權威創業大賽中獲獎，包括HKMU Hackathon冠軍、挑戰杯全國二等獎，擁有多年企業管理與創業經驗。",
     en: "Multiple award winner in prestigious startup competitions including HKMU Hackathon Champion and Challenge Cup National 2nd Prize, with years of enterprise management and startup experience."

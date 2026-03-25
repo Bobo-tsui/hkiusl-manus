@@ -445,7 +445,7 @@ function HeroSection() {
                   style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                 >
                   {stat.num}
-                  {stat.suffix && <span className="text-xl md:text-3xl">{stat.suffix}</span>}
+                  {stat.suffix && <span className="text-xl md:text-3xl"> {stat.suffix}</span>}
                 </div>
                 <div className="text-white/60 text-xs md:text-sm mt-1">{stat.label}</div>
               </div>

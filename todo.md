@@ -120,3 +120,8 @@
 - [x] Fix English title centering - split into two lines on desktop
 - [x] Remove [暫定] from 致辭一 title (visual edit)
 - [x] Change Nathan Chau to Nathan in speaker name (visual edit)
+- [x] Footer title: add Chinese name before English name (visual edit)
+- [x] Testimonial: change School of Business to School of Business & Administration (visual edit)
+- [x] Ryan Cheung → Ryan Zhang (visual edit)
+- [x] Ryan company: CEO, Kei Chi Medical → CEO, SMAR TECH MEDICINE COMPANY LIMITED (visual edit)
+- [x] Hero stats: fix "2Days" spacing to "2 Days" (visual edit)
