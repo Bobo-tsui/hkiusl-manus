@@ -59,6 +59,8 @@ const IMAGES = {
   hkdfaLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/hkdfa-logo_79941dde.png",
   gbaLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/gbayouthent_e334847a.png",
   vhaLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/venturehub_49410dbe.jpeg",
+  nathanPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/nathan-photo_cc608a20.png",
+  peaLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/nathan-pea-logo_5af33e31.png",
 };
 
 const PARTNER_LOGOS_STATIC = [
@@ -736,6 +738,14 @@ const SPEAKERS_STATIC: Record<string, Omit<Speaker, 'name' | 'role' | 'bio'> & {
     companyLogo: IMAGES.vhaLogo,
     companyNameKey: "company.vha",
   },
+  nathan: {
+    nameKey: "speaker.nathan.name",
+    roleKey: "speaker.nathan.role",
+    photo: IMAGES.nathanPhoto,
+    bioKey: "speaker.nathan.bio",
+    companyLogo: IMAGES.peaLogo,
+    companyNameKey: "company.pea",
+  },
 };
 
 // ─── Schedule Section ───
@@ -803,6 +813,7 @@ function ScheduleSection() {
           title: t("d1.s5.title"),
           description: t("d1.s5.desc"),
           type: "guest-share",
+          speakers: ["nathan"],
         },
         {
           timeRange: "11:20",
@@ -946,7 +957,7 @@ function ScheduleSection() {
           timeRange: "12:00",
           title: t("d2.s5.title"),
           description: t("d2.s5.desc"),
-          type: "startup-share",
+          type: "guest-share",
           speakers: ["emil"],
         },
         {
@@ -1071,11 +1082,11 @@ function ScheduleSection() {
       dot: "bg-[#ff0000]",
     },
     "guest-share": {
-      card: "bg-gradient-to-br from-[#fef3e2] to-[#fde8c8] border-[#f5b041]",
-      time: "text-[#b7791f]",
-      title: "text-[#744210]",
-      desc: "text-[#8b6914]",
-      dot: "bg-[#f59e0b]",
+      card: "bg-gradient-to-br from-[#fff8e1] to-[#ffecb3] border-[#ffc107]",
+      time: "text-[#e6a100]",
+      title: "text-[#7a5800]",
+      desc: "text-[#8d6e00]",
+      dot: "bg-[#ffc107]",
     },
     "key-event": {
       card: "bg-gradient-to-br from-[#fce4ec] to-[#f8bbd0] border-[#e91e63]",
@@ -1085,11 +1096,11 @@ function ScheduleSection() {
       dot: "bg-[#e91e63]",
     },
     "opening": {
-      card: "bg-gradient-to-br from-[#fce4ec] to-[#f8bbd0] border-[#ec407a]",
-      time: "text-[#d81b60]",
-      title: "text-[#880e4f]",
-      desc: "text-[#ad1457]",
-      dot: "bg-[#ec407a]",
+      card: "bg-gradient-to-br from-[#fde4ec] to-[#f9c5d5] border-[#ED7199]",
+      time: "text-[#ED7199]",
+      title: "text-[#b5365a]",
+      desc: "text-[#c74d6e]",
+      dot: "bg-[#ED7199]",
     },
     "startup-share": {
       card: "bg-gradient-to-br from-[#eaf4ff] to-[#dfeeff] border-[#bfdcff]",

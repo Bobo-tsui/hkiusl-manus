@@ -149,8 +149,8 @@ const translations: Record<string, Record<Lang, string>> = {
   },
   "d1.s4.title": { zh: "致辭一 [暫定]", en: "Speech I [Tentative]" },
   "d1.s4.desc": { zh: "區議員林詠欣 Sophia 致辭，分享對香港青年創業與大灣區合作發展的展望。", en: "District Councillor Sophia Lam delivers a speech on Hong Kong youth entrepreneurship and GBA cooperation." },
-  "d1.s5.title": { zh: "致辭二 [待定]", en: "Speech II [TBC]" },
-  "d1.s5.desc": { zh: "嘉賓致辭。", en: "Guest speech." },
+  "d1.s5.title": { zh: "致辭二", en: "Speech II" },
+  "d1.s5.desc": { zh: "菁創匯創辦人周卓然 Nathan 致辭，分享對香港青年創業與跨界發展的展望。", en: "Nathan Chau, Founder of Pioneer Elite Alliance, delivers a speech on youth entrepreneurship and cross-disciplinary development in Hong Kong." },
   "d1.s6.title": { zh: "嘉賓分享", en: "Guest Sharing" },
   "d1.s6.desc": { zh: "嘉賓分享香港創業生態與未來趨勢，讓參加者掌握宏觀方向。", en: "Guest shares insights on Hong Kong's startup ecosystem and future trends." },
   "d1.s7.title": { zh: "⭐ 星級嘉賓", en: "⭐ Star Guest" },
@@ -445,6 +445,15 @@ const translations: Record<string, Record<Lang, string>> = {
   "company.hkdfa": { zh: "Hong Kong Digital Finance Association", en: "Hong Kong Digital Finance Association" },
   "company.moda": { zh: "香港設計文化協會 MODA", en: "MODA" },
   "company.vha": { zh: "Venture Hub Academy", en: "Venture Hub Academy" },
+  "company.pea": { zh: "菁創匯 Pioneer Elite Alliance", en: "Pioneer Elite Alliance" },
+
+  // Nathan Chau speaker
+  "speaker.nathan.name": { zh: "周卓然 Nathan Chau, MH", en: "Nathan Chau, MH" },
+  "speaker.nathan.role": { zh: "菁創匯創辦人 | 榮譽勳章得主 | 清華大學公共管理碩士（在讀）", en: "Founder, Pioneer Elite Alliance | MH Awardee | Tsinghua EMPA Candidate" },
+  "speaker.nathan.bio": {
+    zh: "周卓然（Nathan）是一位結合金融、創新科技與公共政策的跨界實踐者，擁有逾十年金融及財富管理經驗。他長期關注科技如何改變產業與創業模式，特別是 AI 與科技金融（FinTech）在新一代創業生態中的應用。Nathan 創立菁創匯，積極推動青年創業與跨界發展。在公共領域，他參與多個政府及公營機構委員會工作，專注青年發展、創新政策及可持續發展，2024 年獲香港特區政府頒授榮譽勳章（MH）。他持有麥覺理大學應用金融學學士、曼徹斯特大學 MBA 及 CESGA 專業資格，現正於清華大學攻讀公共管理碩士（EMPA）。",
+    en: "Nathan Chau is a cross-disciplinary practitioner bridging finance, innovation technology, and public policy, with over a decade of experience in financial and wealth management. He focuses on how technology transforms industries and entrepreneurship, particularly the application of AI and FinTech in the next-generation startup ecosystem. Nathan founded Pioneer Elite Alliance to actively promote youth entrepreneurship and cross-sector development. In the public domain, he serves on multiple government and public body committees focusing on youth development, innovation policy, and sustainability, and was awarded the Medal of Honour (MH) by the HKSAR Government in 2024. He holds a Bachelor's in Applied Finance from Macquarie University, an MBA from the University of Manchester, and the CESGA certification, and is currently pursuing an EMPA at Tsinghua University."
+  },
 
   // Language toggle
   "lang.zh": { zh: "中", en: "中" },

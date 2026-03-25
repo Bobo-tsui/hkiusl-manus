@@ -107,3 +107,7 @@
 - [x] Change 主辦座談 and Q&A to purple 重點活動 (same as games)
 - [x] Change 致辭 slots to 嘉賓分享 category
 - [x] Change 正式開始 slot to pink color
+- [x] Change guest-share slot to brighter yellow color
+- [x] Change Emil's Day 2 slot to guest-share (嘉賓分享) category
+- [x] Change opening slot color to #ED7199 pink
+- [x] Add Nathan Chau, MH to 致辭二 with photo, Pioneer Elite Alliance logo, and bio
