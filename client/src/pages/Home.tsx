@@ -1625,8 +1625,10 @@ function SignupSection() {
   const [promoApplied, setPromoApplied] = useState(false);
   const [promoError, setPromoError] = useState(false);
 
+  const VALID_PROMO_CODES = ["VHA2026", "SAIDORSI"];
+
   const handlePromoSubmit = () => {
-    if (promoCode.trim().toUpperCase() === "VHA2026") {
+    if (VALID_PROMO_CODES.includes(promoCode.trim().toUpperCase())) {
       setPromoApplied(true);
       setPromoError(false);
     } else {
