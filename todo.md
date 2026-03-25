@@ -111,3 +111,5 @@
 - [x] Change Emil's Day 2 slot to guest-share (嘉賓分享) category
 - [x] Change opening slot color to #ED7199 pink
 - [x] Add Nathan Chau, MH to 致辭二 with photo, Pioneer Elite Alliance logo, and bio
+- [x] Brighten opening slot pink color (make it more vivid)
+- [x] Replace xidorsi logo with personal photo
