@@ -154,7 +154,7 @@ const translations: Record<string, Record<Lang, string>> = {
   "d1.s6.title": { zh: "嘉賓分享", en: "Guest Sharing" },
   "d1.s6.desc": { zh: "嘉賓分享香港創業生態與未來趨勢，讓參加者掌握宏觀方向。", en: "Guest shares insights on Hong Kong's startup ecosystem and future trends." },
   "d1.s7.title": { zh: "⭐ 星級嘉賓", en: "⭐ Star Guest" },
-  "d1.s7.desc": { zh: "西DorSi 透過 Zoom 連線分享自媒體創業經驗與個人品牌建立心得。", en: "xidorsi shares self-media entrepreneurship experience and personal branding insights via Zoom." },
+  "d1.s7.desc": { zh: "西DorSi 透過 Zoom 連線分享自媒體創業經驗與個人品牌建立心得。", en: "SaiDorSi shares self-media entrepreneurship experience and personal branding insights via Zoom." },
   "d1.s8.title": { zh: "主辦座談", en: "Panel Discussion" },
   "d1.s8.desc": { zh: "與嘉賓進行座談，深入探討技術經理人的角色與機遇。", en: "Panel discussion with guests, exploring the role and opportunities of technology managers." },
   "d1.s9.title": { zh: "Q & A", en: "Q & A" },
@@ -335,11 +335,11 @@ const translations: Record<string, Record<Lang, string>> = {
     zh: "作為青年創業者，現正推動兩個創新項目，包括以遊戲推廣中醫藥文化的「杏林苑」，以及結合 AI、3D 建模與 3D 打印技術的「安顏科技 OnAn Technology」。她曾獲數碼港創意微型基金（CCMF）港幣十萬元資助，並於 HKSTP Techathon+ 10A 及 HKSEC 2025-26 獲獎。",
     en: "As a young entrepreneur, she is driving two innovative projects: \"Xinglin Yuan\" promoting Chinese medicine culture through gaming, and \"OnAn Technology\" combining AI, 3D modeling, and 3D printing. She received HK$100K from Cyberport CCMF and won awards at HKSTP Techathon+ 10A and HKSEC 2025-26."
   },
-  "speaker.xidorsi.name": { zh: "西DorSi", en: "xidorsi" },
-  "speaker.xidorsi.role": { zh: "自媒體博主 | YouTube 頻道「西DorSi偽中產生活態度」", en: "Content Creator | YouTube Channel \"xidorsi\"" },
+  "speaker.xidorsi.name": { zh: "西DorSi", en: "SaiDorSi" },
+  "speaker.xidorsi.role": { zh: "自媒體博主 | YouTube 頻道「西DorSi偽中產生活態度」", en: "Content Creator | YouTube Channel \"SaiDorSi\"" },
   "speaker.xidorsi.bio": {
     zh: "自媒體博主，營運 YouTube 頻道「西DorSi偽中產生活態度」9年，主要向香港人提供大中華地區文旅資訊，擁有超35萬訂閱及超1億收看次數，境內外所有平台粉絲量超77萬。西DorSi亦是暢銷書作者，著有數本大灣區城市的旅遊、移居攻略書。2025年，西DorSi亦獲得香港特別行政區律政司委任，成為大灣區專責小組成員。",
-    en: "Content creator running the YouTube channel \"xidorsi\" for 9 years, providing Greater China travel info to Hong Kong audiences. Over 350K subscribers, 100M+ views, and 770K+ followers across all platforms. Bestselling author of GBA travel guides. Appointed to the HKSAR Department of Justice GBA Task Force in 2025."
+    en: "Content creator running the YouTube channel \"SaiDorSi\" for 9 years, providing Greater China travel info to Hong Kong audiences. Over 350K subscribers, 100M+ views, and 770K+ followers across all platforms. Bestselling author of GBA travel guides. Appointed to the HKSAR Department of Justice GBA Task Force in 2025."
   },
   "speaker.sophia.name": { zh: "林詠欣 Sophia", en: "Sophia Lam" },
   "speaker.sophia.role": { zh: "南區區議員 | 大灣區青年企業家協會創會會長", en: "Southern District Councillor | Founding President, GBA Youth Entrepreneurs" },

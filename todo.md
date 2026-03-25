@@ -114,3 +114,4 @@
 - [x] Brighten opening slot pink color (make it more vivid)
 - [x] Replace xidorsi logo with personal photo
 - [x] Restore xidorsi logo alongside personal photo (show both)
+- [x] Fix xidorsi English name to SaiDorSi
