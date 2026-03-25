@@ -118,3 +118,5 @@
 - [x] Add funding text below partners section (新昌－葉庚年教育基金聯合學生項目基金 2025/26)
 - [x] Ensure Chinese event name remains 香港跨大專技術經理人實戰營 2026
 - [x] Fix English title centering - split into two lines on desktop
+- [x] Remove [暫定] from 致辭一 title (visual edit)
+- [x] Change Nathan Chau to Nathan in speaker name (visual edit)
