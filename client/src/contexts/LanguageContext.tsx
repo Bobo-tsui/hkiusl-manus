@@ -135,6 +135,7 @@ const translations: Record<string, Record<Lang, string>> = {
   "slot.guest-share": { zh: "嘉賓分享", en: "Guest Sharing" },
   "slot.key-event": { zh: "重點活動", en: "Key Event" },
   "slot.opening": { zh: "正式開始", en: "Opening" },
+  "slot.startup-share": { zh: "創業分享", en: "Startup Sharing" },
 
   // Day 1 slots
   "d1.s1.title": { zh: "簽到", en: "Registration" },

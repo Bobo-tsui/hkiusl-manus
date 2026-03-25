@@ -250,15 +250,27 @@ function Navbar() {
           </button>
         </div>
 
-        {/* Mobile hamburger */}
-        <button
-          className="lg:hidden flex flex-col gap-1.5 p-2"
-          onClick={() => setMobileOpen(!mobileOpen)}
-        >
-          <span className={`block w-6 h-0.5 transition-all ${scrolled ? "bg-[#1a1a4e]" : "bg-white"} ${mobileOpen ? "rotate-45 translate-y-2" : ""}`} />
-          <span className={`block w-6 h-0.5 transition-all ${scrolled ? "bg-[#1a1a4e]" : "bg-white"} ${mobileOpen ? "opacity-0" : ""}`} />
-          <span className={`block w-6 h-0.5 transition-all ${scrolled ? "bg-[#1a1a4e]" : "bg-white"} ${mobileOpen ? "-rotate-45 -translate-y-2" : ""}`} />
-        </button>
+        {/* Mobile: language toggle + hamburger */}
+        <div className="lg:hidden flex items-center gap-2">
+          <button
+            onClick={() => setLang(lang === "zh" ? "en" : "zh")}
+            className={`px-3 py-1.5 rounded-full text-xs font-bold border transition-colors ${
+              scrolled
+                ? "border-[#1a1a4e]/30 text-[#1a1a4e] hover:bg-[#1a1a4e]/10"
+                : "border-white/30 text-white hover:bg-white/10"
+            }`}
+          >
+            {lang === "zh" ? "EN" : "中"}
+          </button>
+          <button
+            className="flex flex-col gap-1.5 p-2"
+            onClick={() => setMobileOpen(!mobileOpen)}
+          >
+            <span className={`block w-6 h-0.5 transition-all ${scrolled ? "bg-[#1a1a4e]" : "bg-white"} ${mobileOpen ? "rotate-45 translate-y-2" : ""}`} />
+            <span className={`block w-6 h-0.5 transition-all ${scrolled ? "bg-[#1a1a4e]" : "bg-white"} ${mobileOpen ? "opacity-0" : ""}`} />
+            <span className={`block w-6 h-0.5 transition-all ${scrolled ? "bg-[#1a1a4e]" : "bg-white"} ${mobileOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
@@ -285,12 +297,7 @@ function Navbar() {
                 {t("nav.registerBtn")}
               </Button>
             </a>
-            <button
-              onClick={() => { setLang(lang === "zh" ? "en" : "zh"); setMobileOpen(false); }}
-              className="w-full mt-2 px-3 py-2 rounded-full text-sm font-bold border border-[#1a1a4e]/30 text-[#1a1a4e] hover:bg-[#1a1a4e]/10 transition-colors"
-            >
-              {lang === "zh" ? "Switch to English" : "切換至中文"}
-            </button>
+
           </div>
         </motion.div>
       )}
@@ -741,7 +748,7 @@ function ScheduleSection() {
     timeRange: string;
     title: string;
     description: string;
-    type: "highlight" | "speech" | "workshop" | "break" | "general" | "star-guest" | "guest-share" | "key-event" | "opening";
+    type: "highlight" | "speech" | "workshop" | "break" | "general" | "star-guest" | "guest-share" | "key-event" | "opening" | "startup-share";
     speakers?: string[];
     specialStyle?: "yellow-glow" | "red-glow";
   }
@@ -788,14 +795,14 @@ function ScheduleSection() {
           timeRange: "11:00",
           title: t("d1.s4.title"),
           description: t("d1.s4.desc"),
-          type: "speech",
+          type: "guest-share",
           speakers: ["sophia"],
         },
         {
           timeRange: "11:10",
           title: t("d1.s5.title"),
           description: t("d1.s5.desc"),
-          type: "speech",
+          type: "guest-share",
         },
         {
           timeRange: "11:20",
@@ -816,13 +823,13 @@ function ScheduleSection() {
           timeRange: "12:00",
           title: t("d1.s8.title"),
           description: t("d1.s8.desc"),
-          type: "key-event",
+          type: "highlight",
         },
         {
           timeRange: "12:45",
           title: t("d1.s9.title"),
           description: t("d1.s9.desc"),
-          type: "key-event",
+          type: "highlight",
         },
         {
           timeRange: "1:00",
@@ -840,7 +847,7 @@ function ScheduleSection() {
           timeRange: "2:30",
           title: t("d1.s12.title"),
           description: t("d1.s12.desc"),
-          type: "guest-share",
+          type: "startup-share",
           speakers: ["bobo"],
         },
         {
@@ -853,14 +860,14 @@ function ScheduleSection() {
           timeRange: "3:00",
           title: t("d1.s14.title"),
           description: t("d1.s14.desc"),
-          type: "guest-share",
+          type: "startup-share",
           speakers: ["eric"],
         },
         {
           timeRange: "3:15",
           title: t("d1.s15.title"),
           description: t("d1.s15.desc"),
-          type: "guest-share",
+          type: "startup-share",
           speakers: ["angel"],
         },
         {
@@ -879,14 +886,14 @@ function ScheduleSection() {
           timeRange: "4:00",
           title: t("d1.s18.title"),
           description: t("d1.s18.desc"),
-          type: "guest-share",
+          type: "startup-share",
           speakers: ["marcus"],
         },
         {
           timeRange: "4:15",
           title: t("d1.s19.title"),
           description: t("d1.s19.desc"),
-          type: "guest-share",
+          type: "startup-share",
           speakers: ["ryan"],
         },
         {
@@ -939,7 +946,7 @@ function ScheduleSection() {
           timeRange: "12:00",
           title: t("d2.s5.title"),
           description: t("d2.s5.desc"),
-          type: "guest-share",
+          type: "startup-share",
           speakers: ["emil"],
         },
         {
@@ -1078,11 +1085,18 @@ function ScheduleSection() {
       dot: "bg-[#e91e63]",
     },
     "opening": {
-      card: "bg-gradient-to-br from-[#e0f2f1] to-[#b2dfdb] border-[#00897b]",
-      time: "text-[#00695c]",
-      title: "text-[#004d40]",
-      desc: "text-[#00796b]",
-      dot: "bg-[#009688]",
+      card: "bg-gradient-to-br from-[#fce4ec] to-[#f8bbd0] border-[#ec407a]",
+      time: "text-[#d81b60]",
+      title: "text-[#880e4f]",
+      desc: "text-[#ad1457]",
+      dot: "bg-[#ec407a]",
+    },
+    "startup-share": {
+      card: "bg-gradient-to-br from-[#eaf4ff] to-[#dfeeff] border-[#bfdcff]",
+      time: "text-[#2563eb]",
+      title: "text-[#163a7a]",
+      desc: "text-[#47618f]",
+      dot: "bg-[#3b82f6]",
     },
   } as const;
 

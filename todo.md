@@ -102,3 +102,8 @@
 - [x] Change Day 1 morning blue 分享環節 slots and Day 2 Emil slot to new color as 嘉賓分享
 - [x] Change 主辦座談 and Q&A to 重點活動 category
 - [x] Create English version page with language toggle button (HKIUSL 2026)
+- [x] Move language toggle button outside hamburger menu on mobile
+- [x] Change all Startup 分享 slots back to blue, category renamed to 創業分享
+- [x] Change 主辦座談 and Q&A to purple 重點活動 (same as games)
+- [x] Change 致辭 slots to 嘉賓分享 category
+- [x] Change 正式開始 slot to pink color
