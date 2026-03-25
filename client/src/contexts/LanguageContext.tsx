@@ -294,6 +294,16 @@ const translations: Record<string, Record<Lang, string>> = {
   "signup.volunteer.btn": { zh: "申請成為義工", en: "Apply as Volunteer" },
   "signup.volunteer.note": { zh: "點擊後將開啟義工報名表格", en: "Click to open the volunteer application form" },
 
+  // Promo code
+  "signup.promo.label": { zh: "持有優惠碼？", en: "Have a promo code?" },
+  "signup.promo.placeholder": { zh: "輸入優惠碼", en: "Enter promo code" },
+  "signup.promo.apply": { zh: "使用", en: "Apply" },
+  "signup.promo.invalid": { zh: "優惠碼無效，請重新輸入", en: "Invalid promo code, please try again" },
+  "signup.promo.success": { zh: "優惠碼已生效 — 免費參加！", en: "Promo code applied — Free admission!" },
+  "signup.promo.successNote": { zh: "請點擊下方按鈕完成報名，無需繳費", en: "Click the button below to register, no payment required" },
+  "signup.promo.freeRegister": { zh: "免費報名 Free Register", en: "Register for Free" },
+  "signup.promo.freeNote": { zh: "優惠碼已生效，填寫報名表格後即完成免費登記", en: "Promo code applied. Complete the registration form for free admission" },
+
   // Footer
   "footer.brand": { zh: "香港跨大專技術經理人實戰營 2026", en: "Hong Kong Inter-University Startup Launchpad 2026" },
   "footer.brand2": { zh: "Hong Kong Inter-University Startup Launchpad 2026", en: "" },

@@ -125,3 +125,7 @@
 - [x] Ryan Cheung → Ryan Zhang (visual edit)
 - [x] Ryan company: CEO, Kei Chi Medical → CEO, SMAR TECH MEDICINE COMPANY LIMITED (visual edit)
 - [x] Hero stats: fix "2Days" spacing to "2 Days" (visual edit)
+- [x] Add promo code input (VHA2026) to signup section - show free registration message when valid code entered
+- [x] Upgrade to web-db-user template (server, database, user auth)
+- [x] Run database migration after upgrade
+- [x] Verify all tests pass after upgrade

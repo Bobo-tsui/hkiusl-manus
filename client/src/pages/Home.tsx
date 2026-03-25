@@ -1620,6 +1620,20 @@ const VOLUNTEER_JOTFORM_URL = "https://form.jotform.com/260610919201044";
 
 function SignupSection() {
   const { t } = useLanguage();
+  const [promoCode, setPromoCode] = useState("");
+  const [promoApplied, setPromoApplied] = useState(false);
+  const [promoError, setPromoError] = useState(false);
+
+  const handlePromoSubmit = () => {
+    if (promoCode.trim().toUpperCase() === "VHA2026") {
+      setPromoApplied(true);
+      setPromoError(false);
+    } else {
+      setPromoError(true);
+      setPromoApplied(false);
+    }
+  };
+
   return (
     <section id="signup" className="relative">
       <WaveDividerBottom color="white" />
@@ -1684,22 +1698,66 @@ function SignupSection() {
                 </div>
               </motion.div>
                             
+              {/* Promo code input */}
+              <div className="max-w-md mx-auto mb-10 mt-8">
+                <p className="text-white/70 text-sm font-medium mb-3">{t("signup.promo.label")}</p>
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    value={promoCode}
+                    onChange={(e) => {
+                      setPromoCode(e.target.value);
+                      setPromoError(false);
+                    }}
+                    placeholder={t("signup.promo.placeholder")}
+                    className="flex-1 px-4 py-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 text-white placeholder:text-white/30 focus:outline-none focus:border-[#b8a9d4] focus:ring-1 focus:ring-[#b8a9d4] transition-colors text-center font-mono tracking-widest"
+                    onKeyDown={(e) => e.key === "Enter" && handlePromoSubmit()}
+                  />
+                  <Button
+                    onClick={handlePromoSubmit}
+                    className="bg-[#b8a9d4] hover:bg-[#a08ec0] text-[#1a1a4e] font-bold rounded-xl px-6 py-3 transition-all hover:scale-105"
+                  >
+                    {t("signup.promo.apply")}
+                  </Button>
+                </div>
+                {promoError && (
+                  <p className="text-[#ff6b9d] text-sm mt-2 animate-pulse">{t("signup.promo.invalid")}</p>
+                )}
+                {promoApplied && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-4 p-4 rounded-xl bg-emerald-500/20 border border-emerald-400/40 backdrop-blur-md"
+                  >
+                    <p className="text-emerald-300 font-bold text-lg flex items-center justify-center gap-2">
+                      <Sparkles className="w-5 h-5" />
+                      {t("signup.promo.success")}
+                    </p>
+                    <p className="text-emerald-200/70 text-sm mt-1">{t("signup.promo.successNote")}</p>
+                  </motion.div>
+                )}
+              </div>
+
               {/* Deadline notice */}
-              <div className="flex items-center justify-center gap-2 mb-10 mt-10">
+              <div className="flex items-center justify-center gap-2 mb-10">
                 <Clock className="w-5 h-5 text-[#ff6b9d]" />
                 <span className="text-[#ff6b9d] font-bold text-lg">{t("signup.deadline")}</span>
               </div>
 
               <a href={JOTFORM_URL} target="_blank" rel="noopener noreferrer">
                 <Button
-                  className="inline-flex items-center justify-center bg-[#b8a9d4] hover:bg-[#a08ec0] text-[#1a1a4e] font-black text-xl md:text-2xl rounded-full px-12 py-7 md:px-16 md:py-8 shadow-2xl shadow-[#b8a9d4]/30 transition-all hover:scale-105 hover:shadow-[#b8a9d4]/40">
-                  {t("signup.registerBtn")}<ArrowRight className="w-6 h-6 md:w-7 md:h-7 mr-2.5 shrink-0" />
+                  className={`inline-flex items-center justify-center font-black text-xl md:text-2xl rounded-full px-12 py-7 md:px-16 md:py-8 shadow-2xl transition-all hover:scale-105 ${
+                    promoApplied
+                      ? "bg-emerald-500 hover:bg-emerald-600 text-white shadow-emerald-500/30 hover:shadow-emerald-500/40"
+                      : "bg-[#b8a9d4] hover:bg-[#a08ec0] text-[#1a1a4e] shadow-[#b8a9d4]/30 hover:shadow-[#b8a9d4]/40"
+                  }`}>
+                  {promoApplied ? t("signup.promo.freeRegister") : t("signup.registerBtn")}<ArrowRight className="w-6 h-6 md:w-7 md:h-7 mr-2.5 shrink-0" />
                 </Button>
 
               </a>
 
               <p className="text-white/40 text-sm mt-6">
-                {t("signup.registerNote")}
+                {promoApplied ? t("signup.promo.freeNote") : t("signup.registerNote")}
               </p>
             </motion.div>
           </AnimatedSection>
