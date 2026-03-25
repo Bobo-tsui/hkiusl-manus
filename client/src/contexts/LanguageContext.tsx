@@ -268,7 +268,7 @@ const translations: Record<string, Record<Lang, string>> = {
   // Partners
   "partners.tag": { zh: "合作夥伴", en: "Partners" },
   "partners.title": { zh: "合作機構", en: "Partner Organizations" },
-  "partners.funding": { zh: "資金贊助：新昌葉庚年教育基金——聯合學生項目基金", en: "Funded by: Sun Cheong Yip Kang Nin Education Fund — Joint Student Project Fund" },
+  "partners.funding": { zh: "本計劃由 新昌－葉庚年教育基金聯合學生項目基金 (2025/26) 資助", en: "Funded by Hsin Chong – K.N. Godfrey Yeh Education Fund for Joint Student Projects (2025/26)" },
 
   // Signup
   "signup.tag": { zh: "立即行動", en: "Take Action" },
@@ -398,9 +398,9 @@ const translations: Record<string, Record<Lang, string>> = {
     zh: "從商業策略遊戲到 Startup Pitching，全方位模擬真實創業歷程。",
     en: "From business strategy games to Startup Pitching, a full simulation of the real entrepreneurial journey."
   },
-  "hero.titleLine1": { zh: "香港跨大專", en: "Hong Kong Inter-University " },
+  "hero.titleLine1": { zh: "香港跨大專", en: "Hong Kong Inter-University" },
   "hero.titleHighlight": { zh: "技術經理人", en: "Startup" },
-  "hero.titleLine3": { zh: "實戰營 2026", en: " Launchpad 2026" },
+  "hero.titleLine3": { zh: "實戰營 2026", en: "Launchpad 2026" },
   "hero.description": {
     zh: "匯聚香港各大專院校學生，透過實戰工作坊、創業比賽與業界交流，培育下一代技術經理人。不只是理科生的舞台——商科、設計、人文學科同樣大放異彩。",
     en: "Bringing together students from universities across Hong Kong through hands-on workshops, startup competitions, and industry networking to nurture the next generation of technology managers. Not just for STEM — business, design, and humanities students shine equally."

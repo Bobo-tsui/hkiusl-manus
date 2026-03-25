@@ -310,7 +310,7 @@ function Navbar() {
 
 // ─── Hero Section ───
 function HeroSection() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   return (
     <section className="relative min-h-screen overflow-hidden">
       {/* Background image */}
@@ -357,14 +357,23 @@ function HeroSection() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mx-auto text-3xl md:text-[2.5rem] lg:text-[2.8rem] xl:text-[3.2rem] font-black text-white leading-tight mb-4 md:mb-6 text-center"
           >
-            <span className="hidden md:inline whitespace-nowrap">
-              {t("hero.titleLine1")}<span className="text-[#d4c8e8]">{t("hero.titleHighlight")}</span>{t("hero.titleLine3")}
-            </span>
-            <span className="md:hidden">
-              {t("hero.titleLine1")}<br />
-              <span className="text-[#d4c8e8]">{t("hero.titleHighlight")}</span><br />
-              {t("hero.titleLine3")}
-            </span>
+            {lang === "zh" ? (
+              <>
+                <span className="hidden md:inline whitespace-nowrap">
+                  {t("hero.titleLine1")}<span className="text-[#d4c8e8]">{t("hero.titleHighlight")}</span>{t("hero.titleLine3")}
+                </span>
+                <span className="md:hidden">
+                  {t("hero.titleLine1")}<br />
+                  <span className="text-[#d4c8e8]">{t("hero.titleHighlight")}</span><br />
+                  {t("hero.titleLine3")}
+                </span>
+              </>
+            ) : (
+              <>
+                {t("hero.titleLine1")}<br />
+                <span className="text-[#d4c8e8]">{t("hero.titleHighlight")}</span>{" "}{t("hero.titleLine3")}
+              </>
+            )}
           </motion.h1>
 
           <motion.p
