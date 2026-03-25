@@ -1616,6 +1616,7 @@ function PartnersSection() {
 
 // ─── Signup Section ───
 const JOTFORM_URL = "https://form.jotform.com/260611266654052";
+const FREE_JOTFORM_URL = "https://form.jotform.com/260834232085151";
 const VOLUNTEER_JOTFORM_URL = "https://form.jotform.com/260610919201044";
 
 function SignupSection() {
@@ -1744,7 +1745,7 @@ function SignupSection() {
                 <span className="text-[#ff6b9d] font-bold text-lg">{t("signup.deadline")}</span>
               </div>
 
-              <a href={JOTFORM_URL} target="_blank" rel="noopener noreferrer">
+              <a href={promoApplied ? FREE_JOTFORM_URL : JOTFORM_URL} target="_blank" rel="noopener noreferrer">
                 <Button
                   className={`inline-flex items-center justify-center font-black text-xl md:text-2xl rounded-full px-12 py-7 md:px-16 md:py-8 shadow-2xl transition-all hover:scale-105 ${
                     promoApplied
