@@ -113,3 +113,4 @@
 - [x] Add Nathan Chau, MH to 致辭二 with photo, Pioneer Elite Alliance logo, and bio
 - [x] Brighten opening slot pink color (make it more vivid)
 - [x] Replace xidorsi logo with personal photo
+- [x] Restore xidorsi logo alongside personal photo (show both)
