@@ -131,3 +131,4 @@
 - [x] Verify all tests pass after upgrade
 - [x] Update promo code free registration button to link to new JotForm (https://form.jotform.com/260834232085151)
 - [x] Add saidorsi as valid promo code for free registration
+- [x] Add promo codes GUNGHO300 and HKIUSL2026 for free registration
