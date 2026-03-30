@@ -135,3 +135,5 @@
 - [x] Add promo code MODA300 for free registration
 - [x] Change registration deadline from April 1 to April 8 23:59
 - [x] Add glowing student-led text below main title: 本活動完全由都會大學 | 理工大學 | 城市大學 | 香港大學 | 科技大學學生主導籌辦
+- [x] Fix typo: 大隊長架到 → 大隊長駕到 (visual edit)
+- [x] Change Day 2 Lunch → Networking / LUNCH (visual edit)
