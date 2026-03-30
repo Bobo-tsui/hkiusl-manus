@@ -133,3 +133,5 @@
 - [x] Add saidorsi as valid promo code for free registration
 - [x] Add promo codes GUNGHO300 and HKIUSL2026 for free registration
 - [x] Add promo code MODA300 for free registration
+- [x] Change registration deadline from April 1 to April 8 23:59
+- [x] Add glowing student-led text below main title: 本活動完全由都會大學 | 理工大學 | 城市大學 | 香港大學 | 科技大學學生主導籌辦

@@ -41,6 +41,10 @@ const translations: Record<string, Record<Lang, string>> = {
   "hero.title.highlight": { zh: "技術經理人", en: "Startup" },
   "hero.title.suffix": { zh: "實戰營 2026", en: "Launchpad 2026" },
   "hero.title.full.desktop": { zh: "香港跨大專技術經理人實戰營 2026", en: "Hong Kong Inter-University Startup Launchpad 2026" },
+  "hero.studentLed": {
+    zh: "本活動完全由都會大學 | 理工大學 | 城市大學 | 香港大學 | 科技大學學生主導籌辦",
+    en: "Entirely organized by students from HKMU | PolyU | CityU | HKU | HKUST"
+  },
   "hero.desc": {
     zh: "匯聚香港各大專院校學生，透過實戰工作坊、創業比賽與業界交流，培育下一代技術經理人。不只是理科生的舞台——商科、設計、人文學科同樣大放異彩。",
     en: "Bringing together students from universities across Hong Kong through hands-on workshops, startup competitions, and industry networking to nurture the next generation of technology managers. Not just for STEM — business, design, and humanities students shine equally."
@@ -283,7 +287,7 @@ const translations: Record<string, Record<Lang, string>> = {
     zh: "🎓 HKMU 學生可免費參加！完成活動後，可申請 Student Life Enrichment Subsidy Scheme，最高資助 HK$300",
     en: "🎓 HKMU students can join for FREE! Apply for the Student Life Enrichment Subsidy Scheme for up to HK$300 reimbursement after the event"
   },
-  "signup.deadline": { zh: "報名截止日期：2026 年 4 月 1 日", en: "Registration deadline: April 1, 2026" },
+  "signup.deadline": { zh: "報名截止日期：2026 年 4 月 8 日 23:59", en: "Registration deadline: April 8, 2026 23:59" },
   "signup.registerBtn": { zh: "立即報名 Register Now", en: "Register Now" },
   "signup.registerNote": { zh: "點擊後將開啟報名表格，填寫資料後即完成登記", en: "Click to open the registration form and complete your registration" },
   "signup.volunteer.title": { zh: "招聘義工 Volunteer Helpers", en: "Volunteer Helpers Wanted" },

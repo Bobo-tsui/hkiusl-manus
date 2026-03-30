@@ -131,7 +131,7 @@ function WaveDividerBottom({ color = "#1a1a4e" }: { color?: string }) {
 function CountdownBanner() {
   const { t } = useLanguage();
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-  const deadline = new Date('2026-04-01T23:59:59+08:00').getTime();
+  const deadline = new Date('2026-04-08T23:59:59+08:00').getTime();
 
   useEffect(() => {
     const tick = () => {
@@ -375,6 +375,24 @@ function HeroSection() {
               </>
             )}
           </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="mx-auto text-sm md:text-base font-bold mb-4 md:mb-5 text-center tracking-wider"
+            style={{
+              background: "linear-gradient(90deg, #ff6b9d, #d4c8e8, #b8a9d4, #ff6b9d)",
+              backgroundSize: "200% auto",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              animation: "shimmer 3s linear infinite",
+              textShadow: "0 0 20px rgba(184,169,212,0.3)",
+              filter: "drop-shadow(0 0 8px rgba(184,169,212,0.4))",
+            }}
+          >
+            {t("hero.studentLed")}
+          </motion.p>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}

@@ -200,6 +200,12 @@ html {
   animation: glowPulseRed 2.5s ease-in-out infinite;
 }
 
+/* Shimmer gradient text animation */
+@keyframes shimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
 /* Purple glow for student-led notice */
 @keyframes glowPulsePurple {
   0%, 100% {
