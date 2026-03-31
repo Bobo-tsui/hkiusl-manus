@@ -697,14 +697,15 @@ const SPEAKERS_STATIC: Record<string, Omit<Speaker, 'name' | 'role' | 'bio'> & {
     bioKey: "speaker.bobo.bio",
     companyLogos: [
       { logo: IMAGES.xinglinYuanLogo, name: "杏林苑" },
-      { logo: IMAGES.onanLogo, name: "安顏 OnAn" },
-    ],
+      { logo: IMAGES.onanLogo, name: "安顏科技" },
+    ]
   },
   xidorsi: {
     nameKey: "speaker.xidorsi.name",
     roleKey: "speaker.xidorsi.role",
     photo: IMAGES.xidorsiPhoto,
     companyLogo: IMAGES.xidorsiLogo,
+    companyName: "西DorSi偽中產生活態度",
     bioKey: "speaker.xidorsi.bio",
     youtube: "https://www.youtube.com/@saidorsi",
   },
@@ -1159,51 +1160,120 @@ function ScheduleSection() {
   const isExpanded = expandedSpeaker === speakerKey;
 
   return (
-    <div key={speakerKey} className="w-full">
-      <button
-        type="button"
-        onClick={() => setExpandedSpeaker(isExpanded ? null : speakerKey)}
-        className="mt-3 inline-flex max-w-full items-center gap-2 rounded-full bg-white/90 px-3 py-2 text-xs md:text-sm font-medium text-[#5a4a7a] border border-white/70 shadow-sm hover:bg-white transition-colors"
-      >
-        <img
-          src={speaker.photo}
-          alt={speaker.name}
-          className="w-6 h-6 rounded-full object-cover border border-[#d8c8f0] shrink-0"
-        />
-        <span className="truncate">{speaker.name}</span>
-        <ChevronRight className={`w-4 h-4 shrink-0 transition-transform ${isExpanded ? "rotate-90" : ""}`} />
-      </button>
+    <div key={speakerKey} className="w-full mt-4">
+      <div className="rounded-2xl bg-white/96 border border-white shadow-sm overflow-hidden">
+        <div className="p-4 md:p-5">
+          {/* 永遠顯示：相片、名字、role */}
+          <div className="flex items-start gap-4">
+            <img
+              src={speaker.photo}
+              alt={speaker.name}
+              className="w-20 h-20 md:w-24 md:h-24 rounded-2xl object-cover border-2 border-[#b8a9d4] shrink-0 shadow-sm"
+            />
 
-      {isExpanded && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          className="mt-3"
-        >
-          <div className="rounded-2xl md:rounded-3xl bg-white/92 border border-white shadow-sm p-4 md:p-6">
-            <div className="flex flex-col gap-4 md:gap-5">
-              {/* Top profile row */}
-              <div className="flex items-start gap-4">
-                <img
-                  src={speaker.photo}
-                  alt={speaker.name}
-                  className="w-20 h-20 md:w-24 md:h-24 rounded-2xl object-cover border-2 border-[#b8a9d4] shrink-0 shadow-sm"
+            <div className="min-w-0 flex-1">
+              <h4 className="font-bold text-[#1a1a4e] text-lg md:text-xl leading-tight break-words">
+                {speaker.name}
+              </h4>
+              <p className="text-[#7a5a9a] text-sm md:text-base mt-1 leading-relaxed break-words">
+                {speaker.role}
+              </p>
+
+              <button
+                type="button"
+                onClick={() => setExpandedSpeaker(isExpanded ? null : speakerKey)}
+                className="mt-3 inline-flex items-center gap-2 rounded-full bg-[#f5f1fb] hover:bg-[#ede6f8] px-3.5 py-2 text-xs md:text-sm font-semibold text-[#5a4a7a] border border-[#e8e0f0] transition-colors"
+              >
+                <span>{isExpanded ? "收起講者簡介" : "查看講者簡介"}</span>
+                <ChevronRight
+                  className={`w-4 h-4 shrink-0 transition-transform ${
+                    isExpanded ? "rotate-90" : ""
+                  }`}
                 />
+              </button>
+            </div>
+          </div>
 
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="min-w-0">
-                      <h4 className="font-bold text-[#1a1a4e] text-lg md:text-xl leading-tight break-words">
-                        {speaker.name}
-                      </h4>
-                      <p className="text-[#7a5a9a] text-sm md:text-base mt-1 leading-relaxed break-words">
-                        {speaker.role}
-                      </p>
+          {/* 可摺疊內容 */}
+          {isExpanded && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              className="mt-4"
+            >
+              <div className="rounded-2xl bg-[#fcfbff] border border-[#eee7f8] p-4 md:p-5 space-y-5">
+                {/* Bio */}
+                <div>
+                  <p className="text-[#5a5a7a] text-sm md:text-base leading-7">
+                    {speaker.bio}
+                  </p>
+                </div>
+
+                {/* 補充說明 */}
+                {speaker.notes && (
+                  <div className="rounded-xl bg-[#f6f1ff] border border-[#e8def8] px-4 py-3">
+                    <p className="text-[#6b5a88] text-sm md:text-base leading-7">
+                      {speaker.notes}
+                    </p>
+                  </div>
+                )}
+
+                {/* 品牌 / 項目 logo：有存在感，但不過大 */}
+                {(speaker.companyLogo || speaker.companyLogos) && (
+                  <div>
+                    <div className="text-xs md:text-sm font-semibold text-[#6b5a88] mb-3">
+                      相關品牌 / 項目
+                    </div>
+
+                    <div className="flex flex-wrap gap-3">
+                      {speaker.companyLogo && (
+                        <div className="inline-flex items-center gap-3 rounded-2xl bg-[#faf8ff] px-4 py-3 border border-[#e6ddf5] shadow-sm">
+                          <img
+                            src={speaker.companyLogo}
+                            alt={speaker.companyName || ""}
+                            className="h-10 md:h-11 w-auto max-w-[88px] md:max-w-[96px] object-contain shrink-0"
+                          />
+                          {speaker.companyName && (
+                            <span className="text-sm md:text-sm font-semibold text-[#5a4a7a] leading-relaxed break-words">
+                              {speaker.companyName}
+                            </span>
+                          )}
+                        </div>
+                      )}
+
+                      {speaker.companyLogos?.map(
+                        (
+                          company: { logo: string; name?: string },
+                          idx: number
+                        ) => (
+                          <div
+                            key={idx}
+                            className="inline-flex items-center gap-3 rounded-2xl bg-[#faf8ff] px-4 py-3 border border-[#e6ddf5] shadow-sm"
+                          >
+                            <img
+                              src={company.logo}
+                              alt={company.name || ""}
+                              className="h-10 md:h-11 w-auto max-w-[88px] md:max-w-[96px] object-contain shrink-0"
+                            />
+                            {company.name && (
+                              <span className="text-sm md:text-sm font-semibold text-[#5a4a7a] leading-relaxed break-words">
+                                {company.name}
+                              </span>
+                            )}
+                          </div>
+                        )
+                      )}
                     </div>
                   </div>
+                )}
 
-                  {(speaker.linkedin || speaker.youtube) && (
-                    <div className="flex flex-wrap items-center gap-2 mt-3">
+                {/* 外部連結 */}
+                {(speaker.linkedin || speaker.youtube) && (
+                  <div>
+                    <div className="text-xs md:text-sm font-semibold text-[#6b5a88] mb-2">
+                      外部連結
+                    </div>
+                    <div className="flex flex-wrap items-center gap-2">
                       {speaker.linkedin && (
                         <a
                           href={speaker.linkedin}
@@ -1228,73 +1298,16 @@ function ScheduleSection() {
                         </a>
                       )}
                     </div>
-                  )}
-                </div>
-              </div>
-
-              {/* Bio */}
-              <div>
-                <p className="text-[#5a5a7a] text-sm md:text-base leading-7">
-                  {speaker.bio}
-                </p>
-              </div>
-
-              {/* Company / brand logos */}
-              {(speaker.companyLogo || speaker.companyLogos) && (
-                <div className="pt-1">
-                  <div className="text-xs md:text-sm font-semibold text-[#6b5a88] mb-2">
-                    相關品牌 / 項目
                   </div>
-
-                  <div className="flex flex-wrap gap-2.5 md:gap-3">
-                    {speaker.companyLogo && (
-                      <div className="inline-flex items-center gap-2 rounded-xl bg-[#faf8ff] px-3 py-2 border border-[#e8e0f0] shadow-sm max-w-full">
-                        <img
-                          src={speaker.companyLogo}
-                          alt={speaker.companyName || ""}
-                          className="h-8 md:h-10 w-auto max-w-[96px] object-contain shrink-0"
-                        />
-                        {speaker.companyName && (
-                          <span className="text-xs md:text-sm font-medium text-[#5a4a7a] break-words">
-                            {speaker.companyName}
-                          </span>
-                        )}
-                      </div>
-                    )}
-
-                    {speaker.companyLogos?.map(
-                      (
-                        company: { logo: string; name?: string },
-                        idx: number
-                      ) => (
-                        <div
-                          key={idx}
-                          className="inline-flex items-center gap-2 rounded-xl bg-[#faf8ff] px-3 py-2 border border-[#e8e0f0] shadow-sm max-w-full"
-                        >
-                          <img
-                            src={company.logo}
-                            alt={company.name || ""}
-                            className="h-8 md:h-10 w-auto max-w-[96px] object-contain shrink-0"
-                          />
-                          {company.name && (
-                            <span className="text-xs md:text-sm font-medium text-[#5a4a7a] break-words">
-                              {company.name}
-                            </span>
-                          )}
-                        </div>
-                      )
-                    )}
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-        </motion.div>
-      )}
+                )}
+              </div>
+            </motion.div>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
-
 
   return (
     <section id="schedule" className="py-20 bg-[#faf8f5]">
