@@ -159,8 +159,8 @@ const translations: Record<string, Record<Lang, string>> = {
   "d1.s6.desc": { zh: "嘉賓分享香港創業生態與未來趨勢，讓參加者掌握宏觀方向。", en: "Guest shares insights on Hong Kong's startup ecosystem and future trends." },
   "d1.s7.title": { zh: "⭐ 星級嘉賓", en: "⭐ Star Guest" },
   "d1.s7.desc": { zh: "西DorSi 透過 Zoom 連線分享自媒體創業經驗與個人品牌建立心得。", en: "SaiDorSi shares self-media entrepreneurship experience and personal branding insights via Zoom." },
-  "d1.s8.title": { zh: "主辦座談", en: "Panel Discussion" },
-  "d1.s8.desc": { zh: "與嘉賓進行座談，深入探討技術經理人的角色與機遇。", en: "Panel discussion with guests, exploring the role and opportunities of technology managers." },
+  "d1.s8.title": { zh: "主辦座談", en: "Fireside Chat" },
+  "d1.s8.desc": { zh: "誰能把創新帶到市場？從發明、設計到技術商業化", en: "From Idea to Market: How Technology, Design and Entrepreneurship Create Products That Matter" },
   "d1.s9.title": { zh: "Q & A", en: "Q & A" },
   "d1.s9.desc": { zh: "參加者自由提問，與嘉賓互動交流。", en: "Open Q&A session for participants to interact with guests." },
   "d1.s10.title": { zh: "自由交流 / LUNCH", en: "Networking / LUNCH" },
@@ -460,6 +460,7 @@ const translations: Record<string, Record<Lang, string>> = {
   "company.moda": { zh: "香港設計文化協會 MODA", en: "MODA" },
   "company.vha": { zh: "Venture Hub Academy", en: "Venture Hub Academy" },
   "company.pea": { zh: "菁創匯 Pioneer Elite Alliance", en: "Pioneer Elite Alliance" },
+  "company.edspark": { zh: "Edspark", en: "Edspark" },
 
   // Nathan Chau speaker
   "speaker.nathan.name": { zh: "周卓然 Nathan, MH", en: "Nathan Chau, MH" },
@@ -467,6 +468,30 @@ const translations: Record<string, Record<Lang, string>> = {
   "speaker.nathan.bio": {
     zh: "周卓然（Nathan）是一位結合金融、創新科技與公共政策的跨界實踐者，擁有逾十年金融及財富管理經驗。他長期關注科技如何改變產業與創業模式，特別是 AI 與科技金融（FinTech）在新一代創業生態中的應用。Nathan 創立菁創匯，積極推動青年創業與跨界發展。在公共領域，他參與多個政府及公營機構委員會工作，專注青年發展、創新政策及可持續發展，2024 年獲香港特區政府頒授榮譽勳章（MH）。他持有麥覺理大學應用金融學學士、曼徹斯特大學 MBA 及 CESGA 專業資格，現正於清華大學攻讀公共管理碩士（EMPA）。",
     en: "Nathan Chau is a cross-disciplinary practitioner bridging finance, innovation technology, and public policy, with over a decade of experience in financial and wealth management. He focuses on how technology transforms industries and entrepreneurship, particularly the application of AI and FinTech in the next-generation startup ecosystem. Nathan founded Pioneer Elite Alliance to actively promote youth entrepreneurship and cross-sector development. In the public domain, he serves on multiple government and public body committees focusing on youth development, innovation policy, and sustainability, and was awarded the Medal of Honour (MH) by the HKSAR Government in 2024. He holds a Bachelor's in Applied Finance from Macquarie University, an MBA from the University of Manchester, and the CESGA certification, and is currently pursuing an EMPA at Tsinghua University."
+  },
+
+  // Davis Chow speaker
+  "speaker.davis.name": { zh: "Davis Chow", en: "Davis Chow" },
+  "speaker.davis.role": { zh: "Venture Hub Academy 社群總監 | 科大三主修學生", en: "Venture Hub Academy Community Director | HKUST Triple Major Student" },
+  "speaker.davis.bio": {
+    zh: "Davis Chow 是一位創業者暨科大學生，致力於創業、教育與社群的交匯點。他共同創立了 Venture Hub Academy，將大學生配對成跨學科創業團隊，並創辦了 Strike Music Institute，已舉辦兩場公開音樂會，參與音樂家超過 50 人。他深入科大社群，擁有豐富的社群管理實戰經驗，曾主導涉及超過 200 名活躍成員的計劃。",
+    en: "Davis Chow is a founder and HKUST student dedicated to building at the intersection of entrepreneurship, education, and community. He co-founded Venture Hub Academy, a platform that matches university students into cross-disciplinary startup teams, and founded Strike Music Institute, which has hosted two public concerts with over 50 musicians. Deeply embedded in the HKUST community, he has extensive hands-on experience in community management and has led initiatives involving more than 200 active members."
+  },
+
+  // Marco speaker
+  "speaker.marco.name": { zh: "Marco", en: "Marco" },
+  "speaker.marco.role": { zh: "Edspark 商業分析師", en: "Business Analyst @ Edspark" },
+  "speaker.marco.bio": {
+    zh: "我在科大的商業教育背景，結合強大的編程技能，使我能夠橋接技術開發與市場營銷之間的差距。這種獨特的視角讓我能深入理解產品的架構基礎以及將其成功推向市場所需的策略元素。我對共融教育深具熱情，特別關注支援有特殊教育需要（SEN）的學生，運用技術專長開發無障礙系統和工具，並透過數據分析持續優化解決方案。",
+    en: "My background in business education at HKUST, combined with strong coding skills, enables me to bridge the gap between technical development and marketing. This unique perspective allows me to deeply understand both the architectural foundations of a product and the strategic elements required to bring it successfully to market. I am deeply passionate about inclusive education, with a particular focus on supporting students with special educational needs (SEN). I leverage my technical expertise to develop accessible systems and tools that empower these learners, while applying data analytics to continuously inform and refine our solutions."
+  },
+
+  // Adrian speaker
+  "speaker.adrian.name": { zh: "Adrian", en: "Adrian" },
+  "speaker.adrian.role": { zh: "Edspark 系統架構師", en: "System Architect @ Edspark" },
+  "speaker.adrian.bio": {
+    zh: "擁有全端開發與機器學習的豐富專業知識，他專業地管理 Edspark 的所有技術層面。他認為技術不是直接的收入驅動力，而是強大的影響力槓桿。這種理念促使他共同創立了 Edspark，以提供優質且可負擔的教育為使命。為了進一步實踐這一承諾，他親自以低於市場的價格輔導有特殊教育需要（SEN）的學生。",
+    en: "With extensive expertise in full-stack development and machine learning, he expertly manages all technical aspects at Edspark. He views technology not as a direct revenue driver, but as a powerful lever for impact. This philosophy led us to co-found Edspark, with the mission of delivering high-quality education at affordable prices. To further this commitment, he personally tutors students with special educational needs (SEN) at below-market rates."
   },
 
   // Language toggle

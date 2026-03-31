@@ -141,3 +141,7 @@
 - [x] Fix companyNameKey type error in SPEAKERS_STATIC type definition
 - [x] Fix empty string src attribute error on img elements (moda_panel, maurice, vha_business, vha_tech had empty photo strings)
 - [x] Fix TypeScript error: add notes property to Speaker interface after GitHub sync
+- [x] Upload Davis Chow, Marco, Adrian photos and Edspark logo to CDN
+- [x] Add 3 new speakers: Davis Chow (VHA Community Director), Marco (Business Analyst @ Edspark), Adrian (System Architect @ Edspark)
+- [x] Change 12:00 Panel Discussion to Fireside Chat with new EN/ZH themes
+- [x] Add Adrian as fireside chat speaker, add Marco and Davis as VHA morning sharing speakers

@@ -62,6 +62,10 @@ const IMAGES = {
   vhaLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/venturehub_49410dbe.jpeg",
   nathanPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/nathan-photo_cc608a20.png",
   peaLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/nathan-pea-logo_5af33e31.png",
+  davisPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/davis-chow-photo_501783e2.png",
+  marcoPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/marco-photo_0e8ffd49.png",
+  adrianPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/adrian-photo_0103aefd.png",
+  edsparkLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/edspark-logo_e44e4d3c.png",
 };
 
 const PARTNER_LOGOS_STATIC = [
@@ -774,6 +778,33 @@ const SPEAKERS_STATIC: Record<string, Omit<Speaker, 'name' | 'role' | 'bio'> & {
     companyLogo: IMAGES.peaLogo,
     companyNameKey: "company.pea",
   },
+  davis: {
+    nameKey: "speaker.davis.name",
+    roleKey: "speaker.davis.role",
+    photo: IMAGES.davisPhoto,
+    bioKey: "speaker.davis.bio",
+    linkedin: "https://www.linkedin.com/in/davis-chow/",
+    companyLogo: IMAGES.vhaLogo,
+    companyNameKey: "company.vha",
+  },
+  marco: {
+    nameKey: "speaker.marco.name",
+    roleKey: "speaker.marco.role",
+    photo: IMAGES.marcoPhoto,
+    bioKey: "speaker.marco.bio",
+    linkedin: "https://www.linkedin.com/in/wong-long-yin-272645383/",
+    companyLogo: IMAGES.edsparkLogo,
+    companyNameKey: "company.edspark",
+  },
+  adrian: {
+    nameKey: "speaker.adrian.name",
+    roleKey: "speaker.adrian.role",
+    photo: IMAGES.adrianPhoto,
+    bioKey: "speaker.adrian.bio",
+    linkedin: "https://www.linkedin.com/in/adrian-kam-2b08033a5/",
+    companyLogo: IMAGES.edsparkLogo,
+    companyNameKey: "company.edspark",
+  },
 };
 
 // ─── Schedule Section ───
@@ -827,7 +858,7 @@ function ScheduleSection() {
           title: t("d1.s3.title"),
           description: t("d1.s3.desc"),
           type: "guest-share",
-          speakers: ["vha_business", "vha_tech"],
+          speakers: ["vha_business", "vha_tech", "marco", "davis"],
         },
         {
           timeRange: "11:00",
@@ -863,6 +894,7 @@ function ScheduleSection() {
           title: t("d1.s8.title"),
           description: t("d1.s8.desc"),
           type: "highlight",
+          speakers: ["adrian"],
         },
         {
           timeRange: "12:45",
