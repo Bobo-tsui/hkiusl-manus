@@ -660,7 +660,7 @@ interface Speaker {
   companyLogos?: { logo: string; name?: string }[];
 }
 
-const SPEAKERS_STATIC: Record<string, Omit<Speaker, 'name' | 'role' | 'bio'> & { nameKey: string; roleKey: string; bioKey: string }> = {
+const SPEAKERS_STATIC: Record<string, Omit<Speaker, 'name' | 'role' | 'bio'> & { nameKey: string; roleKey: string; bioKey: string; companyNameKey?: string }> = {
   alan: {
     nameKey: "speaker.alan.name",
     roleKey: "speaker.alan.role",
@@ -691,13 +691,14 @@ const SPEAKERS_STATIC: Record<string, Omit<Speaker, 'name' | 'role' | 'bio'> & {
     companyNameKey: "company.riceUp",
   },
   bobo: {
-  name: "徐沛慈 Bobo",
-  role: "HKIUSL 2026 發起人｜杏林苑創辦人｜安顏科技創辦人｜香港都會大學商學院二年級",
-  photo: IMAGES.boboPhoto,
-  bio: "Bobo 分享創業歷程與實戰經驗，從學生發起項目到品牌建立，帶出青年創業者如何由構想到落地實踐。",
-  companyLogos: [
-    { logo: IMAGES.xinglinYuanLogo, name: "杏林苑" },
-    { logo: IMAGES.onanLogo, name: "安顏 OnAn" },
+    nameKey: "speaker.bobo.name",
+    roleKey: "speaker.bobo.role",
+    photo: IMAGES.boboPhoto,
+    bioKey: "speaker.bobo.bio",
+    companyLogos: [
+      { logo: IMAGES.xinglinYuanLogo, name: "杏林苑" },
+      { logo: IMAGES.onanLogo, name: "安顏 OnAn" },
+    ],
   },
   xidorsi: {
     nameKey: "speaker.xidorsi.name",

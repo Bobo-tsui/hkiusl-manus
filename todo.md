@@ -137,3 +137,5 @@
 - [x] Add glowing student-led text below main title: 本活動完全由都會大學 | 理工大學 | 城市大學 | 香港大學 | 科技大學學生主導籌辦
 - [x] Fix typo: 大隊長架到 → 大隊長駕到 (visual edit)
 - [x] Change Day 2 Lunch → Networking / LUNCH (visual edit)
+- [x] Fix syntax error in bobo speaker entry after GitHub sync (missing array bracket, wrong property names)
+- [x] Fix companyNameKey type error in SPEAKERS_STATIC type definition
