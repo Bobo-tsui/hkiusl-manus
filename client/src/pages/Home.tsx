@@ -735,7 +735,7 @@ const SPEAKERS_STATIC: Record<string, Omit<Speaker, 'name' | 'role' | 'bio'> & {
   moda_panel: {
     nameKey: "speaker.moda_panel.name",
     roleKey: "speaker.moda_panel.role",
-    photo: "",
+    photo: IMAGES.modaLogo,
     bioKey: "speaker.moda_panel.name",
     companyLogo: IMAGES.modaLogo,
     companyNameKey: "company.moda",
@@ -743,7 +743,7 @@ const SPEAKERS_STATIC: Record<string, Omit<Speaker, 'name' | 'role' | 'bio'> & {
   maurice: {
     nameKey: "speaker.maurice.name",
     roleKey: "speaker.maurice.role",
-    photo: "",
+    photo: IMAGES.modaLogo,
     bioKey: "speaker.maurice.name",
     companyLogo: IMAGES.modaLogo,
     companyNameKey: "company.moda",
@@ -751,7 +751,7 @@ const SPEAKERS_STATIC: Record<string, Omit<Speaker, 'name' | 'role' | 'bio'> & {
   vha_business: {
     nameKey: "speaker.vha_business.name",
     roleKey: "speaker.vha_business.role",
-    photo: "",
+    photo: IMAGES.vhaLogo,
     bioKey: "speaker.vha_business.bio",
     companyLogo: IMAGES.vhaLogo,
     companyNameKey: "company.vha",
@@ -759,7 +759,7 @@ const SPEAKERS_STATIC: Record<string, Omit<Speaker, 'name' | 'role' | 'bio'> & {
   vha_tech: {
     nameKey: "speaker.vha_tech.name",
     roleKey: "speaker.vha_tech.role",
-    photo: "",
+    photo: IMAGES.vhaLogo,
     bioKey: "speaker.vha_tech.bio",
     companyLogo: IMAGES.vhaLogo,
     companyNameKey: "company.vha",

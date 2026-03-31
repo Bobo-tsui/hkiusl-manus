@@ -139,3 +139,4 @@
 - [x] Change Day 2 Lunch → Networking / LUNCH (visual edit)
 - [x] Fix syntax error in bobo speaker entry after GitHub sync (missing array bracket, wrong property names)
 - [x] Fix companyNameKey type error in SPEAKERS_STATIC type definition
+- [x] Fix empty string src attribute error on img elements (moda_panel, maurice, vha_business, vha_tech had empty photo strings)
