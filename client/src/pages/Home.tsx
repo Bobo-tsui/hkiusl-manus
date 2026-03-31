@@ -1162,80 +1162,107 @@ function ScheduleSection() {
 
   return (
     <div key={speakerKey} className="w-full mt-4">
-      <div className="rounded-2xl bg-white/96 border border-white shadow-sm overflow-hidden">
+      <div className="rounded-2xl md:rounded-3xl bg-white/95 border border-white shadow-sm overflow-hidden">
         <div className="p-4 md:p-5">
-          {/* 永遠顯示：相片、名字、role */}
-          <div className="flex items-start gap-4">
-            <img
-              src={speaker.photo}
-              alt={speaker.name}
-              className="w-20 h-20 md:w-24 md:h-24 rounded-2xl object-cover border-2 border-[#b8a9d4] shrink-0 shadow-sm"
-            />
+          {/* 摺疊時固定顯示：頭像 + 名字 + role + 箭咀 */}
+          <button
+            type="button"
+            onClick={() => setExpandedSpeaker(isExpanded ? null : speakerKey)}
+            className="w-full text-left"
+          >
+            <div className="flex items-center gap-4">
+              <img
+                src={speaker.photo}
+                alt={speaker.name}
+                className="w-20 h-20 md:w-24 md:h-24 rounded-2xl object-cover border-2 border-[#b8a9d4] shrink-0 shadow-sm"
+              />
 
-            <div className="min-w-0 flex-1">
-              <h4 className="font-bold text-[#1a1a4e] text-lg md:text-xl leading-tight break-words">
-                {speaker.name}
-              </h4>
-              <p className="text-[#7a5a9a] text-sm md:text-base mt-1 leading-relaxed break-words">
-                {speaker.role}
-              </p>
+              <div className="min-w-0 flex-1">
+                <h4 className="font-bold text-[#1a1a4e] text-lg md:text-xl leading-tight break-words">
+                  {speaker.name}
+                </h4>
+                <p className="text-[#7a5a9a] text-sm md:text-base mt-1 leading-relaxed break-words">
+                  {speaker.role}
+                </p>
+              </div>
 
-              <button
-                type="button"
-                onClick={() => setExpandedSpeaker(isExpanded ? null : speakerKey)}
-                className="mt-3 inline-flex items-center gap-2 rounded-full bg-[#f5f1fb] hover:bg-[#ede6f8] px-3.5 py-2 text-xs md:text-sm font-semibold text-[#5a4a7a] border border-[#e8e0f0] transition-colors"
-              >
-                <span>{isExpanded ? "收起講者簡介" : "查看講者簡介"}</span>
-                <ChevronRight
-                  className={`w-4 h-4 shrink-0 transition-transform ${
-                    isExpanded ? "rotate-90" : ""
-                  }`}
-                />
-              </button>
+              <ChevronRight
+                className={`w-5 h-5 md:w-6 md:h-6 text-[#9b87bd] shrink-0 transition-transform duration-300 ${
+                  isExpanded ? "rotate-90" : ""
+                }`}
+              />
             </div>
-          </div>
+          </button>
 
-          {/* 可摺疊內容 */}
+          {/* 展開內容 */}
           {isExpanded && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
-              className="mt-4"
+              transition={{ duration: 0.28 }}
+              className="mt-4 border-t border-[#ece5f5] pt-4"
             >
-              <div className="rounded-2xl bg-[#fcfbff] border border-[#eee7f8] p-4 md:p-5 space-y-5">
+              <div className="space-y-4">
                 {/* Bio */}
-                <div>
-                  <p className="text-[#5a5a7a] text-sm md:text-base leading-7">
-                    {speaker.bio}
-                  </p>
-                </div>
+                <p className="text-[#5a5a7a] text-sm md:text-base leading-7">
+                  {speaker.bio}
+                </p>
 
                 {/* 補充說明 */}
                 {speaker.notes && (
-                  <div className="rounded-xl bg-[#f6f1ff] border border-[#e8def8] px-4 py-3">
+                  <div className="rounded-xl bg-[#f7f3fc] border border-[#e9e0f3] px-4 py-3">
                     <p className="text-[#6b5a88] text-sm md:text-base leading-7">
                       {speaker.notes}
                     </p>
                   </div>
                 )}
 
-                {/* 品牌 / 項目 logo：有存在感，但不過大 */}
+                {/* 外部連結 */}
+                {(speaker.linkedin || speaker.youtube) && (
+                  <div className="flex flex-wrap items-center gap-2">
+                    {speaker.linkedin && (
+                      <a
+                        href={speaker.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 rounded-full bg-[#eef6ff] px-3 py-1.5 text-xs md:text-sm font-medium text-[#0077b5] hover:bg-[#ddeeff] transition-colors"
+                      >
+                        <ExternalLink className="w-4 h-4 shrink-0" />
+                        LinkedIn
+                      </a>
+                    )}
+
+                    {speaker.youtube && (
+                      <a
+                        href={speaker.youtube}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 rounded-full bg-[#fff1f1] px-3 py-1.5 text-xs md:text-sm font-medium text-[#dc2626] hover:bg-[#ffe4e4] transition-colors"
+                      >
+                        <ExternalLink className="w-4 h-4 shrink-0" />
+                        YouTube
+                      </a>
+                    )}
+                  </div>
+                )}
+
+                {/* 品牌 / 項目：放到 bio 下方，但保持清晰存在感 */}
                 {(speaker.companyLogo || speaker.companyLogos) && (
-                  <div>
+                  <div className="pt-1">
                     <div className="text-xs md:text-sm font-semibold text-[#6b5a88] mb-3">
                       相關品牌 / 項目
                     </div>
 
-                    <div className="flex flex-wrap gap-3">
+                    <div className="flex flex-col gap-3">
                       {speaker.companyLogo && (
-                        <div className="inline-flex items-center gap-3 rounded-2xl bg-[#faf8ff] px-4 py-3 border border-[#e6ddf5] shadow-sm">
+                        <div className="flex items-center gap-3 rounded-2xl bg-[#faf8ff] px-4 py-3 border border-[#e8e0f0] shadow-sm">
                           <img
                             src={speaker.companyLogo}
                             alt={speaker.companyName || ""}
-                            className="h-10 md:h-11 w-auto max-w-[88px] md:max-w-[96px] object-contain shrink-0"
+                            className="h-10 md:h-12 w-auto max-w-[96px] md:max-w-[110px] object-contain shrink-0"
                           />
                           {speaker.companyName && (
-                            <span className="text-sm md:text-sm font-semibold text-[#5a4a7a] leading-relaxed break-words">
+                            <span className="text-sm md:text-base font-medium text-[#5a4a7a] leading-relaxed break-words">
                               {speaker.companyName}
                             </span>
                           )}
@@ -1249,54 +1276,20 @@ function ScheduleSection() {
                         ) => (
                           <div
                             key={idx}
-                            className="inline-flex items-center gap-3 rounded-2xl bg-[#faf8ff] px-4 py-3 border border-[#e6ddf5] shadow-sm"
+                            className="flex items-center gap-3 rounded-2xl bg-[#faf8ff] px-4 py-3 border border-[#e8e0f0] shadow-sm"
                           >
                             <img
                               src={company.logo}
                               alt={company.name || ""}
-                              className="h-10 md:h-11 w-auto max-w-[88px] md:max-w-[96px] object-contain shrink-0"
+                              className="h-10 md:h-12 w-auto max-w-[96px] md:max-w-[110px] object-contain shrink-0"
                             />
                             {company.name && (
-                              <span className="text-sm md:text-sm font-semibold text-[#5a4a7a] leading-relaxed break-words">
+                              <span className="text-sm md:text-base font-medium text-[#5a4a7a] leading-relaxed break-words">
                                 {company.name}
                               </span>
                             )}
                           </div>
                         )
-                      )}
-                    </div>
-                  </div>
-                )}
-
-                {/* 外部連結 */}
-                {(speaker.linkedin || speaker.youtube) && (
-                  <div>
-                    <div className="text-xs md:text-sm font-semibold text-[#6b5a88] mb-2">
-                      外部連結
-                    </div>
-                    <div className="flex flex-wrap items-center gap-2">
-                      {speaker.linkedin && (
-                        <a
-                          href={speaker.linkedin}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 rounded-full bg-[#eef6ff] px-3 py-1.5 text-xs md:text-sm font-medium text-[#0077b5] hover:bg-[#ddeeff] transition-colors"
-                        >
-                          <ExternalLink className="w-4 h-4 shrink-0" />
-                          LinkedIn
-                        </a>
-                      )}
-
-                      {speaker.youtube && (
-                        <a
-                          href={speaker.youtube}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 rounded-full bg-[#fff1f1] px-3 py-1.5 text-xs md:text-sm font-medium text-[#dc2626] hover:bg-[#ffe4e4] transition-colors"
-                        >
-                          <ExternalLink className="w-4 h-4 shrink-0" />
-                          YouTube
-                        </a>
                       )}
                     </div>
                   </div>
