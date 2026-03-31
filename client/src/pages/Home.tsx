@@ -62,9 +62,9 @@ const IMAGES = {
   vhaLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/venturehub_49410dbe.jpeg",
   nathanPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/nathan-photo_cc608a20.png",
   peaLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/nathan-pea-logo_5af33e31.png",
-  davisPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/davis-chow-photo_501783e2.png",
-  marcoPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/marco-photo_0e8ffd49.png",
-  adrianPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/adrian-photo_0103aefd.png",
+  davisPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/davis-photo-correct_fd9ec384.png",
+  marcoPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/marco-photo-correct_f3393741.png",
+  adrianPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/adrian-photo-correct_14374a9c.png",
   edsparkLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/edspark-logo_e44e4d3c.png",
 };
 
@@ -858,7 +858,7 @@ function ScheduleSection() {
           title: t("d1.s3.title"),
           description: t("d1.s3.desc"),
           type: "guest-share",
-          speakers: ["vha_business", "vha_tech", "marco", "davis"],
+          speakers: ["marco", "davis"],
         },
         {
           timeRange: "11:00",
@@ -1206,14 +1206,14 @@ function ScheduleSection() {
               <img
                 src={speaker.photo}
                 alt={speaker.name}
-                className="w-20 h-20 md:w-24 md:h-24 rounded-2xl object-cover border-2 border-[#b8a9d4] shrink-0 shadow-sm"
+                className="w-14 h-14 md:w-16 md:h-16 rounded-2xl object-cover border-2 border-[#b8a9d4] shrink-0"
               />
 
               <div className="min-w-0 flex-1">
-                <h4 className="font-bold text-[#1a1a4e] text-lg md:text-xl leading-tight break-words">
+                <h4 className="font-bold text-[#1a1a4e] text-base md:text-lg leading-snug break-words">
                   {speaker.name}
                 </h4>
-                <p className="text-[#7a5a9a] text-sm md:text-base mt-1 leading-relaxed break-words">
+                <p className="text-[#7a5a9a] text-xs md:text-sm mt-1 leading-relaxed break-words">
                   {speaker.role}
                 </p>
               </div>

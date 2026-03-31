@@ -482,8 +482,8 @@ const translations: Record<string, Record<Lang, string>> = {
   "speaker.marco.name": { zh: "Marco", en: "Marco" },
   "speaker.marco.role": { zh: "Edspark 商業分析師", en: "Business Analyst @ Edspark" },
   "speaker.marco.bio": {
-    zh: "我在科大的商業教育背景，結合強大的編程技能，使我能夠橋接技術開發與市場營銷之間的差距。這種獨特的視角讓我能深入理解產品的架構基礎以及將其成功推向市場所需的策略元素。我對共融教育深具熱情，特別關注支援有特殊教育需要（SEN）的學生，運用技術專長開發無障礙系統和工具，並透過數據分析持續優化解決方案。",
-    en: "My background in business education at HKUST, combined with strong coding skills, enables me to bridge the gap between technical development and marketing. This unique perspective allows me to deeply understand both the architectural foundations of a product and the strategic elements required to bring it successfully to market. I am deeply passionate about inclusive education, with a particular focus on supporting students with special educational needs (SEN). I leverage my technical expertise to develop accessible systems and tools that empower these learners, while applying data analytics to continuously inform and refine our solutions."
+    zh: "Marco 在科大的商業教育背景，結合強大的編程技能，使他能夠橋接技術開發與市場營銷之間的差距。這種獨特的視角讓他能深入理解產品的架構基礎以及將其成功推向市場所需的策略元素。他對共融教育深具熱情，特別關注支援有特殊教育需要（SEN）的學生，運用技術專長開發無障礙系統和工具，並透過數據分析持續優化解決方案。",
+    en: "Marco's background in business education at HKUST, combined with strong coding skills, enables him to bridge the gap between technical development and marketing. This unique perspective allows him to deeply understand both the architectural foundations of a product and the strategic elements required to bring it successfully to market. He is deeply passionate about inclusive education, with a particular focus on supporting students with special educational needs (SEN). He leverages his technical expertise to develop accessible systems and tools that empower these learners, while applying data analytics to continuously inform and refine solutions."
   },
 
   // Adrian speaker

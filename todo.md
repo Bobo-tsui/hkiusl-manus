@@ -145,3 +145,7 @@
 - [x] Add 3 new speakers: Davis Chow (VHA Community Director), Marco (Business Analyst @ Edspark), Adrian (System Architect @ Edspark)
 - [x] Change 12:00 Panel Discussion to Fireside Chat with new EN/ZH themes
 - [x] Add Adrian as fireside chat speaker, add Marco and Davis as VHA morning sharing speakers
+- [x] Upload correct speaker photos: Adrian (Pic1), Marco (Pic2), Davis (Pic3) and update CDN URLs
+- [x] Replace vha_business/vha_tech with Marco/Davis in VHA sharing session
+- [x] Change Marco bio to 3rd person
+- [x] Resize speaker cards (collapsed photo+name) to match version 1cc965d2, keep logo position as-is
