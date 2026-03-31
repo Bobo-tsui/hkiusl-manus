@@ -657,10 +657,7 @@ interface Speaker {
   youtube?: string;
   companyLogo?: string;
   companyName?: string;
-  companyNameKey?: string;
-  companyLogo2?: string;
-  companyName2?: string;
-  companyName2Key?: string;
+  companyLogos?: { logo: string; name?: string }[];
 }
 
 const SPEAKERS_STATIC: Record<string, Omit<Speaker, 'name' | 'role' | 'bio'> & { nameKey: string; roleKey: string; bioKey: string }> = {
@@ -694,14 +691,13 @@ const SPEAKERS_STATIC: Record<string, Omit<Speaker, 'name' | 'role' | 'bio'> & {
     companyNameKey: "company.riceUp",
   },
   bobo: {
-    nameKey: "speaker.bobo.name",
-    roleKey: "speaker.bobo.role",
-    photo: IMAGES.boboPhoto,
-    bioKey: "speaker.bobo.bio",
-    companyLogo: IMAGES.xinglinYuanLogo,
-    companyNameKey: "company.xinglinYuan",
-    companyLogo2: IMAGES.onanLogo,
-    companyName2Key: "company.onan",
+  name: "徐沛慈 Bobo",
+  role: "HKIUSL 2026 發起人｜杏林苑創辦人｜安顏科技創辦人｜香港都會大學商學院二年級",
+  photo: IMAGES.boboPhoto,
+  bio: "Bobo 分享創業歷程與實戰經驗，從學生發起項目到品牌建立，帶出青年創業者如何由構想到落地實踐。",
+  companyLogos: [
+    { logo: IMAGES.xinglinYuanLogo, name: "杏林苑" },
+    { logo: IMAGES.onanLogo, name: "安顏 OnAn" },
   },
   xidorsi: {
     nameKey: "speaker.xidorsi.name",
@@ -1156,104 +1152,148 @@ function ScheduleSection() {
   );
 
   const renderSpeakerCard = (speakerKey: string) => {
-    const speaker = SPEAKERS[speakerKey];
-    if (!speaker) return null;
+  const speaker = SPEAKERS[speakerKey];
+  if (!speaker) return null;
 
-    const isExpanded = expandedSpeaker === speakerKey;
+  const isExpanded = expandedSpeaker === speakerKey;
 
-    return (
-      <div key={speakerKey} className="mt-4">
-        {/* Always-visible speaker card with photo, logo, name, title */}
-        <div
-          className="rounded-2xl bg-white/90 border border-white shadow-sm p-4 cursor-pointer hover:shadow-md transition-shadow"
-          onClick={() => setExpandedSpeaker(isExpanded ? null : speakerKey)}
+  return (
+    <div key={speakerKey} className="w-full">
+      <button
+        type="button"
+        onClick={() => setExpandedSpeaker(isExpanded ? null : speakerKey)}
+        className="mt-3 inline-flex max-w-full items-center gap-2 rounded-full bg-white/90 px-3 py-2 text-xs md:text-sm font-medium text-[#5a4a7a] border border-white/70 shadow-sm hover:bg-white transition-colors"
+      >
+        <img
+          src={speaker.photo}
+          alt={speaker.name}
+          className="w-6 h-6 rounded-full object-cover border border-[#d8c8f0] shrink-0"
+        />
+        <span className="truncate">{speaker.name}</span>
+        <ChevronRight className={`w-4 h-4 shrink-0 transition-transform ${isExpanded ? "rotate-90" : ""}`} />
+      </button>
+
+      {isExpanded && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: "auto" }}
+          className="mt-3"
         >
-          <div className="flex items-center gap-4 flex-wrap">
-            {/* Photo */}
-            {speaker.photo ? (
-              <img
-                src={speaker.photo}
-                alt={speaker.name}
-                className="w-14 h-14 md:w-16 md:h-16 rounded-2xl object-cover border-2 border-[#b8a9d4] shrink-0"
-              />
-            ) : (
-              <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl border-2 border-[#b8a9d4] shrink-0 bg-[#e8e0f0] flex items-center justify-center">
-                <Users className="w-7 h-7 text-[#7a5a9a]" />
-              </div>
-            )}
-            {/* Company logo - same size as photo */}
-            {speaker.companyLogo && (
-              <img
-                src={speaker.companyLogo}
-                alt={speaker.companyName || ""}
-                className="w-14 h-14 md:w-16 md:h-16 rounded-2xl object-contain bg-transparent shrink-0"
-              />
-            )}
-            {/* Second company logo */}
-            {speaker.companyLogo2 && (
-              <img
-                src={speaker.companyLogo2}
-                alt={speaker.companyName2 || ""}
-                className="w-14 h-14 md:w-16 md:h-16 rounded-2xl object-contain bg-transparent shrink-0"
-              />
-            )}
-            {/* Name and title */}
-            <div className="flex-1 min-w-0">
-              <h4 className="font-bold text-[#1a1a4e] text-base md:text-lg leading-snug">
-                {speaker.name}
-              </h4>
-              <p className="text-[#7a5a9a] text-xs md:text-sm mt-1 leading-relaxed">
-                {speaker.role}
-              </p>
-            </div>
-            {/* Expand indicator */}
-            <ChevronRight className={`w-5 h-5 text-[#b8a9d4] shrink-0 transition-transform ${isExpanded ? "rotate-90" : ""}`} />
-          </div>
+          <div className="rounded-2xl md:rounded-3xl bg-white/92 border border-white shadow-sm p-4 md:p-6">
+            <div className="flex flex-col gap-4 md:gap-5">
+              {/* Top profile row */}
+              <div className="flex items-start gap-4">
+                <img
+                  src={speaker.photo}
+                  alt={speaker.name}
+                  className="w-20 h-20 md:w-24 md:h-24 rounded-2xl object-cover border-2 border-[#b8a9d4] shrink-0 shadow-sm"
+                />
 
-          {/* Expandable bio section */}
-          {isExpanded && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              className="mt-4 pt-4 border-t border-[#e8e0f0]"
-            >
-              <p className="text-[#5a5a7a] text-sm leading-relaxed">
-                {speaker.bio}
-              </p>
-              <div className="flex flex-wrap gap-3 mt-3">
-                {speaker.linkedin && (
-                  <a
-                    href={speaker.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm text-[#0077b5] hover:underline"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <ExternalLink className="w-4 h-4 shrink-0" />
-                    LinkedIn
-                  </a>
-                )}
-                {speaker.youtube && (
-                  <a
-                    href={speaker.youtube}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm text-[#ff0000] hover:underline"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                    </svg>
-                    YouTube
-                  </a>
-                )}
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="min-w-0">
+                      <h4 className="font-bold text-[#1a1a4e] text-lg md:text-xl leading-tight break-words">
+                        {speaker.name}
+                      </h4>
+                      <p className="text-[#7a5a9a] text-sm md:text-base mt-1 leading-relaxed break-words">
+                        {speaker.role}
+                      </p>
+                    </div>
+                  </div>
+
+                  {(speaker.linkedin || speaker.youtube) && (
+                    <div className="flex flex-wrap items-center gap-2 mt-3">
+                      {speaker.linkedin && (
+                        <a
+                          href={speaker.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 rounded-full bg-[#eef6ff] px-3 py-1.5 text-xs md:text-sm font-medium text-[#0077b5] hover:bg-[#ddeeff] transition-colors"
+                        >
+                          <ExternalLink className="w-4 h-4 shrink-0" />
+                          LinkedIn
+                        </a>
+                      )}
+
+                      {speaker.youtube && (
+                        <a
+                          href={speaker.youtube}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 rounded-full bg-[#fff1f1] px-3 py-1.5 text-xs md:text-sm font-medium text-[#dc2626] hover:bg-[#ffe4e4] transition-colors"
+                        >
+                          <ExternalLink className="w-4 h-4 shrink-0" />
+                          YouTube
+                        </a>
+                      )}
+                    </div>
+                  )}
+                </div>
               </div>
-            </motion.div>
-          )}
-        </div>
-      </div>
-    );
-  };
+
+              {/* Bio */}
+              <div>
+                <p className="text-[#5a5a7a] text-sm md:text-base leading-7">
+                  {speaker.bio}
+                </p>
+              </div>
+
+              {/* Company / brand logos */}
+              {(speaker.companyLogo || speaker.companyLogos) && (
+                <div className="pt-1">
+                  <div className="text-xs md:text-sm font-semibold text-[#6b5a88] mb-2">
+                    相關品牌 / 項目
+                  </div>
+
+                  <div className="flex flex-wrap gap-2.5 md:gap-3">
+                    {speaker.companyLogo && (
+                      <div className="inline-flex items-center gap-2 rounded-xl bg-[#faf8ff] px-3 py-2 border border-[#e8e0f0] shadow-sm max-w-full">
+                        <img
+                          src={speaker.companyLogo}
+                          alt={speaker.companyName || ""}
+                          className="h-8 md:h-10 w-auto max-w-[96px] object-contain shrink-0"
+                        />
+                        {speaker.companyName && (
+                          <span className="text-xs md:text-sm font-medium text-[#5a4a7a] break-words">
+                            {speaker.companyName}
+                          </span>
+                        )}
+                      </div>
+                    )}
+
+                    {speaker.companyLogos?.map(
+                      (
+                        company: { logo: string; name?: string },
+                        idx: number
+                      ) => (
+                        <div
+                          key={idx}
+                          className="inline-flex items-center gap-2 rounded-xl bg-[#faf8ff] px-3 py-2 border border-[#e8e0f0] shadow-sm max-w-full"
+                        >
+                          <img
+                            src={company.logo}
+                            alt={company.name || ""}
+                            className="h-8 md:h-10 w-auto max-w-[96px] object-contain shrink-0"
+                          />
+                          {company.name && (
+                            <span className="text-xs md:text-sm font-medium text-[#5a4a7a] break-words">
+                              {company.name}
+                            </span>
+                          )}
+                        </div>
+                      )
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </motion.div>
+      )}
+    </div>
+  );
+};
+
 
   return (
     <section id="schedule" className="py-20 bg-[#faf8f5]">
