@@ -658,6 +658,7 @@ interface Speaker {
   companyLogo?: string;
   companyName?: string;
   companyLogos?: { logo: string; name?: string }[];
+  notes?: string;
 }
 
 const SPEAKERS_STATIC: Record<string, Omit<Speaker, 'name' | 'role' | 'bio'> & { nameKey: string; roleKey: string; bioKey: string; companyNameKey?: string }> = {
