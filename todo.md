@@ -150,3 +150,6 @@
 - [x] Change Marco bio to 3rd person
 - [x] Resize speaker cards (collapsed photo+name) to match version 1cc965d2, keep logo position as-is
 - [x] Change Bobo's related project English names to Xinglin Yuan and OnAn Technology
+- [x] Read Maurice Kwok's resume and extract bio
+- [x] Upload Maurice's photo to CDN
+- [x] Add Maurice as Fireside Chat speaker with MODA logo

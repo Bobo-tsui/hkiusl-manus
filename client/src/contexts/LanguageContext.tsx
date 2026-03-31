@@ -387,8 +387,12 @@ const translations: Record<string, Record<Lang, string>> = {
   },
   "speaker.moda_panel.name": { zh: "香港設計文化協會 (MODA)", en: "MODA" },
   "speaker.moda_panel.role": { zh: "主辦座談協辦機構", en: "Panel Discussion Co-organizer" },
-  "speaker.maurice.name": { zh: "Maurice", en: "Maurice" },
-  "speaker.maurice.role": { zh: "香港設計文化協會 (MODA)", en: "MODA" },
+  "speaker.maurice.name": { zh: "Maurice Kwok", en: "Maurice Kwok" },
+  "speaker.maurice.role": { zh: "InnoSphere 聯合創辦人 | 香港設計文化協會 (MODA) 副會長 | 理大客席講師", en: "Co-founder, InnoSphere | Vice President, MODA | Visiting Lecturer, PolyU" },
+  "speaker.maurice.bio": {
+    zh: "Maurice Kwok 為 InnoSphere Ltd. 聯合創辦人，擁有超過 25 年產品設計與開發經驗。他從支援企業業務轉型起步，最終建立自有品牌產品，透過設計創新推動市場影響力。他曾獲得超過 25 項設計大獎，包括 Good Design Award（美國）、iF Design Award（德國）、Golden Pin Design Award（台灣）、Design for Asia Award（香港）及 Global Design Award（香港）。他同時擔任香港理工大學及香港知專設計學院客席講師，並任香港設計文化協會（MODA）副會長。",
+    en: "Maurice Kwok is the co-founder of InnoSphere Ltd., with over 25 years of experience in product design and development. Starting from enterprise business transformation, he went on to establish branded products, driving market impact through design innovation. He has received over 25 design awards, including the Good Design Award (USA), iF Design Award (Germany), Golden Pin Design Award (Taiwan), Design for Asia Award (HK), and Global Design Award (HK). He also serves as a visiting lecturer at Hong Kong Polytechnic University and the Hong Kong Design Institute, and is Vice President of MODA (Mode of Design Alliance)."
+  },
 
   // Alias keys for Home.tsx compatibility
   "about.badge": { zh: "關於活動", en: "About" },

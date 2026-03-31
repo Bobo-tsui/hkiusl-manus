@@ -54,6 +54,7 @@ const IMAGES = {
   xidorsiLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/xidorsi-photo_8c37cb8f.jpg",
   scentsafeLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/scentsafe-logo-new_47ec5bed.png",
   onanLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/onan-logo_e7683513.jpeg",
+  mauricePhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/maurice-kwok-photo_64c22cfd.png",
   marcusPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/marcus-photo_893ddebc.jpg",
   sophiaPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/sophia-lam-photo_bda96cd1.jpg",
   emilChanPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/emil-chan-photo_f68382d2.jpg",
@@ -749,10 +750,11 @@ const SPEAKERS_STATIC: Record<string, Omit<Speaker, 'name' | 'role' | 'bio'> & {
   maurice: {
     nameKey: "speaker.maurice.name",
     roleKey: "speaker.maurice.role",
-    photo: IMAGES.modaLogo,
-    bioKey: "speaker.maurice.name",
+    photo: IMAGES.mauricePhoto,
+    bioKey: "speaker.maurice.bio",
     companyLogo: IMAGES.modaLogo,
     companyNameKey: "company.moda",
+    linkedin: "https://www.linkedin.com/in/mauricekwok/",
   },
   vha_business: {
     nameKey: "speaker.vha_business.name",
@@ -894,7 +896,7 @@ function ScheduleSection() {
           title: t("d1.s8.title"),
           description: t("d1.s8.desc"),
           type: "highlight",
-          speakers: ["adrian"],
+          speakers: ["adrian", "maurice"],
         },
         {
           timeRange: "12:45",
