@@ -701,8 +701,8 @@ const SPEAKERS_STATIC: Record<string, Omit<Speaker, 'name' | 'role' | 'bio'> & {
     photo: IMAGES.boboPhoto,
     bioKey: "speaker.bobo.bio",
     companyLogos: [
-      { logo: IMAGES.xinglinYuanLogo, name: "杏林苑" },
-      { logo: IMAGES.onanLogo, name: "安顏科技" },
+      { logo: IMAGES.xinglinYuanLogo, name: "Xinglin Yuan" },
+      { logo: IMAGES.onanLogo, name: "OnAn Technology" },
     ]
   },
   xidorsi: {

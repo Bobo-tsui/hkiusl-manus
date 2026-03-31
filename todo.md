@@ -149,3 +149,4 @@
 - [x] Replace vha_business/vha_tech with Marco/Davis in VHA sharing session
 - [x] Change Marco bio to 3rd person
 - [x] Resize speaker cards (collapsed photo+name) to match version 1cc965d2, keep logo position as-is
+- [x] Change Bobo's related project English names to Xinglin Yuan and OnAn Technology
