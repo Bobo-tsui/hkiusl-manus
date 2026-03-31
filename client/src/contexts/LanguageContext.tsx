@@ -483,7 +483,7 @@ const translations: Record<string, Record<Lang, string>> = {
   },
 
   // Marco speaker
-  "speaker.marco.name": { zh: "Marco", en: "Marco" },
+  "speaker.marco.name": { zh: "Marco Wong", en: "Marco Wong" },
   "speaker.marco.role": { zh: "Edspark 商業分析師", en: "Business Analyst @ Edspark" },
   "speaker.marco.bio": {
     zh: "Marco 在科大的商業教育背景，結合強大的編程技能，使他能夠橋接技術開發與市場營銷之間的差距。這種獨特的視角讓他能深入理解產品的架構基礎以及將其成功推向市場所需的策略元素。他對共融教育深具熱情，特別關注支援有特殊教育需要（SEN）的學生，運用技術專長開發無障礙系統和工具，並透過數據分析持續優化解決方案。",
@@ -491,7 +491,7 @@ const translations: Record<string, Record<Lang, string>> = {
   },
 
   // Adrian speaker
-  "speaker.adrian.name": { zh: "Adrian", en: "Adrian" },
+  "speaker.adrian.name": { zh: "Adrian Kam", en: "Adrian Kam" },
   "speaker.adrian.role": { zh: "Edspark 系統架構師", en: "System Architect @ Edspark" },
   "speaker.adrian.bio": {
     zh: "擁有全端開發與機器學習的豐富專業知識，他專業地管理 Edspark 的所有技術層面。他認為技術不是直接的收入驅動力，而是強大的影響力槓桿。這種理念促使他共同創立了 Edspark，以提供優質且可負擔的教育為使命。為了進一步實踐這一承諾，他親自以低於市場的價格輔導有特殊教育需要（SEN）的學生。",

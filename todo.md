@@ -153,3 +153,4 @@
 - [x] Read Maurice Kwok's resume and extract bio
 - [x] Upload Maurice's photo to CDN
 - [x] Add Maurice as Fireside Chat speaker with MODA logo
+- [x] Change Adrian → Adrian Kam and Marco → Marco Wong in speaker names (visual edit)
