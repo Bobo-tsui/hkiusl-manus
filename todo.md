@@ -154,3 +154,5 @@
 - [x] Upload Maurice's photo to CDN
 - [x] Add Maurice as Fireside Chat speaker with MODA logo
 - [x] Change Adrian → Adrian Kam and Marco → Marco Wong in speaker names (visual edit)
+
+- [x] Remove Zoom references: "星級嘉賓（Zoom）" → "星級嘉賓", SaiDorSi description changed to 現場分享
