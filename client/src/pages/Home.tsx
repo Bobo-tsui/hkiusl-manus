@@ -67,6 +67,7 @@ const IMAGES = {
   marcoPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/marco-photo-correct_f3393741.png",
   adrianPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/adrian-photo-correct_14374a9c.png",
   edsparkLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/edspark-logo_e44e4d3c.png",
+  walterPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/walter_tsui_f2988eb0.jpeg",
 };
 
 const PARTNER_LOGOS_STATIC = [
@@ -693,6 +694,7 @@ const SPEAKERS_STATIC: Record<string, Omit<Speaker, 'name' | 'role' | 'bio'> & {
     roleKey: "speaker.eric.role",
     photo: IMAGES.ericPhoto,
     bioKey: "speaker.eric.bio",
+    linkedin: "https://www.linkedin.com/in/ericwongwy/",
     companyLogo: IMAGES.riceUpLogo,
     companyNameKey: "company.riceUp",
   },
@@ -701,6 +703,7 @@ const SPEAKERS_STATIC: Record<string, Omit<Speaker, 'name' | 'role' | 'bio'> & {
     roleKey: "speaker.bobo.role",
     photo: IMAGES.boboPhoto,
     bioKey: "speaker.bobo.bio",
+    linkedin: "https://www.linkedin.com/in/bobo-tsuipuichi/",
     companyLogos: [
       { logo: IMAGES.xinglinYuanLogo, name: "Xinglin Yuan" },
       { logo: IMAGES.onanLogo, name: "OnAn Technology" },
@@ -728,6 +731,7 @@ const SPEAKERS_STATIC: Record<string, Omit<Speaker, 'name' | 'role' | 'bio'> & {
     roleKey: "speaker.marcus.role",
     photo: IMAGES.marcusPhoto,
     bioKey: "speaker.marcus.bio",
+    linkedin: "https://www.linkedin.com/in/marcus-yu-348949282/",
     companyLogo: IMAGES.scentsafeLogo,
     companyNameKey: "company.scentsafe",
   },
@@ -736,6 +740,7 @@ const SPEAKERS_STATIC: Record<string, Omit<Speaker, 'name' | 'role' | 'bio'> & {
     roleKey: "speaker.emil.role",
     photo: IMAGES.emilChanPhoto,
     bioKey: "speaker.emil.bio",
+    linkedin: "https://www.linkedin.com/in/emilchan/",
     companyLogo: IMAGES.hkdfaLogo,
     companyNameKey: "company.hkdfa",
   },
@@ -754,7 +759,7 @@ const SPEAKERS_STATIC: Record<string, Omit<Speaker, 'name' | 'role' | 'bio'> & {
     bioKey: "speaker.maurice.bio",
     companyLogo: IMAGES.modaLogo,
     companyNameKey: "company.moda",
-    linkedin: "https://www.linkedin.com/in/mauricekwok/",
+
   },
   vha_business: {
     nameKey: "speaker.vha_business.name",
@@ -806,6 +811,12 @@ const SPEAKERS_STATIC: Record<string, Omit<Speaker, 'name' | 'role' | 'bio'> & {
     linkedin: "https://www.linkedin.com/in/adrian-kam-2b08033a5/",
     companyLogo: IMAGES.edsparkLogo,
     companyNameKey: "company.edspark",
+  },
+  walter: {
+    nameKey: "speaker.walter.name",
+    roleKey: "speaker.walter.role",
+    photo: IMAGES.walterPhoto,
+    bioKey: "speaker.walter.bio",
   },
 };
 
@@ -896,7 +907,7 @@ function ScheduleSection() {
           title: t("d1.s8.title"),
           description: t("d1.s8.desc"),
           type: "highlight",
-          speakers: ["adrian", "maurice"],
+          speakers: ["adrian", "maurice", "walter"],
         },
         {
           timeRange: "12:45",

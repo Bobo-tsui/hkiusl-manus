@@ -156,3 +156,9 @@
 - [x] Change Adrian → Adrian Kam and Marco → Marco Wong in speaker names (visual edit)
 
 - [x] Remove Zoom references: "星級嘉賓（Zoom）" → "星級嘉賓", SaiDorSi description changed to 現場分享
+- [x] Add Walter Tsui (徐明德) as Fireside Chat speaker with photo, HKFii title
+- [x] Remove Maurice Kwok's LinkedIn link
+- [x] Add LinkedIn for Marcus: https://www.linkedin.com/in/marcus-yu-348949282/
+- [x] Add LinkedIn for Bobo: https://www.linkedin.com/in/bobo-tsuipuichi/
+- [x] Add LinkedIn for Eric: https://www.linkedin.com/in/ericwongwy/
+- [x] Add LinkedIn for Emil: https://www.linkedin.com/in/emilchan/

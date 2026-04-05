@@ -498,6 +498,14 @@ const translations: Record<string, Record<Lang, string>> = {
     en: "With extensive expertise in full-stack development and machine learning, he expertly manages all technical aspects at Edspark. He views technology not as a direct revenue driver, but as a powerful lever for impact. This philosophy led us to co-found Edspark, with the mission of delivering high-quality education at affordable prices. To further this commitment, he personally tutors students with special educational needs (SEN) at below-market rates."
   },
 
+  // Walter Tsui speaker
+  "speaker.walter.name": { zh: "徐明德 Walter Tsui", en: "Walter Tsui" },
+  "speaker.walter.role": { zh: "HKFii 香港發明創新總會理事 | 香港經濟師學會專業經濟師", en: "Council Member, HKFii | Professional Economist, HKEA" },
+  "speaker.walter.bio": {
+    zh: "徐明德先生為香港發明創新總會（HKFii）理事及香港經濟師學會專業經濟師，長期致力於推動香港創新發明與知識產權發展。他擁有豐富的跨界經驗，結合經濟分析與創新策略，為初創企業及技術轉移項目提供專業指導。",
+    en: "Mr. Walter Tsui is a Council Member of the Hong Kong Federation of Invention and Innovation (HKFii) and a Professional Economist of the Hong Kong Economic Association (HKEA). He has long been committed to promoting innovation, invention, and intellectual property development in Hong Kong. With extensive cross-disciplinary experience, he combines economic analysis with innovation strategy to provide professional guidance for startups and technology transfer projects."
+  },
+
   // Language toggle
   "lang.zh": { zh: "中", en: "中" },
   "lang.en": { zh: "EN", en: "EN" },
