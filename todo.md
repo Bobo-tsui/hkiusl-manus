@@ -164,3 +164,7 @@
 - [x] Add LinkedIn for Emil: https://www.linkedin.com/in/emilchan/
 - [x] Add TK Sin (冼子光) as Fireside Chat speaker with photo and bio
 - [x] Add Sophia (林詠欣) to Fireside Chat speakers list
+- [x] Fix all 立即報名 buttons to jump to #signup section (not directly to form), except the one inside the section
+- [x] Remove $300 option and early bird discount, change to $100 deposit (refundable within 7 days after event)
+- [x] Shrink the signup pricing block, enlarge the 持有優惠碼 block
+- [x] Change registration deadline to April 10 8pm

@@ -138,7 +138,7 @@ function WaveDividerBottom({ color = "#1a1a4e" }: { color?: string }) {
 function CountdownBanner() {
   const { t } = useLanguage();
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-  const deadline = new Date('2026-04-08T23:59:59+08:00').getTime();
+  const deadline = new Date('2026-04-10T20:00:00+08:00').getTime();
 
   useEffect(() => {
     const tick = () => {
@@ -175,9 +175,7 @@ function CountdownBanner() {
           {String(timeLeft.seconds).padStart(2, '0')}<span className="text-white/70 text-xs mx-0.5">{t("countdown.seconds")}</span>
         </span>
         <a
-          href={JOTFORM_URL}
-          target="_blank"
-          rel="noopener noreferrer"
+          href="#signup"
           className="ml-3 px-3 py-0.5 rounded-full bg-white text-[#ff5588] text-xs font-bold hover:bg-white/90 transition-colors"
         >
           {t("countdown.register")}
@@ -205,7 +203,7 @@ function Navbar() {
     { label: t("nav.schedule"), href: "#schedule" },
     { label: t("nav.gallery"), href: "#gallery" },
     { label: t("nav.partners"), href: "#partners" },
-    { label: t("nav.register"), href: JOTFORM_URL, external: true },
+    { label: t("nav.register"), href: "#signup" },
   ];
 
   return (
@@ -233,7 +231,6 @@ function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               className={`text-sm font-medium transition-colors hover:text-[#b8a9d4] ${
                 scrolled ? "text-[#1a1a4e]" : "text-white/90"
               }`}
@@ -241,7 +238,7 @@ function Navbar() {
               {link.label}
             </a>
           ))}
-          <a href={JOTFORM_URL} target="_blank" rel="noopener noreferrer">
+          <a href="#signup">
             <Button
               className="bg-[#b8a9d4] hover:bg-[#a08ec0] text-[#1a1a4e] font-semibold rounded-full px-6"
             >
@@ -295,14 +292,13 @@ function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 className="text-[#1a1a4e] font-medium py-2 border-b border-[#e8e0f0]"
                 onClick={() => setMobileOpen(false)}
               >
                 {link.label}
               </a>
             ))}
-            <a href={JOTFORM_URL} target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)}>
+            <a href="#signup" onClick={() => setMobileOpen(false)}>
               <Button className="w-full bg-[#1a1a4e] hover:bg-[#2a2a6e] text-white rounded-full mt-2">
                 {t("nav.registerBtn")}
               </Button>
@@ -416,7 +412,7 @@ function HeroSection() {
             transition={{ duration: 0.8, delay: 0.8 }}
             className="mx-auto flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center"
           >
-            <a href={JOTFORM_URL} target="_blank" rel="noopener noreferrer" className="flex justify-center">
+            <a href="#signup" className="flex justify-center">
               <Button className="inline-flex items-center justify-center bg-[#b8a9d4] hover:bg-[#a08ec0] text-[#1a1a4e] font-bold text-base md:text-lg rounded-full px-6 py-5 md:px-8 md:py-6 shadow-lg shadow-[#b8a9d4]/25 transition-transform hover:scale-105">
                 {t("hero.registerBtn")}<ArrowRight className="ml-2.5 w-5 h-5 shrink-0" />
               </Button>
@@ -1777,34 +1773,14 @@ function SignupSection() {
                 {t("signup.desc")}
               </p>
 
-              {/* Pricing cards */}
-              <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto mb-12">
-                {/* Early bird */}
-                <div className="relative bg-white/10 backdrop-blur-md rounded-2xl border-2 border-[#b8a9d4] p-8 group hover:-translate-y-1 transition-transform">
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                    <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#b8a9d4] text-[#1a1a4e] text-sm font-bold">
-                      <Sparkles className="w-4 h-4" />
-                      {t("signup.earlybird")}
-                    </span>
+              {/* Pricing - deposit only */}
+              <div className="max-w-sm mx-auto mb-8">
+                <div className="bg-white/10 backdrop-blur-md rounded-2xl border border-[#b8a9d4]/50 p-6 text-center">
+                  <div className="text-4xl font-black text-white mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                    $100
                   </div>
-                  <div className="mt-2">
-                    <div className="text-5xl font-black text-white mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                      $100
-                    </div>
-                    <p className="text-[#d4c8e8] font-medium mb-1">{t("signup.earlybird.date")}</p>
-                    <p className="text-white/40 text-sm">{t("signup.earlybird.note")}</p>
-                  </div>
-                </div>
-
-                {/* Regular */}
-                <div className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-8 group hover:-translate-y-1 transition-transform">
-                  <div className="mt-6">
-                    <div className="text-5xl font-black text-white/70 mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                      $300
-                    </div>
-                    <p className="text-white/50 font-medium mb-1">{t("signup.regular")}</p>
-                    <p className="text-white/30 text-sm">{t("signup.regular.date")}</p>
-                  </div>
+                  <p className="text-[#d4c8e8] font-semibold mb-1">{t("signup.deposit")}</p>
+                  <p className="text-white/50 text-sm">{t("signup.deposit.note")}</p>
                 </div>
               </div>
               
@@ -1822,8 +1798,8 @@ function SignupSection() {
               </motion.div>
                             
               {/* Promo code input */}
-              <div className="max-w-md mx-auto mb-10 mt-8">
-                <p className="text-white/70 text-sm font-medium mb-3">{t("signup.promo.label")}</p>
+              <div className="max-w-lg mx-auto mb-10 mt-8 bg-white/8 backdrop-blur-md rounded-2xl border border-[#b8a9d4]/30 p-6 md:p-8">
+                <p className="text-white/90 text-lg font-bold mb-4">{t("signup.promo.label")}</p>
                 <div className="flex gap-2">
                   <input
                     type="text"
@@ -1971,7 +1947,7 @@ function Footer() {
                 { label: t("nav.schedule"), href: "#schedule" },
                 { label: t("nav.gallery"), href: "#gallery" },
                 { label: t("nav.partners"), href: "#partners" },
-                { label: t("nav.register"), href: JOTFORM_URL },
+                { label: t("nav.register"), href: "#signup" },
               ].map((link) => (
                 <a
                   key={link.href}
