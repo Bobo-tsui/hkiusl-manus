@@ -506,6 +506,14 @@ const translations: Record<string, Record<Lang, string>> = {
     en: "Mr. Walter Tsui is a Council Member of the Hong Kong Federation of Invention and Innovation (HKFii) and a Professional Economist of the Hong Kong Economic Association (HKEA). He has long been committed to promoting innovation, invention, and intellectual property development in Hong Kong. With extensive cross-disciplinary experience, he combines economic analysis with innovation strategy to provide professional guidance for startups and technology transfer projects."
   },
 
+  // TK Sin speaker
+  "speaker.tksin.name": { zh: "冼子光 TK Sin", en: "TK Sin" },
+  "speaker.tksin.role": { zh: "香港設計文化協會秘書長 | 香港理工大學設計學碩士", en: "Secretary General, MODA | Master of Design, PolyU" },
+  "speaker.tksin.bio": {
+    zh: "冼子光先生為香港理工大學設計學碩士及資深設計顧問。現任香港設計文化協會秘書長、香港特區政府僱員再培訓局（設計科）技術顧問、香港職業訓練局（設計業）過往資歷認可評核員、香港理工大學設計學院校友會會務執行顧問、香港設計文化協會（香港政府持續進修基金）設計課程總監及英國伯明翰市大學（香港才晉高等教育學院）設計系本科生導師。在設計服務專業方面，冼先生曾任多間機構的設計主管，現為香港 JASY Design 的設計部主管及 A Corner 共享空間的項目經理。透過香港設計文化協會及其專業知識，在三十年間致力聯繫國內外之企業／機構，舉辦各種交流活動，貫徹執行推動以專業設計和服務特色為本的香港設計精神。",
+    en: "Mr. TK Sin holds a Master of Design from The Hong Kong Polytechnic University and is a senior design consultant. He currently serves as Secretary General of the Hong Kong Design Culture Association (MODA), Technical Advisor to the Employees Retraining Board (Design), RPL Assessor for the Vocational Training Council (Design), Executive Advisor to the PolyU School of Design Alumni Association, Design Programme Director for MODA (CEF), and Undergraduate Tutor at Birmingham City University (HKCT). With over 30 years of experience, he has served as design director at multiple organizations and currently heads the design department at JASY Design and manages A Corner co-working space. Through MODA and his professional expertise, he has been dedicated to connecting enterprises and institutions locally and internationally, organizing exchange activities to promote Hong Kong's design spirit."
+  },
+
   // Language toggle
   "lang.zh": { zh: "中", en: "中" },
   "lang.en": { zh: "EN", en: "EN" },

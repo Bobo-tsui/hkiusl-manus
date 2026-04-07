@@ -68,6 +68,7 @@ const IMAGES = {
   adrianPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/adrian-photo-correct_14374a9c.png",
   edsparkLogo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/edspark-logo_e44e4d3c.png",
   walterPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/walter_tsui_f2988eb0.jpeg",
+  tksinPhoto: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030610582/QCjoJkVdCCJUUycEHMAo9U/tksin_5cd4f513.jpeg",
 };
 
 const PARTNER_LOGOS_STATIC = [
@@ -818,6 +819,14 @@ const SPEAKERS_STATIC: Record<string, Omit<Speaker, 'name' | 'role' | 'bio'> & {
     photo: IMAGES.walterPhoto,
     bioKey: "speaker.walter.bio",
   },
+  tksin: {
+    nameKey: "speaker.tksin.name",
+    roleKey: "speaker.tksin.role",
+    photo: IMAGES.tksinPhoto,
+    bioKey: "speaker.tksin.bio",
+    companyLogo: IMAGES.modaLogo,
+    companyNameKey: "company.moda",
+  },
 };
 
 // ─── Schedule Section ───
@@ -907,7 +916,7 @@ function ScheduleSection() {
           title: t("d1.s8.title"),
           description: t("d1.s8.desc"),
           type: "highlight",
-          speakers: ["adrian", "maurice", "walter"],
+          speakers: ["adrian", "maurice", "walter", "tksin", "sophia"],
         },
         {
           timeRange: "12:45",

@@ -162,3 +162,5 @@
 - [x] Add LinkedIn for Bobo: https://www.linkedin.com/in/bobo-tsuipuichi/
 - [x] Add LinkedIn for Eric: https://www.linkedin.com/in/ericwongwy/
 - [x] Add LinkedIn for Emil: https://www.linkedin.com/in/emilchan/
+- [x] Add TK Sin (冼子光) as Fireside Chat speaker with photo and bio
+- [x] Add Sophia (林詠欣) to Fireside Chat speakers list
