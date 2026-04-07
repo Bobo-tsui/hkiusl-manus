@@ -168,3 +168,5 @@
 - [x] Remove $300 option and early bird discount, change to $100 deposit (refundable within 7 days after event)
 - [x] Shrink the signup pricing block, enlarge the 持有優惠碼 block
 - [x] Change registration deadline to April 10 8pm
+- [x] Visual edit: widen deposit card to 512px, center content, reduce height
+- [x] Visual edit: set promo input width to 200px, button height to 50px

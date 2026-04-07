@@ -1774,8 +1774,8 @@ function SignupSection() {
               </p>
 
               {/* Pricing - deposit only */}
-              <div className="max-w-sm mx-auto mb-8">
-                <div className="bg-white/10 backdrop-blur-md rounded-2xl border border-[#b8a9d4]/50 p-6 text-center">
+              <div className="max-w-lg mx-auto mb-8 flex justify-center">
+                <div className="bg-white/10 backdrop-blur-md rounded-2xl border border-[#b8a9d4]/50 px-6 py-4 text-center flex flex-col items-center justify-center" style={{width: '512px'}}>
                   <div className="text-4xl font-black text-white mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                     $100
                   </div>
@@ -1810,11 +1810,11 @@ function SignupSection() {
                     }}
                     placeholder={t("signup.promo.placeholder")}
                     className="flex-1 px-4 py-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 text-white placeholder:text-white/30 focus:outline-none focus:border-[#b8a9d4] focus:ring-1 focus:ring-[#b8a9d4] transition-colors text-center font-mono tracking-widest"
-                    onKeyDown={(e) => e.key === "Enter" && handlePromoSubmit()}
+                    onKeyDown={(e) => e.key === "Enter" && handlePromoSubmit()} style={{width: '200px'}}
                   />
                   <Button
                     onClick={handlePromoSubmit}
-                    className="bg-[#b8a9d4] hover:bg-[#a08ec0] text-[#1a1a4e] font-bold rounded-xl px-6 py-3 transition-all hover:scale-105"
+                    className="bg-[#b8a9d4] hover:bg-[#a08ec0] text-[#1a1a4e] font-bold rounded-xl px-6 py-3 transition-all hover:scale-105" style={{height: '50px'}}
                   >
                     {t("signup.promo.apply")}
                   </Button>
