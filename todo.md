@@ -170,3 +170,5 @@
 - [x] Change registration deadline to April 10 8pm
 - [x] Visual edit: widen deposit card to 512px, center content, reduce height
 - [x] Visual edit: set promo input width to 200px, button height to 50px
+- [x] Remove registration countdown timer banner
+- [x] Remove all registration-related buttons (navbar, hero, footer, etc.)

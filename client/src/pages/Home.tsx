@@ -203,12 +203,11 @@ function Navbar() {
     { label: t("nav.schedule"), href: "#schedule" },
     { label: t("nav.gallery"), href: "#gallery" },
     { label: t("nav.partners"), href: "#partners" },
-    { label: t("nav.register"), href: "#signup" },
   ];
 
   return (
     <nav
-      className={`fixed top-[36px] left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
           ? "bg-white/90 backdrop-blur-md shadow-md"
           : "bg-transparent"
@@ -238,13 +237,6 @@ function Navbar() {
               {link.label}
             </a>
           ))}
-          <a href="#signup">
-            <Button
-              className="bg-[#b8a9d4] hover:bg-[#a08ec0] text-[#1a1a4e] font-semibold rounded-full px-6"
-            >
-              {t("nav.registerBtn")}
-            </Button>
-          </a>
           <button
             onClick={() => setLang(lang === "zh" ? "en" : "zh")}
             className={`ml-2 px-3 py-1.5 rounded-full text-xs font-bold border transition-colors ${
@@ -298,11 +290,6 @@ function Navbar() {
                 {link.label}
               </a>
             ))}
-            <a href="#signup" onClick={() => setMobileOpen(false)}>
-              <Button className="w-full bg-[#1a1a4e] hover:bg-[#2a2a6e] text-white rounded-full mt-2">
-                {t("nav.registerBtn")}
-              </Button>
-            </a>
 
           </div>
         </motion.div>
@@ -412,11 +399,7 @@ function HeroSection() {
             transition={{ duration: 0.8, delay: 0.8 }}
             className="mx-auto flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center"
           >
-            <a href="#signup" className="flex justify-center">
-              <Button className="inline-flex items-center justify-center bg-[#b8a9d4] hover:bg-[#a08ec0] text-[#1a1a4e] font-bold text-base md:text-lg rounded-full px-6 py-5 md:px-8 md:py-6 shadow-lg shadow-[#b8a9d4]/25 transition-transform hover:scale-105">
-                {t("hero.registerBtn")}<ArrowRight className="ml-2.5 w-5 h-5 shrink-0" />
-              </Button>
-            </a>
+
             <a href="#about" className="flex justify-center">
               <Button
                 variant="outline"
@@ -1947,7 +1930,6 @@ function Footer() {
                 { label: t("nav.schedule"), href: "#schedule" },
                 { label: t("nav.gallery"), href: "#gallery" },
                 { label: t("nav.partners"), href: "#partners" },
-                { label: t("nav.register"), href: "#signup" },
               ].map((link) => (
                 <a
                   key={link.href}
@@ -2019,7 +2001,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      <CountdownBanner />
       <Navbar />
       <HeroSection />
       <AboutSection />
@@ -2028,7 +2009,6 @@ export default function Home() {
       <GallerySection />
       <TestimonialSection />
       <PartnersSection />
-      <SignupSection />
       <Footer />
     </div>
   );
